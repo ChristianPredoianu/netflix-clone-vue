@@ -1,0 +1,32 @@
+@mixin flex-config(
+  $display: false,
+  $direction: false,
+  $justify: false,
+  $align: false
+) {
+  @if $display != false {
+    display: $display;
+  }
+
+  @if $justify != false {
+    justify-content: $justify;
+  }
+
+  @if $direction != false {
+    flex-direction: $direction;
+  }
+
+  @if $align != false {
+    align-items: $align;
+  }
+}
+
+@mixin netflix-border {
+  border-bottom: 1rem solid $color-gray-dark;
+}
+
+@mixin landing-section-config {
+  background-color: $color-black;
+  color: $color-white;
+  padding: 10rem 6rem;
+}
