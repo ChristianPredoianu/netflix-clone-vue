@@ -77,5 +77,17 @@ export default {
   text-align: start;
   font-size: 3rem;
   cursor: pointer;
+
+  @include respond(tab-land) {
+    --vsa-min-width: 800px;
+  }
+
+  @include respond(tab-port) {
+    --vsa-min-width: 600px;
+  }
+
+  @include respond(phone) {
+    --vsa-min-width: 250px;
+  }
 }
 </style>

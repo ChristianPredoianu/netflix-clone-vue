@@ -7,7 +7,7 @@
     />
   </div>
 </template>
-
-<style lang="scss" scoped>
-@import '../../sass/components/ui/_logo.scss';
-</style>
+<script>
+import '../../sass/components/ui/_logo.scss';
+export default {};
+</script>

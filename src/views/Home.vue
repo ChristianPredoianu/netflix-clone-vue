@@ -10,18 +10,19 @@
           Unlimited access to movies, series and other.
         </h1>
         <h2 class="heading-secondary u-margin-t-b-small">
-          Watch where you want. Unsubscribe when you want
+          Watch where you want. Unsubscribe when you want.
         </h2>
         <p class="hero-container__paragraph">
           Ready to start watching? Fill in your e-mail to create an account.
         </p>
-        <GetStarted></GetStarted>
+        <GetStarted />
       </div>
     </section>
+
     <section class="section-tv">
       <div class="tv-description">
-        <h2 class="heading-primary">Watch on your tv</h2>
-        <p class="heading-secondary u-margin-t-small">
+        <h2 class="heading-primary u-text-align-start">Watch on your tv</h2>
+        <p class="heading-secondary u-margin-t-small u-text-align-start">
           Watch on smart-tv:s, Playstation, Xbox, Chromecast, Apple TV,
           Blu-ray-players and many more.
         </p>
@@ -37,7 +38,6 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video1.mp4"
-            autoplay
             playsinline
             muted
             loop
@@ -72,18 +72,18 @@
         </div>
       </div>
       <div class="phone-description">
-        <h2 class="heading-primary">
+        <h2 class="heading-primary u-text-align-start">
           Download your programmes to watch offline.
         </h2>
-        <p class="heading-secondary u-margin-t-small">
+        <p class="heading-secondary u-margin-t-small u-text-align-start">
           Save your favourites so that you always have something to watch.
         </p>
       </div>
     </section>
     <section class="watch-anywhere">
       <div class="watch-anywhere-description">
-        <h2 class="heading-primary">Watch anywhere.</h2>
-        <p class="heading-secondary u-margin-t-small">
+        <h2 class="heading-primary u-text-align-start">Watch anywhere.</h2>
+        <p class="heading-secondary u-margin-t-small u-text-align-start">
           Stream unlimited movies and series on mobile, tablet, pc and tv
           without paying extra.
         </p>
@@ -103,7 +103,6 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video2.mp4"
-            autoplay
             playsinline
             muted
             loop
@@ -113,7 +112,7 @@
       </div>
     </section>
     <section class="section-faq">
-      <h2 class="heading-primary u-margin-bottom-medium">Watch anywhere.</h2>
+      <h2 class="heading-primary u-margin-bottom-medium">FAQ</h2>
       <Accordion />
       <p class="heading-secondary u-margin-t-big">
         Stream unlimited movies and series on mobile, tablet, pc and tv without
@@ -125,6 +124,7 @@
 </template>
 
 <script>
+import '../sass/views/_home.scss';
 import Logo from '../components/ui/Logo';
 import GetStarted from '../components/forms/GetStarted';
 import Accordion from '../components/ui/Accordion';
@@ -139,6 +139,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import '../sass/views/_home.scss';
-</style>
+<style lang="scss" scoped></style>

@@ -1,3 +1,7 @@
 .logo {
   width: 21rem;
+
+  @include respond(tab-port) {
+    width: 10rem;
+  }
 }
