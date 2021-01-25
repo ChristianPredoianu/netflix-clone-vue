@@ -6,13 +6,13 @@
         <a class="nav__login-btn">Sign in</a>
       </nav>
       <div class="hero-container">
-        <h1 class="heading-primary">
+        <h1 class="heading-primary ">
           Unlimited access to movies, series and other.
         </h1>
-        <h2 class="heading-secondary u-margin-t-b-small">
+        <h2 class="heading-secondary u-margin-t-b-small ">
           Watch where you want. Unsubscribe when you want.
         </h2>
-        <p class="hero-container__paragraph">
+        <p class="hero-container__paragraph ">
           Ready to start watching? Fill in your e-mail to create an account.
         </p>
         <GetStarted />
@@ -38,6 +38,7 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video1.mp4"
+            autoplay
             playsinline
             muted
             loop
@@ -103,6 +104,7 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video2.mp4"
+            autoplay
             playsinline
             muted
             loop
@@ -114,7 +116,7 @@
     <section class="section-faq">
       <h2 class="heading-primary u-margin-bottom-medium">FAQ</h2>
       <Accordion />
-      <p class="heading-secondary u-margin-t-big">
+      <p class="heading-secondary u-margin-t-big ">
         Stream unlimited movies and series on mobile, tablet, pc and tv without
         paying extra.
       </p>
@@ -124,7 +126,6 @@
 </template>
 
 <script>
-import '../sass/views/_home.scss';
 import Logo from '../components/ui/Logo';
 import GetStarted from '../components/forms/GetStarted';
 import Accordion from '../components/ui/Accordion';
@@ -139,4 +140,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../sass/views/_home.scss';
+</style>

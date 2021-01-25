@@ -1,10 +1,7 @@
 <template>
   <div>
     <header>
-      <nav class="nav-signup">
-        <Logo />
-        <p class="nav-signup__sign-in">Sign In</p>
-      </nav>
+      <NavSignUp />
     </header>
     <section class="step-1-section">
       <div class="icons-container">
@@ -33,18 +30,28 @@
           Netflix is personalised for you. Create a password to watch Netflix on
           any device at any time.
         </h2>
-        <button class="step-1-info__btn">Continue</button>
+        <button class="step-1-info__btn" @click="goToStep2">Continue</button>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import Logo from '../../components/ui/Logo';
-import '../../sass/views/signup/_step1.scss';
+import NavSignUp from '../../components/ui/NavSignUp';
+
 export default {
   components: {
-    Logo,
+    NavSignUp,
+  },
+
+  methods: {
+    goToStep2() {
+      this.$router.push({ name: 'SignupStep2' });
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '../../sass/views/signup/_step1.scss';
+</style>

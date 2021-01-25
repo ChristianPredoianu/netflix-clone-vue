@@ -26,9 +26,46 @@
 }
 
 @mixin landing-section-config {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: $color-black;
   color: $color-white;
   padding: 10rem 6rem;
+  border-bottom: 1rem solid $color-gray-dark;
+}
+
+@mixin signup-info {
+  &__span {
+    font-weight: 600;
+  }
+
+  &__heading-primary {
+    font-size: 3rem;
+    padding: 1rem 0;
+  }
+
+  &__heading-secondary {
+    font-size: 2rem;
+    font-weight: normal;
+    padding: 1rem 0;
+  }
+}
+
+@mixin continue-btn {
+  font-size: 2rem;
+  background-color: $color-red;
+  color: $color-white;
+  padding: 2rem 3rem;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 // MEDIA QUERY MANAGER

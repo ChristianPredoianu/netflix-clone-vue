@@ -1,0 +1,55 @@
+.section-step-2-main {
+  @include flex-config($display: flex, $justify: center, $align: center);
+  margin-top: 3rem;
+  text-align: start;
+  padding-bottom: 5rem;
+}
+
+.section-container {
+  width: 500px;
+
+  @include respond(phone) {
+    width: 70%;
+  }
+}
+
+.step-2-info {
+  &__paragraph {
+    font-size: 2rem;
+  }
+
+  @include signup-info;
+}
+
+.step-2-form {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+
+    &:valid {
+      outline-color: #00ff00;
+    }
+
+    &:invalid {
+      outline-color: #ff0000;
+    }
+
+    &::placeholder {
+      font-size: 2rem;
+    }
+
+    &:focus::placeholder {
+      font-weight: 600;
+      transform: translateY(-1rem);
+      font-size: 1.5rem;
+    }
+  }
+
+  &__btn {
+    @include continue-btn;
+  }
+}
