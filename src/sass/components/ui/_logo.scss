@@ -1,5 +1,6 @@
 .logo {
   width: 21rem;
+  cursor: pointer;
 
   @include respond(tab-port) {
     width: 10rem;

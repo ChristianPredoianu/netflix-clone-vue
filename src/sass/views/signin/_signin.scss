@@ -1,0 +1,88 @@
+.signin {
+  position: relative;
+}
+
+.main {
+  @include flex-config(
+    $display: flex,
+    $direction: column,
+    $justify: center,
+    $align: center
+  );
+  background-image: url('require@/../../../assets/images/netflix-background2.jpg');
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+
+.form-container {
+  /* @include flex-config($display: flex, $direction: column); */
+  background-color: rgba($color-black, 0.75);
+  width: 500px;
+  padding: 0 5rem;
+
+  @include respond(tab-port) {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+.signin-form {
+  @include flex-config($display: flex, $direction: column);
+  padding: 4rem 0 10rem 0;
+
+  @include respond(tab-port) {
+    margin-top: 5rem;
+  }
+
+  &__heading {
+    font-size: clamp(3rem, 3vw, 4.5rem);
+    color: $color-white;
+    padding: 3rem 0;
+    text-align: start;
+  }
+
+  &__input {
+    font-size: 2rem;
+    padding: 1.5rem 1rem;
+    margin-bottom: 3rem;
+    outline: none;
+
+    &::placeholder {
+      font-size: 2rem;
+    }
+
+    &:focus::placeholder {
+      font-weight: 600;
+      transform: translateY(-1rem);
+      font-size: 1.5rem;
+    }
+  }
+
+  &__btn {
+    @include continue-btn;
+    margin: 1rem 0;
+  }
+}
+
+.sign-up-now {
+  padding: 3rem 0;
+
+  &__paragraph {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: $color-gray-dark;
+    text-align: start;
+  }
+
+  &__span {
+    display: inline-block;
+    color: $color-white;
+  }
+}

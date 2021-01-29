@@ -29,8 +29,8 @@ export default {
       get() {
         return this.$store.state.email;
       },
-      set(value) {
-        this.$store.commit('updateMessage', value);
+      set(email) {
+        this.$store.commit('updateEmail', email);
       },
     },
   },

@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Step1 from '../views/signup/Step1.vue';
+import { store } from '../store';
+import AuthGuard from './auth-guard';
+import firebase from 'firebase';
+import 'firebase/auth';
 
 Vue.use(VueRouter);
 
@@ -10,11 +13,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue'),
   },
   {
     path: '/signup/Step1',
@@ -26,12 +24,35 @@ const routes = [
     name: 'SignupStep2',
     component: () => import('../views/signup/Step2.vue'),
   },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import('../views/signin/SignIn.vue'),
+  },
+  {
+    path: '/browse',
+    name: 'Browse',
+    component: () => import('../views/Browse.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isAuthenticated = firebase.auth().currentUser;
+  if (requiresAuth && !isAuthenticated) {
+    next('/signin');
+  } else {
+    next();
+  }
 });
 
 export default router;

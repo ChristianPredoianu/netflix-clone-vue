@@ -3,7 +3,7 @@
     <section class="hero">
       <nav class="nav">
         <Logo class="nav__logo"></Logo>
-        <a class="nav__login-btn">Sign in</a>
+        <p class="nav__login-btn">Sign in</p>
       </nav>
       <div class="hero-container">
         <h1 class="heading-primary ">
