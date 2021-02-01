@@ -28,7 +28,6 @@ export default {
     setUser(state, payload) {
       state.user = payload;
     },
-
     setError(state, payload) {
       state.error = payload;
     },
@@ -36,6 +35,7 @@ export default {
       state.error = null;
     },
   },
+
   actions: {
     signUserUp({ commit, state }, payload) {
       commit('resetError', null);
@@ -44,9 +44,9 @@ export default {
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then((user) => {
           const newUser = {
-            email: user.email,
-            password: user.password,
+            email: user.user.email,
           };
+          console.log(newUser);
           commit('setUser', newUser);
           if (user) {
             state.accountCreatedMessage =
@@ -60,7 +60,6 @@ export default {
         .catch((error) => {
           if (error) {
             commit('setError', error.message);
-            commit('currentUser', firebase.auth().currentUser);
           }
         });
     },
@@ -71,15 +70,13 @@ export default {
         .signInWithEmailAndPassword(payload.email, payload.password)
         .then((user) => {
           const newUser = {
-            email: user.email,
-            password: user.password,
+            email: user.user.email,
           };
           commit('setUser', newUser);
-          router.replace({ path: '/browse' });
+          router.replace({ path: '/profiles' });
         })
         .catch((error) => {
           commit('setError', error);
-          console.log(error);
         });
     },
   },

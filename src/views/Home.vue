@@ -38,7 +38,6 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video1.mp4"
-            autoplay
             playsinline
             muted
             loop
@@ -104,7 +103,6 @@
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
             src="../assets/videos/video2.mp4"
-            autoplay
             playsinline
             muted
             loop

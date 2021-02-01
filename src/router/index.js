@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import { store } from '../store';
-import AuthGuard from './auth-guard';
 import firebase from 'firebase';
 import 'firebase/auth';
 
@@ -30,9 +28,9 @@ const routes = [
     component: () => import('../views/signin/SignIn.vue'),
   },
   {
-    path: '/browse',
-    name: 'Browse',
-    component: () => import('../views/Browse.vue'),
+    path: '/profiles',
+    name: 'Profiles',
+    component: () => import('../views/Profiles.vue'),
     meta: {
       requiresAuth: true,
     },
