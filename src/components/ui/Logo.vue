@@ -9,7 +9,6 @@
   </div>
 </template>
 <script>
-import '../../sass/components/ui/_logo.scss';
 export default {
   methods: {
     goToHome() {
@@ -18,3 +17,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '../../sass/components/ui/_logo.scss';
+</style>

@@ -53,5 +53,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/signup/_step1.scss';
+@import '../../sass/views/signup/step1';
 </style>

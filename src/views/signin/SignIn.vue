@@ -65,5 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/signin/_signin.scss';
+@import '../../sass/views/signin/signin';
 </style>

@@ -9,7 +9,7 @@
 
 <script>
 import Logo from './Logo';
-import '../../sass/components/ui/_nav-sign-up.scss';
+
 export default {
   components: {
     Logo,
@@ -17,4 +17,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../../sass/components/ui/_nav-sign-up.scss';
+</style>

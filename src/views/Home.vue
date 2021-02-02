@@ -139,5 +139,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_home.scss';
+@import '../sass/views/home';
 </style>

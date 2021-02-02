@@ -23,7 +23,7 @@
 }
 
 .form-container {
-  /* @include flex-config($display: flex, $direction: column); */
+  @include flex-config($display: flex, $direction: column);
   background-color: rgba($color-black, 0.75);
   width: 500px;
   padding: 0 5rem;

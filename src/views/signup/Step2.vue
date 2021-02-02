@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/signup/_step2.scss';
+@import '../../sass/views/signup/step2';
 /* .modal {
   width: 500px;
   margin: 0px auto;
