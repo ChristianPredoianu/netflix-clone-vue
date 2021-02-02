@@ -1,11 +1,16 @@
 @mixin flex-config(
   $display: false,
+  $wrap: false,
   $direction: false,
   $justify: false,
   $align: false
 ) {
   @if $display != false {
     display: $display;
+  }
+
+  @if $wrap !=false {
+    flex-wrap: $wrap;
   }
 
   @if $justify != false {
@@ -70,8 +75,8 @@
 
 // MEDIA QUERY MANAGER
 /*
-0-600px:      Phone
-600-900px:    Tablet: Portrait
+0-650px:      Phone
+650-900px:    Tablet: Portrait
 900-1200px:   Tablet Landscape
 [1200-1800px] Is where the normal styles apply
 1800px + :    Big Desktop
@@ -81,13 +86,13 @@ $breakpoint argument choices
 - tab-land
 - big-desktop
 1 em = 16 px;
-600px/16px = 37.5em;
+650px/16px = 40.625em;
 */
 
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media (max-width: 40.625em) {
-      //600px
+      //650px
       @content;
     }
   }

@@ -1,0 +1,175 @@
+.profiles-body {
+  background-color: #141414;
+  min-height: 100vh;
+}
+
+.logo {
+  margin-left: 4rem;
+
+  @include respond(phone) {
+    margin: 0;
+  }
+}
+
+.wrapper {
+  @include flex-config($display: flex, $justify: center, $align: center);
+}
+
+.section-main {
+  /*  background-color: #252525; */
+  width: 60%;
+  padding: 4rem 0;
+
+  @include respond(phone) {
+    width: 90%;
+  }
+}
+
+.profiles-container {
+  @include flex-config($display: flex, $direction: column, $align: center);
+
+  &__heading {
+    font-size: clamp(2rem, 3vw, 5rem);
+    color: $color-white;
+    padding: 2rem 0;
+  }
+
+  &__btn {
+    color: $color-gray-light;
+    font-size: 2rem;
+    background-color: transparent;
+    padding: 1rem 3rem;
+    border: 0.1rem solid $color-gray-light;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.cta-container {
+  width: 100%;
+  @include flex-config($display: flex, $justify: space-around);
+  padding: 3rem 0;
+}
+
+.card {
+  @include flex-config(
+    $display: flex,
+    $direction: column,
+    $align: center,
+    $justify: center
+  );
+  padding: 2rem;
+  border: 0.5rem solid transparent;
+  cursor: pointer;
+
+  &__img {
+    font-size: 10rem;
+    color: #a5a5a5;
+  }
+
+  &__name {
+    color: $color-gray-light;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  &__icon {
+    font-size: 10rem;
+  }
+
+  &:hover {
+    border: 0.5rem solid $color-white;
+  }
+}
+
+.add-profile-container {
+  @include flex-config($display: flex, $direction: column);
+  margin-left: 3rem;
+
+  @include respond(phone) {
+    margin: 0;
+  }
+
+  &__heading {
+    color: $color-white;
+    font-size: clamp(2rem, 3vw, 5rem);
+  }
+
+  &__paragraph {
+    color: $color-gray-light;
+    font-size: 2rem;
+  }
+}
+
+.add-profile {
+  @include flex-config($display: flex, $align: center);
+  border-top: 0.1rem solid $color-gray-dark;
+  border-bottom: 0.1rem solid $color-gray-dark;
+  margin-top: 2rem;
+  padding: 4rem 0;
+
+  @include respond(phone) {
+    flex-direction: column;
+  }
+
+  &__icon {
+    font-size: 15rem;
+    width: 20%;
+  }
+
+  &__input {
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: $color-white;
+    background-color: $color-gray-light;
+    border: none;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+
+    &::placeholder {
+      color: #e4e4e4;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.profile-cta {
+  margin-top: 5rem;
+
+  &__btn {
+    width: 20rem;
+    font-size: 2.5rem;
+    background-color: red;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    color: $color-white;
+    border: none;
+    cursor: pointer;
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+      width: 100%;
+    }
+
+    &--transparent {
+      background-color: #141414;
+      color: $color-gray-light;
+      margin-left: 3rem;
+      border: 0.1rem solid $color-gray-light;
+
+      @include respond(tab-port) {
+        margin: 1rem 0 0 0;
+      }
+    }
+  }
+}
