@@ -57,7 +57,10 @@
             <button class="profile-cta__btn " @click="addProfile">
               Continue
             </button>
-            <button class="profile-cta__btn profile-cta__btn--transparent">
+            <button
+              class="profile-cta__btn profile-cta__btn--transparent"
+              @click="isAddProfile = false"
+            >
               Back
             </button>
             <h1 v-if="isAddProfile">{{ isProfileMessage }}</h1>
@@ -96,16 +99,27 @@ export default {
 
     addProfile() {
       const currentUser = this.getCurrentUser;
+
       const profiles = {
         name: this.profileName,
         icon: '',
       };
 
-      const ref = firebase.database().ref('users/' + currentUser.id);
-      const query = ref.orderByChild('name').equalTo(this.profileName);
+      /*     var reff = firebase.database().ref('users/' + currentUser.id);
+      reff.once('value').then(function(snapshot) {
+        let a = snapshot.numChildren(); // 1 ("name")
+        if (a < 5) {
+          console.log('continue');
+        } else {
+          console.log('too many');
+        }
+      }); */
 
-      query.once('value', (snapshot) => {
-        if (!snapshot.exists()) {
+      const ref = firebase.database().ref('users/' + currentUser.id);
+      /* const query = ref.orderByChild('name').equalTo(this.profileName); */
+
+      ref.once('value', (snapshot) => {
+        if (snapshot.numChildren() < 5) {
           firebase
             .database()
             .ref('users/' + currentUser.id)
@@ -115,7 +129,7 @@ export default {
           this.isProfileMessage = null;
         } else {
           this.isAddProfile = true;
-          this.isProfileMessage = 'dsadsad';
+          this.isProfileMessage = 'You can only have a maximum of 5 profiles';
         }
       });
     },
