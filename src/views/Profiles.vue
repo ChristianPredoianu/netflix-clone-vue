@@ -60,6 +60,7 @@
             <button class="profile-cta__btn profile-cta__btn--transparent">
               Back
             </button>
+            <h1 v-if="isAddProfile">{{ isProfileMessage }}</h1>
           </div>
         </div>
       </section>
@@ -81,6 +82,7 @@ export default {
       isAddProfile: false,
       profileName: null,
       profileData: [],
+      isProfileMessage: null,
     };
   },
 
@@ -98,12 +100,24 @@ export default {
         name: this.profileName,
         icon: '',
       };
-      firebase
-        .database()
-        .ref('users/' + currentUser.id)
-        .push(profiles);
 
-      this.isAddProfile = false;
+      const ref = firebase.database().ref('users/' + currentUser.id);
+      const query = ref.orderByChild('name').equalTo(this.profileName);
+
+      query.once('value', (snapshot) => {
+        if (!snapshot.exists()) {
+          firebase
+            .database()
+            .ref('users/' + currentUser.id)
+            .push(profiles);
+          this.isAddProfile = false;
+          this.profileName = null;
+          this.isProfileMessage = null;
+        } else {
+          this.isAddProfile = true;
+          this.isProfileMessage = 'dsadsad';
+        }
+      });
     },
 
     getProfiles() {
@@ -114,7 +128,6 @@ export default {
         .on('value', (snapshot) => {
           snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
-            this.profileData.push(childData);
           });
         });
     },
