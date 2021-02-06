@@ -134,6 +134,7 @@ export default {
       });
     },
 
+    //You need to fix getProfiles in the ui
     getProfiles() {
       const uid = this.getCurrentUser.id;
       firebase
