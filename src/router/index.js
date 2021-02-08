@@ -35,6 +35,14 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/ManageProfiles',
+    name: 'ManageProfiles',
+    component: () => import('../views/ManageProfiles.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
