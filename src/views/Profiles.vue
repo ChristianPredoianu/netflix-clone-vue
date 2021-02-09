@@ -3,65 +3,70 @@
     <nav class="nav"><Logo class="logo" /></nav>
     <div class="wrapper">
       <section class="section-main">
-        <div class="profiles-container" v-if="!isAddProfile">
-          <h1 class="profiles-container__heading">Who is watching?</h1>
-          <div class="cta-container">
-            <div class="card" v-for="user in getUserProfiles" :key="user.id">
-              <font-awesome-icon :icon="user.icon" class="card__img" />
-              <p class="card__name">{{ user.name }}</p>
+        <!--Initial state-->
+        <transition name="fade">
+          <div class="profiles-container" v-if="!isAddProfile" key="initial">
+            <h1 class="profiles-container__heading">Who is watching?</h1>
+            <div class="cta-container">
+              <div class="card" v-for="user in getUserProfiles" :key="user.id">
+                <font-awesome-icon :icon="user.icon" class="card__img" />
+                <p class="card__name">{{ user.name }}</p>
+              </div>
+              <div class="card" @click="goToAddProfile">
+                <font-awesome-icon
+                  :icon="['far', 'plus-square']"
+                  class="card__icon"
+                />
+                <p class="card__name">Add a profile</p>
+              </div>
             </div>
 
-            <div class="card" @click="goToAddProfile">
+            <button
+              class="profiles-container__btn"
+              @click="$router.push({ name: 'ManageProfiles' })"
+            >
+              Manage profiles
+            </button>
+          </div>
+          <!--Add a profile state-->
+          <div
+            class="add-profile-container"
+            v-if="isAddProfile"
+            key="add-profile"
+          >
+            <h1 class="add-profile-container__heading">Add a profile</h1>
+            <p class=" add-profile-container__paragraph">
+              Add a profile for another person watching Netflix
+            </p>
+            <div class="add-profile">
               <font-awesome-icon
-                :icon="['far', 'plus-square']"
-                class="card__icon"
+                :icon="['fas', 'smile']"
+                class="add-profile__icon"
               />
-              <p class="card__name">Add a profile</p>
+              <input
+                type="text"
+                required
+                placeholder="Name"
+                class="add-profile__input"
+                v-model="profileName"
+              />
+            </div>
+            <div class="profile-cta">
+              <button class="profile-cta__btn " @click="addProfile">
+                Continue
+              </button>
+              <button
+                class="profile-cta__btn profile-cta__btn--transparent"
+                @click="(isAddProfile = false), (isProfileMessage = null)"
+              >
+                Back
+              </button>
+              <h1 v-if="isAddProfile">{{ isProfileMessage }}</h1>
             </div>
           </div>
-          <button
-            class="profiles-container__btn"
-            @click="$router.push({ name: 'ManageProfiles' })"
-          >
-            Manage profiles
-          </button>
-        </div>
-        <div class="add-profile-container" v-else>
-          <h1 class="add-profile-container__heading">Add a profile</h1>
-          <p class=" add-profile-container__paragraph">
-            Add a profile for another person watching Netflix
-          </p>
-          <div class="add-profile">
-            <font-awesome-icon
-              :icon="['fas', 'smile']"
-              class="add-profile__icon"
-            />
-            <input
-              type="text"
-              required
-              placeholder="Name"
-              class="add-profile__input"
-              v-model="profileName"
-            />
-          </div>
-          <div class="profile-cta">
-            <button class="profile-cta__btn " @click="addProfile">
-              Continue
-            </button>
-            <button
-              class="profile-cta__btn profile-cta__btn--transparent"
-              @click="(isAddProfile = false), (isProfileMessage = null)"
-            >
-              Back
-            </button>
-            <h1 v-if="isAddProfile">{{ isProfileMessage }}</h1>
-          </div>
-        </div>
+        </transition>
       </section>
     </div>
-    <button @click="signout">Signout</button>
-    <h1 v-for="user in userProfiles" :key="user.id">{{ user }}</h1>
-    <h1>{{ getUserProfiles }}</h1>
   </div>
 </template>
 
@@ -74,9 +79,9 @@ export default {
   data() {
     return {
       isAddProfile: false,
+      isProfileMessage: null,
       profileName: null,
       userProfiles: [],
-      isProfileMessage: null,
     };
   },
   components: {
@@ -94,7 +99,7 @@ export default {
       };
       firebase
         .database()
-        .ref('users/' + currentUserID)
+        .ref(`users/${currentUserID}`)
         .once('value', (snapshot) => {
           if (snapshot.numChildren() < 5) {
             firebase
@@ -110,10 +115,6 @@ export default {
             this.isProfileMessage = 'You can only have a maximum of 5 profiles';
           }
         });
-    },
-    signout() {
-      firebase.auth().signOut();
-      this.$router.push({ path: '/signin' });
     },
     ...mapActions(['setCurrentUser', 'getUserProfilesFromDB']),
   },

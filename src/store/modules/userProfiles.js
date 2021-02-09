@@ -19,11 +19,13 @@ export default {
     getUserProfilesFromDB({ commit, getters }) {
       firebase
         .database()
-        .ref('users/' + getters.getCurrentUser.id)
+        .ref(`users/${getters.getCurrentUser.id}`)
         .on('value', (snapshot) => {
-          let profilesArray = [];
+          const profilesArray = [];
           snapshot.forEach((childSnapshot) => {
             const childData = childSnapshot.val();
+            const id = childSnapshot.key;
+            childData.id = id;
             profilesArray.push(childData);
           });
           commit('setUserProfiles', profilesArray);

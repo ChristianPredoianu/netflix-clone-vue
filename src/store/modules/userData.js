@@ -5,7 +5,6 @@ export default {
     currentUser: {
       email: null,
       id: null,
-      profiles: [],
     },
   },
   getters: {
