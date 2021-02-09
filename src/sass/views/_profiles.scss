@@ -49,6 +49,12 @@
       outline: none;
     }
   }
+
+  &__img {
+    font-size: 10rem;
+    margin-top: 5rem;
+    cursor: pointer;
+  }
 }
 
 .cta-container {
@@ -71,7 +77,7 @@
 
   &__img {
     font-size: 10rem;
-    color: #a5a5a5;
+    color: #1069f8;
   }
 
   &__name {
@@ -90,11 +96,11 @@
 
   &__edit {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 37%;
+    left: 55%;
+    transform: translate(-55%, -37%);
     color: $color-white;
-    font-size: 2rem;
+    font-size: 3.5rem;
   }
 }
 
@@ -118,6 +124,7 @@
 }
 
 .add-profile {
+  position: relative;
   @include flex-config($display: flex, $align: center);
   border-top: 0.1rem solid $color-gray-dark;
   border-bottom: 0.1rem solid $color-gray-dark;
@@ -151,6 +158,17 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &__edit {
+    font-size: 3rem;
+    color: blue;
+    margin-top: 10rem;
+    cursor: pointer;
+
+    @include respond(phone) {
+      margin-top: 0;
     }
   }
 }

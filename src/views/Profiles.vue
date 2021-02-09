@@ -19,7 +19,12 @@
               <p class="card__name">Add a profile</p>
             </div>
           </div>
-          <button class="profiles-container__btn">Manage profiles</button>
+          <button
+            class="profiles-container__btn"
+            @click="$router.push({ name: 'ManageProfiles' })"
+          >
+            Manage profiles
+          </button>
         </div>
         <div class="add-profile-container" v-else>
           <h1 class="add-profile-container__heading">Add a profile</h1>
@@ -65,7 +70,6 @@ import Logo from '../components/ui/Logo';
 import firebase from 'firebase';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
-
 export default {
   data() {
     return {
@@ -75,7 +79,6 @@ export default {
       isProfileMessage: null,
     };
   },
-
   components: {
     Logo,
   },
@@ -83,14 +86,12 @@ export default {
     goToAddProfile() {
       this.isAddProfile = true;
     },
-
     addProfile() {
       const currentUserID = this.getCurrentUser.id;
       const profiles = {
         name: this.profileName,
         icon: ['fas', 'smile'],
       };
-
       firebase
         .database()
         .ref('users/' + currentUserID)
@@ -114,7 +115,6 @@ export default {
       firebase.auth().signOut();
       this.$router.push({ path: '/signin' });
     },
-
     ...mapActions(['setCurrentUser', 'getUserProfilesFromDB']),
   },
   computed: {
