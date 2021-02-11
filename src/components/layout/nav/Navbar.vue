@@ -63,7 +63,6 @@
 <script>
 import Logo from '../../ui/Logo';
 import { mapGetters } from 'vuex';
-/* import DropdownMenu from '@innologica/vue-dropdown-menu'; */
 import NavDropdown from '../../layout/nav/NavDropdown';
 
 export default {
@@ -71,16 +70,11 @@ export default {
     return {
       isOpen: false,
       mobileView: true,
-      /*   show: false,
-      right: false,
-      hover: true,
-      interactive: false, */
       closeOnClickOutside: true,
     };
   },
   components: {
     Logo,
-    /* DropdownMenu, */
     NavDropdown,
   },
   methods: {
