@@ -75,12 +75,14 @@
 
 // MEDIA QUERY MANAGER
 /*
+0-300px       Galaxy fold
 0-650px:      Phone
 650-900px:    Tablet: Portrait
 900-1200px:   Tablet Landscape
 [1200-1800px] Is where the normal styles apply
 1800px + :    Big Desktop
 $breakpoint argument choices
+- fold
 - phone
 - tab-port
 - tab-land
@@ -90,6 +92,13 @@ $breakpoint argument choices
 */
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == fold {
+    @media (max-width: 18.75em) {
+      //900px
+      @content;
+    }
+  }
+
   @if $breakpoint == phone {
     @media (max-width: 40.625em) {
       //650px

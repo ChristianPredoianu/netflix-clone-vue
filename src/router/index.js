@@ -43,6 +43,14 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/browse',
+    name: 'Browse',
+    component: () => import('../views/Browse.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

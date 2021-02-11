@@ -1,0 +1,45 @@
+.dropdown {
+  position: absolute;
+  top: 3.7rem;
+  left: 15rem;
+
+  .btn {
+    background-color: transparent;
+    color: $color-white;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @include respond(fold) {
+    top: 2.8rem;
+    left: 10rem;
+  }
+
+  &__container {
+    @include flex-config(
+      $display: flex,
+      $direction: column,
+      $justify: center,
+      $align: center
+    );
+    min-height: 20vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 3rem 0 0 -13rem;
+    padding: 2rem 10rem 2rem 10rem;
+    border: solid rgba(255, 255, 255, 0.15);
+    border-width: 0.5rem 0.1rem 0.1rem 0.1rem;
+  }
+
+  &__item {
+    color: $color-white;
+    text-decoration: none;
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+
+    &:not(:first-of-type) {
+      margin-top: 3rem;
+    }
+  }
+}

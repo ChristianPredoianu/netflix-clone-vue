@@ -3,10 +3,14 @@ import firebase from 'firebase';
 export default {
   state: {
     userProfiles: [],
+    clickedProfile: null,
   },
   getters: {
     getUserProfiles: (state) => {
       return state.userProfiles;
+    },
+    getTheClickedProfile: (state) => {
+      return state.clickedProfile;
     },
   },
 
@@ -14,9 +18,12 @@ export default {
     setUserProfiles(state, data) {
       state.userProfiles = data;
     },
+    setClickedProfile(state, payload) {
+      state.clickedProfile = payload;
+    },
   },
   actions: {
-    getUserProfilesFromDB({ commit, getters }) {
+    setUserProfilesFromDB({ commit, getters }) {
       firebase
         .database()
         .ref(`users/${getters.getCurrentUser.id}`)
@@ -30,6 +37,9 @@ export default {
           });
           commit('setUserProfiles', profilesArray);
         });
+    },
+    setClickedProfile({ commit }, payload) {
+      commit('setClickedProfile', payload);
     },
   },
 };

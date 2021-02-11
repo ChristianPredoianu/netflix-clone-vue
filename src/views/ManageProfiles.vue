@@ -102,9 +102,6 @@ export default {
     Logo,
   },
   methods: {
-    check() {
-      console.log(this.clickedProfile);
-    },
     updateIcon(icon) {
       this.isEditImg = false;
       this.isEditProfile = true;
@@ -115,6 +112,7 @@ export default {
       this.isEditProfile = true;
       this.clickedProfile = selectedProfile;
       this.newName = selectedProfile.name;
+      console.log(this.clickedProfile);
     },
     updateProfile() {
       this.clickedProfile.name = this.newName;
@@ -128,14 +126,14 @@ export default {
       this.isEditProfile = false;
       this.isManageProfiles = true;
     },
-    ...mapActions(['setCurrentUser', 'getUserProfilesFromDB']),
+    ...mapActions(['setCurrentUser', 'setUserProfilesFromDB']),
   },
   computed: {
     ...mapGetters(['getCurrentUser', 'getUserProfiles']),
   },
   created() {
     this.setCurrentUser();
-    this.getUserProfilesFromDB();
+    this.setUserProfilesFromDB();
   },
 };
 </script>

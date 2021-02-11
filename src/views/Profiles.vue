@@ -8,7 +8,12 @@
           <div class="profiles-container" v-if="!isAddProfile" key="initial">
             <h1 class="profiles-container__heading">Who is watching?</h1>
             <div class="cta-container">
-              <div class="card" v-for="user in getUserProfiles" :key="user.id">
+              <div
+                class="card"
+                v-for="user in getUserProfiles"
+                :key="user.id"
+                @click="goToBrowseWithSelectedProfile(user)"
+              >
                 <font-awesome-icon :icon="user.icon" class="card__img" />
                 <p class="card__name">{{ user.name }}</p>
               </div>
@@ -88,6 +93,11 @@ export default {
     Logo,
   },
   methods: {
+    goToBrowseWithSelectedProfile(profile) {
+      console.log(profile);
+      this.setClickedProfile(profile);
+      this.$router.push({ name: 'Browse' });
+    },
     goToAddProfile() {
       this.isAddProfile = true;
     },
@@ -116,14 +126,22 @@ export default {
           }
         });
     },
-    ...mapActions(['setCurrentUser', 'getUserProfilesFromDB']),
+    ...mapActions([
+      'setCurrentUser',
+      'setUserProfilesFromDB',
+      'setClickedProfile',
+    ]),
   },
   computed: {
-    ...mapGetters(['getCurrentUser', 'getUserProfiles']),
+    ...mapGetters([
+      'getCurrentUser',
+      'getUserProfiles',
+      'getTheClickedProfile',
+    ]),
   },
   created() {
     this.setCurrentUser();
-    this.getUserProfilesFromDB();
+    this.setUserProfilesFromDB();
   },
 };
 </script>

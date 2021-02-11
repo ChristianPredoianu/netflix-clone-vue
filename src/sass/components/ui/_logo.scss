@@ -1,8 +1,8 @@
 .logo {
-  width: 21rem;
+  width: 10rem;
   cursor: pointer;
 
-  @include respond(tab-port) {
-    width: 10rem;
+  @include respond(fold) {
+    width: 5rem;
   }
 }

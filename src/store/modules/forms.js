@@ -31,6 +31,9 @@ export default {
     setError(state, payload) {
       state.error = payload;
     },
+    setCreatedMessage(state, payload) {
+      state.accountCreatedMessage = payload;
+    },
     resetError(state) {
       state.error = null;
     },
@@ -49,8 +52,8 @@ export default {
           console.log(newUser);
           commit('setUser', newUser);
           if (user) {
-            state.accountCreatedMessage =
-              'Your account was created, you can now sign in.';
+            const message = 'Your account was created, you can now sign in.';
+            commit('setCreatedMessage', message);
             setTimeout(() => {
               router.push({ name: 'SignIn' });
               state.accountCreatedMessage = null;

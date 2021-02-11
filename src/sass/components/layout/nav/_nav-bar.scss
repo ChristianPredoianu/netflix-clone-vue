@@ -1,0 +1,121 @@
+.header {
+  @include flex-config($display: flex, $align: center);
+  position: relative;
+  width: 100%;
+  min-height: 6.8rem;
+  padding: 3rem 0;
+  background-color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.nav {
+  @include flex-config($display: flex, $justify: space-between);
+  width: 100%;
+}
+.logo {
+  margin-left: 3rem;
+}
+
+.nav-list {
+  @include flex-config($display: flex, $justify: space-around);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: $color-white;
+  margin-left: 2rem;
+  list-style: none;
+
+  @include respond(tab-port) {
+    font-size: 1rem;
+  }
+
+  &__item {
+    margin-left: 1.8rem;
+  }
+}
+
+.nav-right {
+  @include flex-config($display: flex, $align: center);
+  margin-right: 3rem;
+
+  @include respond(tab-port) {
+    @include flex-config($display: flex, $justify: flex-end);
+    width: 100%;
+  }
+
+  &__icon {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    color: $color-white;
+    cursor: pointer;
+
+    @include respond(tab-port) {
+      margin-right: 2rem;
+    }
+
+    &--profile {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  width: 30rem;
+  font-size: 0.8rem;
+  background-color: rgb(39, 39, 39);
+  color: $color-white;
+  padding: 1rem 2rem 5rem 0;
+}
+
+.close-modal {
+  font-size: 2rem;
+  margin: 3rem 2rem 0 0;
+  text-align: right;
+  cursor: pointer;
+}
+
+.user-profiles {
+  @include flex-config($display: flex, $align: center);
+  margin: 2rem 0 0 1rem;
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-left: 1rem;
+  }
+
+  &__paragraph {
+    margin-left: 2rem;
+    font-size: clamp(0.5rem, 2vw, 1.2rem);
+
+    &--manage {
+      margin: 2rem 1rem;
+      position: relative;
+      margin-left: 2.5rem;
+      cursor: pointer;
+
+      &:after {
+        position: absolute;
+        content: '';
+        border-bottom: 1px solid $color-white;
+        width: 100%;
+        padding: 1rem 0;
+        top: 85%;
+        left: 0;
+      }
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
