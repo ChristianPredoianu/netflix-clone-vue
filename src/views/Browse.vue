@@ -3,10 +3,11 @@
     <section class="showcase">
       <NavBar class="nav" />
       <div class="movie-container">
-        <h1 class="movie-container__heading">Slasher</h1>
+        <h1 class="movie-container__heading">
+          {{ getMovieData.showcaseMovie.tv_results[0].name }}
+        </h1>
         <p class="movie-container__paragraph">
-          Visions about Dantes inferno. Ledtrådar i en bottocsdo målning. Ett
-          virus som bara han kan stoppa, om han löser gåtan
+          {{ getMovieData.showcaseMovie.tv_results[0].overview }}
         </p>
         <button class="movie-container__btn">
           <font-awesome-icon
@@ -48,13 +49,7 @@
         <div class="video-controls__rec-age">13+</div>
       </div>
       <div class="video-container">
-        <video
-          class="video"
-          ref="video"
-          poster="poster.JPG"
-          autoplay
-          @ended="isVideoPaused"
-        >
+        <video class="video" ref="video" muted @ended="isVideoPaused">
           <source
             src="../assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
             type="video/mp4"
@@ -63,23 +58,61 @@
         <div class="overlay"></div>
       </div>
     </section>
+
+    <section class="sliders-section">
+      <div class="slider-container">
+        <h2 class="slider-container__my-list">Popular on Netflix</h2>
+        <PopularMovies :popularMovies="getMovieData.popular" />
+        <h2 class="slider-container__category">Action Movies</h2>
+        <ActionMovies :actionMovies="getMovieData.action" />
+        <h2 class="slider-container__category">Comedy Movies</h2>
+        <ComedyMovies :comedyMovies="getMovieData.comedy" />
+        <h2 class="slider-container__category">Crime Movies</h2>
+        <CrimeMovies :crimeMovies="getMovieData.crime" />
+        <h2 class="slider-container__category">Documentary Movies</h2>
+        <DocumentaryMovies :documentaryMovies="getMovieData.documentary" />
+        <h2 class="slider-container__category">Drama Movies</h2>
+        <DramaMovies :dramaMovies="getMovieData.drama" />
+        <h2 class="slider-container__category">Horror Movies</h2>
+        <HorrorMovies :horrorMovies="getMovieData.horror" />
+        <h2 class="slider-container__category">SciFi Movies</h2>
+        <SciFiMovies :sciFiMovies="getMovieData.sciFi" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import NavBar from '../components/layout/nav/Navbar';
+import PopularMovies from '../components/movie-sliders/PopularMovies';
+import ActionMovies from '../components/movie-sliders/ActionMovies';
+import ComedyMovies from '../components/movie-sliders/ComedyMovies';
+import CrimeMovies from '../components/movie-sliders/CrimeMovies';
+import DocumentaryMovies from '../components/movie-sliders/DocumentaryMovies';
+import DramaMovies from '../components/movie-sliders/DramaMovies';
+import HorrorMovies from '../components/movie-sliders/HorrorMovies';
+import SciFiMovies from '../components/movie-sliders/SciFiMovies';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      isMuted: false,
+      isMuted: true,
       isPlaying: true,
     };
   },
+
   components: {
     NavBar,
+    PopularMovies,
+    ActionMovies,
+    ComedyMovies,
+    CrimeMovies,
+    DocumentaryMovies,
+    DramaMovies,
+    HorrorMovies,
+    SciFiMovies,
   },
 
   methods: {
@@ -98,14 +131,18 @@ export default {
       this.isPlaying = true;
       this.videoElement.play();
     },
+
     ...mapActions(['fetchMovieData']),
   },
+
   computed: {
     videoElement() {
       return this.$refs.video;
     },
+
     ...mapGetters(['getMovieData']),
   },
+
   created() {
     this.fetchMovieData();
   },
