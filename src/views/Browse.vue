@@ -4,10 +4,10 @@
       <NavBar class="nav" />
       <div class="movie-container">
         <h1 class="movie-container__heading">
-          {{ getMovieData.showcaseMovie.tv_results[0].name }}
+          {{ getMovieData[0].showcaseMovie.tv_results[0].name }}
         </h1>
         <p class="movie-container__paragraph">
-          {{ getMovieData.showcaseMovie.tv_results[0].overview }}
+          {{ getMovieData[0].showcaseMovie.tv_results[0].overview }}
         </p>
         <button class="movie-container__btn">
           <font-awesome-icon
@@ -62,21 +62,21 @@
     <section class="sliders-section">
       <div class="slider-container">
         <h2 class="slider-container__my-list">Popular on Netflix</h2>
-        <PopularMovies :popularMovies="getMovieData.popular" />
+        <PopularMovies :popularMovies="getMovieData[0].popular" />
         <h2 class="slider-container__category">Action Movies</h2>
-        <ActionMovies :actionMovies="getMovieData.action" />
+        <ActionMovies :actionMovies="getMovieData[0].action" />
         <h2 class="slider-container__category">Comedy Movies</h2>
-        <ComedyMovies :comedyMovies="getMovieData.comedy" />
+        <ComedyMovies :comedyMovies="getMovieData[0].comedy" />
         <h2 class="slider-container__category">Crime Movies</h2>
-        <CrimeMovies :crimeMovies="getMovieData.crime" />
+        <CrimeMovies :crimeMovies="getMovieData[0].crime" />
         <h2 class="slider-container__category">Documentary Movies</h2>
-        <DocumentaryMovies :documentaryMovies="getMovieData.documentary" />
+        <DocumentaryMovies :documentaryMovies="getMovieData[0].documentary" />
         <h2 class="slider-container__category">Drama Movies</h2>
-        <DramaMovies :dramaMovies="getMovieData.drama" />
+        <DramaMovies :dramaMovies="getMovieData[0].drama" />
         <h2 class="slider-container__category">Horror Movies</h2>
-        <HorrorMovies :horrorMovies="getMovieData.horror" />
+        <HorrorMovies :horrorMovies="getMovieData[0].horror" />
         <h2 class="slider-container__category">SciFi Movies</h2>
-        <SciFiMovies :sciFiMovies="getMovieData.sciFi" />
+        <SciFiMovies :sciFiMovies="getMovieData[0].sciFi" />
       </div>
     </section>
   </div>
@@ -94,7 +94,6 @@ import HorrorMovies from '../components/movie-sliders/HorrorMovies';
 import SciFiMovies from '../components/movie-sliders/SciFiMovies';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
-
 export default {
   data() {
     return {
@@ -102,7 +101,6 @@ export default {
       isPlaying: true,
     };
   },
-
   components: {
     NavBar,
     PopularMovies,
@@ -114,7 +112,6 @@ export default {
     HorrorMovies,
     SciFiMovies,
   },
-
   methods: {
     muteVideo() {
       this.videoElement.muted = true;
@@ -131,20 +128,24 @@ export default {
       this.isPlaying = true;
       this.videoElement.play();
     },
-
     ...mapActions(['fetchMovieData']),
   },
-
   computed: {
     videoElement() {
       return this.$refs.video;
     },
-
     ...mapGetters(['getMovieData']),
   },
-
   created() {
-    this.fetchMovieData();
+    //Since Promise.all waits for all promises to resolve in our action
+    //we can just check to see if one of the array is not empty for lazy loading
+    //If any of the given promises rejects, it still becomes the error of Promise.all,
+    //and all other results are ignored.
+    if (this.getMovieData[0].showcaseMovie.length === 0) this.fetchMovieData();
+
+    console.log(this.getMovieData);
+    console.log(Array.isArray(this.getMovieData));
+    console.log('dsa');
   },
 };
 </script>

@@ -19,7 +19,7 @@ export default {
 
   getters: {
     getMovieData: (state) => {
-      return state.movieData[0];
+      return state.movieData;
     },
   },
 
