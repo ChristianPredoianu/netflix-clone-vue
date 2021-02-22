@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export default {
   state: {
+    //To mimic netflix movie content only these movies will be avaliable throughout
+    //the application.
     movieData: [
       {
         showcaseMovie: [],
@@ -15,11 +17,17 @@ export default {
         sciFi: [],
       },
     ],
+
+    movieDetails: null,
   },
 
   getters: {
     getMovieData: (state) => {
       return state.movieData;
+    },
+
+    getMovieDetails: (state) => {
+      return state.movieDetails;
     },
   },
 
@@ -48,6 +56,10 @@ export default {
       state.movieData[0].horror = horror;
       state.movieData[0].sciFi = sciFi;
     },
+
+    setMovieDetails(state, payload) {
+      state.movieDetails = payload;
+    },
   },
 
   actions: {
@@ -64,7 +76,7 @@ export default {
           )
           .then((response) => response.data),
         axios
-          .get(`${apiUrl}trending/all/day?api_key=${apiKey}`)
+          .get(`${apiUrl}trending/movie/week?api_key=${apiKey}`)
           .then((response) => response.data.results),
 
         axios.get(`${genresUrl}28`).then((response) => response.data.results),
@@ -102,6 +114,17 @@ export default {
             console.log(state.movieData);
           }
         )
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    fetchMovieDetails({ commit }, payload) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${payload}?api_key=05e21f7b2ffd8f1ad234881f857643ba&language=en-US`
+        )
+        .then((response) => commit('setMovieDetails', response.data))
         .catch((error) => {
           console.log(error);
         });

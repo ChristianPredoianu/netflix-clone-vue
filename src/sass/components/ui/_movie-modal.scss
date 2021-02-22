@@ -1,0 +1,26 @@
+.overlay {
+  @include flex-config($display: flex, $justify: center, $align: center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000094;
+  z-index: 999;
+  transition: opacity 0.2s ease;
+}
+
+.modal {
+  color: $color-white;
+  width: 60%;
+  margin: 0 auto;
+  background-color: rgb(71, 71, 71);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px 3px rgb(66, 66, 66);
+  transition: all 0.2s ease-in;
+}
+
+.modal-preview {
+  &__img {
+  }
+}

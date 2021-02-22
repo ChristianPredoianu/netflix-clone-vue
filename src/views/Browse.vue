@@ -141,7 +141,7 @@ export default {
     //we can just check to see if one of the array is not empty for lazy loading
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
-    if (this.getMovieData[0].showcaseMovie.length === 0) this.fetchMovieData();
+    /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
 
     console.log(this.getMovieData);
     console.log(Array.isArray(this.getMovieData));

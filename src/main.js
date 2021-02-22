@@ -19,7 +19,10 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 
-Vue.use(VueAwesomeSwiper /* { default options with global component } */);
+Vue.use(
+  VueAwesomeSwiper
+  /* { default options with global component } */
+);
 
 let app;
 firebase.auth().onAuthStateChanged((user) => {

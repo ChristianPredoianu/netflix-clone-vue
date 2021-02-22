@@ -1,15 +1,20 @@
 <template>
   <div>
+    <MovieModal
+      v-if="isModalOpen"
+      @closeModal="isModalOpen = false"
+      :movieDetails="getMovieDetails"
+    />
+
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide
-        v-for="(popularMovie, index) in popularMovies"
+        v-for="popularMovie in popularMovies"
         :key="popularMovie.id"
       >
         <img
           :src="`https://image.tmdb.org/t/p/w300${popularMovie.poster_path}`"
           class="swiper-slide__img"
         />
-        <h1>{{ index }}</h1>
         <div class="overlay">
           <img
             :src="`https://image.tmdb.org/t/p/w300${popularMovie.poster_path}`"
@@ -17,8 +22,8 @@
           />
           <div class="icon-container">
             <div class="left">
-              <div class="tooltip">
-                <span class="tooltip__text" v-if="isIconHovered"
+              <div class="tooltip-remove">
+                <span class="tooltip-remove__text" v-if="isRemoveHovered"
                   >Remove from list</span
                 >
               </div>
@@ -30,9 +35,8 @@
               <font-awesome-icon
                 :icon="['far', 'times-circle']"
                 class="left__icon left__icon--check"
-                @mouseover="isIconHovered = true"
-                @mouseleave="isIconHovered = false"
-                @click="getClickedMovie(popularMovie)"
+                @mouseover="isRemoveHovered = true"
+                @mouseleave="isRemoveHovered = false"
               />
 
               <font-awesome-icon
@@ -47,9 +51,17 @@
               />
             </div>
             <div class="right">
+              <div class="tooltip-details">
+                <span class="tooltip-details__text" v-if="isDetailsHovered"
+                  >More info
+                </span>
+              </div>
               <font-awesome-icon
                 :icon="['fas', 'arrow-circle-down']"
                 class="right__icon right__icon--arrow"
+                @mouseover="isDetailsHovered = true"
+                @mouseleave="isDetailsHovered = false"
+                @click="openMovieDetailsModal(popularMovie)"
               />
             </div>
           </div>
@@ -76,7 +88,10 @@
 <script>
 /* import 'swiper/dist/css/swiper.css';
 import { swiper, swiperSlide } from 'vue-awesome-swiper'; */
+import MovieModal from '../ui/MovieModal';
 import sliderConfig from '../../mixins/sliderConfig';
+import { mapGetters } from 'vuex';
+
 export default {
   mixins: [sliderConfig],
   props: {
@@ -84,21 +99,35 @@ export default {
       type: Array,
     },
   },
+
   data() {
     return {
-      isIconHovered: false,
+      isRemoveHovered: false,
+      isDetailsHovered: false,
       isIconClicked: false,
+      isModalOpen: false,
       items: [],
     };
   },
+
+  components: {
+    MovieModal,
+  },
+
   methods: {
-    getClickedMovie(popularMovie) {
-      console.log(popularMovie);
+    openMovieDetailsModal(selectedMovie) {
+      console.log(selectedMovie.id);
+      this.isModalOpen = true;
+      this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
+      console.log(this.getMovieDetails);
     },
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
+  },
+  computed: {
+    ...mapGetters(['getMovieDetails']),
   },
 };
 </script>
