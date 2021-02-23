@@ -4,6 +4,7 @@ export default {
   state: {
     userProfiles: [],
     clickedProfile: null,
+    userMovieList: [],
   },
   getters: {
     getUserProfiles: (state) => {
@@ -11,6 +12,9 @@ export default {
     },
     getTheClickedProfile: (state) => {
       return state.clickedProfile;
+    },
+    getUserMovieList: (state) => {
+      return state.userMovieList;
     },
   },
 
@@ -20,6 +24,9 @@ export default {
     },
     setClickedProfile(state, payload) {
       state.clickedProfile = payload;
+    },
+    addMovieToUserList(state, payload) {
+      state.userMovieList.push(payload);
     },
   },
   actions: {
@@ -40,6 +47,9 @@ export default {
     },
     setClickedProfile({ commit }, payload) {
       commit('setClickedProfile', payload);
+    },
+    addMovieToUserList({ commit }, payload) {
+      commit('addMovieToUserList', payload);
     },
   },
 };

@@ -1,30 +1,23 @@
 <template>
   <div>
-    <MovieModal
-      v-if="isModalOpen"
-      @closeModal="isModalOpen = false"
-      :movieDetails="getMovieDetails"
-    />
+    <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
 
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide
-        v-for="popularMovie in popularMovies"
-        :key="popularMovie.id"
-      >
+      <swiper-slide v-for="movie in category" :key="movie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w300${popularMovie.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
           class="swiper-slide__img"
         />
         <div class="overlay">
           <img
-            :src="`https://image.tmdb.org/t/p/w300${popularMovie.poster_path}`"
+            :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
             class="overlay__img"
           />
           <div class="icon-container">
             <div class="left">
               <div class="tooltip-remove">
                 <span class="tooltip-remove__text" v-if="isRemoveHovered"
-                  >Remove from list</span
+                  >Add to list</span
                 >
               </div>
               <font-awesome-icon
@@ -33,17 +26,18 @@
               />
 
               <font-awesome-icon
-                :icon="['far', 'times-circle']"
+                :icon="['far', 'check-circle']"
                 class="left__icon left__icon--check"
                 @mouseover="isRemoveHovered = true"
                 @mouseleave="isRemoveHovered = false"
+                @click="addToUserList(movie)"
               />
 
               <font-awesome-icon
                 :icon="['far', 'thumbs-up']"
                 class="left__icon left__icon__up"
-                :class="{ 'icon-like': popularMovie.active }"
-                @click="toggleActive(popularMovie)"
+                :class="{ 'icon-like': movie.active }"
+                @click="toggleActive(movie)"
               />
               <font-awesome-icon
                 :icon="['far', 'thumbs-down']"
@@ -61,18 +55,16 @@
                 class="right__icon right__icon--arrow"
                 @mouseover="isDetailsHovered = true"
                 @mouseleave="isDetailsHovered = false"
-                @click="openMovieDetailsModal(popularMovie)"
+                @click="openMovieDetailsModal(movie)"
               />
             </div>
           </div>
           <div class="info-container">
-            <p class="info-container__movie-title">{{ popularMovie.title }}</p>
+            <p class="info-container__movie-title">{{ movie.title }}</p>
             <p>
               Release:
               {{
-                popularMovie.release_date
-                  ? popularMovie.release_date
-                  : popularMovie.first_air_date
+                movie.release_date ? movie.release_date : movie.first_air_date
               }}
             </p>
           </div>
@@ -86,18 +78,22 @@
 </template>
 
 <script>
-/* import 'swiper/dist/css/swiper.css';
-import { swiper, swiperSlide } from 'vue-awesome-swiper'; */
-import MovieModal from '../ui/MovieModal';
-import sliderConfig from '../../mixins/sliderConfig';
-import { mapGetters } from 'vuex';
+import firebase from 'firebase';
+import MovieModal from '../ui/MovieModal.vue';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import 'swiper/dist/css/swiper.css';
 
 export default {
-  mixins: [sliderConfig],
   props: {
-    popularMovies: {
+    category: {
       type: Array,
     },
+  },
+
+  components: {
+    MovieModal,
+    swiper,
+    swiperSlide,
   },
 
   data() {
@@ -107,27 +103,50 @@ export default {
       isIconClicked: false,
       isModalOpen: false,
       items: [],
+
+      swiperOption: {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        grabCursor: true,
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          1851: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+          },
+          1522: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1185: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          900: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+        },
+      },
     };
   },
-
-  components: {
-    MovieModal,
-  },
-
   methods: {
+    /*    addToUserList(movie) {
+     
+    }, */
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
       this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
-      console.log(this.getMovieDetails);
     },
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-  },
-  computed: {
-    ...mapGetters(['getMovieDetails']),
   },
 };
 </script>

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
   state: {
-    //To mimic netflix movie content only these movies will be avaliable throughout
+    //To mimic netflix movie content, only these movies will be avaliable throughout
     //the application.
     movieData: [
       {

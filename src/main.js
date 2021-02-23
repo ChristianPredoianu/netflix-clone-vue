@@ -4,9 +4,6 @@ import router from './router';
 import store from './store';
 import '@/plugins/firebase';
 import firebase from 'firebase';
-import VueAwesomeSwiper from 'vue-awesome-swiper';
-import '../node_modules/swiper/dist/css/swiper.css';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -18,11 +15,6 @@ library.add(fab, fas, far);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
-
-Vue.use(
-  VueAwesomeSwiper
-  /* { default options with global component } */
-);
 
 let app;
 firebase.auth().onAuthStateChanged((user) => {
