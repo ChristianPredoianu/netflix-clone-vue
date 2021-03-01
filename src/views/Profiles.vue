@@ -96,7 +96,7 @@ export default {
     goToBrowseWithSelectedProfile(profile) {
       console.log(profile);
       this.setClickedProfile(profile);
-      this.$router.push({ name: 'Browse' });
+      this.$router.push({ path: '/browse' });
     },
     goToAddProfile() {
       this.isAddProfile = true;
@@ -109,12 +109,13 @@ export default {
       };
       firebase
         .database()
-        .ref(`users/${currentUserID}`)
+        .ref(`users/${currentUserID}/profiles`)
         .once('value', (snapshot) => {
           if (snapshot.numChildren() < 5) {
             firebase
               .database()
               .ref('users/' + currentUserID)
+              .child('profiles')
               .push(profiles);
             this.isAddProfile = false;
             this.profileName = null;

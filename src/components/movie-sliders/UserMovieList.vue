@@ -3,7 +3,7 @@
     <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
 
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide v-for="movie in category" :key="movie.id">
+      <swiper-slide v-for="movie in userMovieList" :key="movie.id">
         <img
           :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
           class="swiper-slide__img"
@@ -30,7 +30,6 @@
                 class="left__icon left__icon--check"
                 @mouseover="isRemoveHovered = true"
                 @mouseleave="isRemoveHovered = false"
-                @click.stop="addToUserList(movie)"
               />
 
               <font-awesome-icon
@@ -78,22 +77,15 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import MovieModal from '../ui/MovieModal.vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
-import { mapActions } from 'vuex';
 
 export default {
+  name: 'userMovieList',
   props: {
-    category: {
+    userMovieList: {
       type: Array,
-    },
-    currentUser: {
-      type: Object,
-    },
-    clickedProfile: {
-      type: Object,
     },
   },
 
@@ -153,30 +145,6 @@ export default {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-    addToUserList(movie) {
-      const databaseRef = `users/${this.currentUser.id}`;
-      const child = `profiles/${this.clickedProfile.id}/moviesList`;
-      console.log(this.clickedProfile.id);
-      firebase
-        .database()
-        .ref(databaseRef)
-        .child(child)
-        .orderByChild('id')
-        .equalTo(movie.id)
-        .on('value', (snapshot) => {
-          if (snapshot.exists()) {
-            console.log('exists');
-          } else {
-            firebase
-              .database()
-              .ref(databaseRef)
-              .child(child)
-              .push(movie);
-          }
-        });
-      /*    this.setUserMoviesListFromDB(); */
-    },
-    ...mapActions(['setUserMoviesListFromDB']),
   },
 };
 </script>

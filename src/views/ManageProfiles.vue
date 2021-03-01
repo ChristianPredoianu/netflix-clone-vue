@@ -118,7 +118,9 @@ export default {
       this.clickedProfile.name = this.newName;
       firebase
         .database()
-        .ref(`users/${this.getCurrentUser.id}/${this.clickedProfile.id}`)
+        .ref(
+          `users/${this.getCurrentUser.id}/profiles/${this.clickedProfile.id}`
+        )
         .update({
           name: this.clickedProfile.name,
           icon: this.clickedProfile.icon,

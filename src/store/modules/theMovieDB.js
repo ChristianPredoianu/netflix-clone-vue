@@ -74,7 +74,7 @@ export default {
           .get(
             `${apiUrl}find/tt4667888?api_key=${apiKey}&language=en-US&external_source=imdb_id`
           )
-          .then((response) => response.data),
+          .then((response) => response.data.tv_results[0]),
         axios
           .get(`${apiUrl}trending/movie/week?api_key=${apiKey}`)
           .then((response) => response.data.results),
