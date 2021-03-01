@@ -174,7 +174,7 @@ export default {
               .push(movie);
           }
         });
-      /*    this.setUserMoviesListFromDB(); */
+      this.setUserMoviesListFromDB();
     },
     ...mapActions(['setUserMoviesListFromDB']),
   },

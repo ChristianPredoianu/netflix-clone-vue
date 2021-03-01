@@ -1,0 +1,15 @@
+.my-list {
+  background-color: $color-black;
+  min-height: 100vh;
+}
+
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}

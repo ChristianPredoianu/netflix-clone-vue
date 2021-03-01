@@ -51,6 +51,30 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/movies',
+    name: 'Movies',
+    component: () => import('../views/Movies.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/popular',
+    name: 'Popular',
+    component: () => import('../views/Popular.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/my-list',
+    name: 'My-list',
+    component: () => import('../views/MyList.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

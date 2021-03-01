@@ -4,11 +4,24 @@
       <Logo class="logo" />
       <nav class="nav">
         <ul class="nav-list" v-if="!mobileView">
-          <li class="nav-list__item">Home</li>
+          <router-link tag="li" to="/browse" class="nav-list__item"
+            >Home</router-link
+          >
+          <router-link tag="li" to="/movies" class="nav-list__item"
+            >Movies</router-link
+          >
+          <router-link tag="li" to="/popular" class="nav-list__item"
+            >Popular</router-link
+          >
+          <router-link tag="li" to="/my-list" class="nav-list__item"
+            >My List</router-link
+          >
+
+          <!--    <li class="nav-list__item">Home</li>
           <li class="nav-list__item">Series</li>
           <li class="nav-list__item">Movies</li>
           <li class="nav-list__item">Popular</li>
-          <li class="nav-list__item">My list</li>
+          <li class="nav-list__item">My list</li> -->
         </ul>
 
         <NavDropdown v-if="mobileView" />

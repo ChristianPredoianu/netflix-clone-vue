@@ -48,7 +48,6 @@ export default {
             const childData = childSnapshot.val();
             const id = childSnapshot.key;
             childData.id = id;
-            console.log(id);
 
             checkIfElementIsInArray(profilesArray, id, childData);
 
@@ -58,7 +57,7 @@ export default {
               : console.log('it is already there'); */
           });
         });
-      console.log(profilesArray);
+
       commit('setUserProfilesFromDB', profilesArray);
     },
 

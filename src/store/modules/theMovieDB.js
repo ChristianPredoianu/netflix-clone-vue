@@ -111,7 +111,6 @@ export default {
               horror,
               sciFi,
             });
-            console.log(state.movieData);
           }
         )
         .catch((error) => {

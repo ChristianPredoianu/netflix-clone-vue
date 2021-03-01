@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     goToBrowseWithSelectedProfile(profile) {
-      console.log(profile);
       this.setClickedProfile(profile);
       this.$router.push({ path: '/browse' });
     },
