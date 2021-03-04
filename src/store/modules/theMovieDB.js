@@ -6,18 +6,17 @@ export default {
     //the application.
     movieData: [
       {
-        showcaseMovie: [],
-        popular: [],
-        action: [],
-        comedy: [],
-        crime: [],
-        documentary: [],
-        drama: [],
-        horror: [],
-        sciFi: [],
+        showcaseMovie: null,
+        popular: null,
+        action: null,
+        comedy: null,
+        crime: null,
+        documentary: null,
+        drama: null,
+        horror: null,
+        sciFi: null,
       },
     ],
-
     movieDetails: null,
   },
 

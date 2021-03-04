@@ -77,7 +77,6 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import Logo from '../components/ui/Logo';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
@@ -116,27 +115,10 @@ export default {
     },
     updateProfile() {
       this.clickedProfile.name = this.newName;
-      firebase
-        .database()
-        .ref(
-          `users/${this.getCurrentUser.id}/profiles/${this.clickedProfile.id}`
-        )
-        .update({
-          name: this.clickedProfile.name,
-          icon: this.clickedProfile.icon,
-        });
-      this.isEditProfile = false;
-      this.isManageProfiles = true;
     },
-    ...mapActions(['setCurrentUser', 'setUserProfilesFromDB']),
   },
-  computed: {
-    ...mapGetters(['getCurrentUser', 'getUserProfiles']),
-  },
-  created() {
-    this.setCurrentUser();
-    this.setUserProfilesFromDB();
-  },
+  computed: {},
+  created() {},
 };
 </script>
 

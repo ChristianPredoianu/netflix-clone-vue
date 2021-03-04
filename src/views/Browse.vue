@@ -72,7 +72,6 @@
             :currentUser="getCurrentUser"
             :clickedProfile="getTheClickedProfile"
           />
-          />
           <h2 class="slider-container__my-list">Comedy Movies</h2>
           <MovieSlider
             :category="getMovieData[0].comedy"
@@ -179,7 +178,6 @@ export default {
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
     /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
-
     this.setUserMoviesListFromDB();
   },
 };

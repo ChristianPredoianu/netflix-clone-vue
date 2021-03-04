@@ -8,6 +8,7 @@
           :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
           class="swiper-slide__img"
         />
+
         <div class="overlay">
           <img
             :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
@@ -20,6 +21,7 @@
                   >Add to list</span
                 >
               </div>
+
               <font-awesome-icon
                 :icon="['far', 'play-circle']"
                 class="left__icon left__icon--play"
@@ -30,7 +32,16 @@
                 class="left__icon left__icon--check"
                 @mouseover="isRemoveHovered = true"
                 @mouseleave="isRemoveHovered = false"
-                @click.stop="addToUserList(movie)"
+                @click="addToMovieList(movie)"
+                v-if="!isMovieInUserList(movie)"
+              />
+
+              <font-awesome-icon
+                title="Delete Movie"
+                :icon="['far', 'times-circle']"
+                class="left__icon left__icon--check"
+                @click="deleteMovie(movie)"
+                v-else
               />
 
               <font-awesome-icon
@@ -83,8 +94,12 @@ import MovieModal from '../ui/MovieModal.vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
 import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
+import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
 
 export default {
+  mixins: [deleteMovieFromUserList],
+
   props: {
     category: {
       type: Array,
@@ -96,25 +111,21 @@ export default {
       type: Object,
     },
   },
-
   components: {
     MovieModal,
     swiper,
     swiperSlide,
   },
-
   data() {
     return {
       isRemoveHovered: false,
       isDetailsHovered: false,
       isIconClicked: false,
       isModalOpen: false,
-      items: [],
 
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 20,
-
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -141,9 +152,14 @@ export default {
     };
   },
   methods: {
-    /*    addToUserList(movie) {
-
-    }, */
+    isMovieInUserList(movie) {
+      const isMovieInList = this.getUserMoviesListFromDB.find(
+        (mov) => mov.id === movie.id
+      );
+      if (isMovieInList) {
+        return true;
+      }
+    },
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
@@ -153,17 +169,17 @@ export default {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-    addToUserList(movie) {
+    addToMovieList(movie) {
       const databaseRef = `users/${this.currentUser.id}`;
       const child = `profiles/${this.clickedProfile.id}/moviesList`;
-      console.log(this.clickedProfile.id);
+
       firebase
         .database()
         .ref(databaseRef)
         .child(child)
         .orderByChild('id')
         .equalTo(movie.id)
-        .on('value', (snapshot) => {
+        .once('value', (snapshot) => {
           if (snapshot.exists()) {
             console.log('exists');
           } else {
@@ -176,7 +192,15 @@ export default {
         });
       this.setUserMoviesListFromDB();
     },
+
     ...mapActions(['setUserMoviesListFromDB']),
+  },
+  computed: {
+    ...mapGetters([
+      'getUserMoviesListFromDB',
+      'getCurrentUser',
+      'getTheClickedProfile',
+    ]),
   },
 };
 </script>

@@ -21,15 +21,16 @@
                 >
               </div>
               <font-awesome-icon
-                :icon="['far', 'play-circle']"
+                :icon="['far', 'check-circle']"
                 class="left__icon left__icon--play"
               />
 
               <font-awesome-icon
-                :icon="['far', 'check-circle']"
+                :icon="['far', 'times-circle']"
                 class="left__icon left__icon--check"
                 @mouseover="isRemoveHovered = true"
                 @mouseleave="isRemoveHovered = false"
+                @click="deleteMovie(movie)"
               />
 
               <font-awesome-icon
@@ -77,11 +78,16 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 import MovieModal from '../ui/MovieModal.vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
+import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
 
 export default {
+  mixins: [deleteMovieFromUserList],
   name: 'userMovieList',
   props: {
     userMovieList: {
@@ -133,9 +139,6 @@ export default {
     };
   },
   methods: {
-    /*    addToUserList(movie) {
-
-    }, */
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
@@ -145,6 +148,14 @@ export default {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
+    ...mapActions(['setUserMoviesListFromDB']),
+  },
+  computed: {
+    ...mapGetters([
+      'getUserMoviesListFromDB',
+      'getCurrentUser',
+      'getTheClickedProfile',
+    ]),
   },
 };
 </script>

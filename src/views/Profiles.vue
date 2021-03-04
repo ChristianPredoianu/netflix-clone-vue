@@ -3,6 +3,7 @@
     <nav class="nav"><Logo class="logo" /></nav>
     <div class="wrapper">
       <section class="section-main">
+        <button @click="test">test</button>
         <!--Initial state-->
         <transition name="fade">
           <div class="profiles-container" v-if="!isAddProfile" key="initial">
@@ -76,8 +77,8 @@
 </template>
 
 <script>
-import Logo from '../components/ui/Logo';
 import firebase from 'firebase';
+import Logo from '../components/ui/Logo';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 export default {
@@ -93,6 +94,9 @@ export default {
     Logo,
   },
   methods: {
+    test() {
+      console.log(this.getUserProfiles);
+    },
     goToBrowseWithSelectedProfile(profile) {
       this.setClickedProfile(profile);
       this.$router.push({ path: '/browse' });
