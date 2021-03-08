@@ -78,6 +78,9 @@ export default {
   computed: {
     ...mapGetters(['getUserMoviesListFromDB']),
   },
+  created() {
+    this.setUserMoviesListFromDB();
+  },
 };
 </script>
 

@@ -23,6 +23,7 @@
               </div>
 
               <font-awesome-icon
+                title="play"
                 :icon="['far', 'play-circle']"
                 class="left__icon left__icon--play"
               />
@@ -89,16 +90,17 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import MovieModal from '../ui/MovieModal.vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
+import isMovieInUserList from '../../mixins/isMovieInUserList';
+import addMovieToUserList from '../../mixins/addMovieToUserList';
 import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
 
 export default {
-  mixins: [deleteMovieFromUserList],
+  mixins: [isMovieInUserList, addMovieToUserList, deleteMovieFromUserList],
 
   props: {
     category: {
@@ -133,7 +135,7 @@ export default {
         breakpoints: {
           1851: {
             slidesPerView: 5,
-            spaceBetween: 0,
+            spaceBetween: 40,
           },
           1522: {
             slidesPerView: 4,
@@ -152,14 +154,6 @@ export default {
     };
   },
   methods: {
-    isMovieInUserList(movie) {
-      const isMovieInList = this.getUserMoviesListFromDB.find(
-        (mov) => mov.id === movie.id
-      );
-      if (isMovieInList) {
-        return true;
-      }
-    },
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
@@ -168,29 +162,6 @@ export default {
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
-    },
-    addToMovieList(movie) {
-      const databaseRef = `users/${this.currentUser.id}`;
-      const child = `profiles/${this.clickedProfile.id}/moviesList`;
-
-      firebase
-        .database()
-        .ref(databaseRef)
-        .child(child)
-        .orderByChild('id')
-        .equalTo(movie.id)
-        .once('value', (snapshot) => {
-          if (snapshot.exists()) {
-            console.log('exists');
-          } else {
-            firebase
-              .database()
-              .ref(databaseRef)
-              .child(child)
-              .push(movie);
-          }
-        });
-      this.setUserMoviesListFromDB();
     },
 
     ...mapActions(['setUserMoviesListFromDB']),

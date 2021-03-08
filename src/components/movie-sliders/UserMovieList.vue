@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import MovieModal from '../ui/MovieModal.vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
@@ -120,7 +119,7 @@ export default {
         breakpoints: {
           1851: {
             slidesPerView: 5,
-            spaceBetween: 0,
+            spaceBetween: 40,
           },
           1522: {
             slidesPerView: 4,

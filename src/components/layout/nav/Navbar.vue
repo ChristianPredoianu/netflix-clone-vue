@@ -16,20 +16,16 @@
           <router-link tag="li" to="/my-list" class="nav-list__item"
             >My List</router-link
           >
-
-          <!--    <li class="nav-list__item">Home</li>
-          <li class="nav-list__item">Series</li>
-          <li class="nav-list__item">Movies</li>
-          <li class="nav-list__item">Popular</li>
-          <li class="nav-list__item">My list</li> -->
         </ul>
 
         <NavDropdown v-if="mobileView" />
 
         <div class="nav-right">
+          <input type="text" v-if="isSearchBarOpen" class="nav-right__input" />
           <font-awesome-icon
             :icon="['fas', 'search']"
             class="nav-right__icon"
+            @click="isSearchBarOpen = !isSearchBarOpen"
           />
           <div>
             <font-awesome-icon
@@ -70,6 +66,11 @@
         <p class="close-modal" @click="isOpen = false">X</p>
       </div>
     </transition>
+    <div
+      v-if="isSearchBarOpen"
+      class="outside"
+      @click="isSearchBarOpen = false"
+    ></div>
   </div>
 </template>
 
@@ -81,6 +82,7 @@ import NavDropdown from '../../layout/nav/NavDropdown';
 export default {
   data() {
     return {
+      isSearchBarOpen: false,
       isOpen: false,
       mobileView: true,
       closeOnClickOutside: true,

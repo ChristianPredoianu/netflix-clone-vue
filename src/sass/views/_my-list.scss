@@ -4,12 +4,11 @@
 }
 
 .movies-list {
-  margin-top: 2rem;
+  margin-left: 3rem;
   color: $color-white;
 
   &__heading {
-    font-size: 3rem;
-    margin-left: 2rem;
+    font-size: 4rem;
   }
 }
 
@@ -20,8 +19,11 @@
 
 .card {
   position: relative;
-  margin-left: 2rem;
   margin-top: 1rem;
+
+  &:not(:first-of-type) {
+    margin-left: 2rem;
+  }
 }
 
 .overlay {

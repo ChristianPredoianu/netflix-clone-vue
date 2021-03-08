@@ -1,0 +1,17 @@
+.body {
+  min-height: 100vh;
+  background-color: $color-black;
+}
+
+.popular-movies {
+  margin-left: 3rem;
+
+  &__heading {
+    font-size: 4rem;
+    color: $color-white;
+  }
+
+  &__slider {
+    margin-top: 4rem;
+  }
+}

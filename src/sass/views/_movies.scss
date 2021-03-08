@@ -40,15 +40,14 @@
   }
 }
 
-.card-container {
+.wrapper {
   @include flex-config($display: flex, $wrap: wrap, $align: center);
   margin-top: 2rem;
 }
 
 .card {
   position: relative;
-  margin-left: 2rem;
-  margin-top: 1rem;
+  margin: 1rem 0 0 3rem;
 }
 
 .overlay {
