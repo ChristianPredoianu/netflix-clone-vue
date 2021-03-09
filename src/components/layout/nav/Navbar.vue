@@ -16,12 +16,22 @@
           <router-link tag="li" to="/my-list" class="nav-list__item"
             >My List</router-link
           >
+          <button @click="search">clickedProfile</button>
         </ul>
 
         <NavDropdown v-if="mobileView" />
 
         <div class="nav-right">
-          <input type="text" v-if="isSearchBarOpen" class="nav-right__input" />
+          <input
+            type="text"
+            v-if="isSearchBarOpen"
+            class="nav-right__input"
+            v-model="searchTerm"
+            @input="search"
+          />
+          <button @click="removeSearchTerm">
+            X
+          </button>
           <font-awesome-icon
             :icon="['fas', 'search']"
             class="nav-right__icon"
@@ -66,11 +76,6 @@
         <p class="close-modal" @click="isOpen = false">X</p>
       </div>
     </transition>
-    <div
-      v-if="isSearchBarOpen"
-      class="outside"
-      @click="isSearchBarOpen = false"
-    ></div>
   </div>
 </template>
 
@@ -85,7 +90,8 @@ export default {
       isSearchBarOpen: false,
       isOpen: false,
       mobileView: true,
-      closeOnClickOutside: true,
+
+      searchTerm: '',
     };
   },
   components: {
@@ -93,6 +99,13 @@ export default {
     NavDropdown,
   },
   methods: {
+    search() {
+      this.$emit('search', this.searchTerm);
+    },
+    removeSearchTerm() {
+      this.searchTerm = '';
+      this.search();
+    },
     handleView() {
       this.mobileView = window.innerWidth <= 900;
       console.log(window.innerWidth);

@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="showcase">
-      <NavBar class="nav" />
+      <NavBar class="nav" @search="setSearchTerm" />
       <div class="movie-container">
         <h1 class="movie-container__heading">
           {{ getMovieData[0].showcaseMovie.name }}
@@ -14,7 +14,8 @@
           <font-awesome-icon
             :icon="['fas', 'play']"
             class="video-controls__icon video-controls__icon--play"
-          />Play
+          />
+          Play
         </button>
         <button class="movie-container__btn movie-container__btn--info ">
           <font-awesome-icon
@@ -62,6 +63,7 @@
 
     <section class="sliders-section">
       <div class="slider-container">
+        <!-- User List -->
         <h2
           class="slider-container__my-list"
           v-if="getUserMoviesListFromDB.length !== 0"
@@ -69,22 +71,128 @@
           My list
         </h2>
         <UserMovieList :userMovieList="getUserMoviesListFromDB" />
-        <h2 class="slider-container__my-list">Popular on Netflix</h2>
-        <MovieSlider :category="getMovieData[0].popular" />
-        <h2 class="slider-container__my-list">Comedy Movies</h2>
-        <MovieSlider :category="getMovieData[0].comedy" />
-        <h2 class="slider-container__my-list">Crime Movies</h2>
-        <MovieSlider :category="getMovieData[0].crime" />
-        <h2 class="slider-container__my-list">Action Movies</h2>
-        <MovieSlider :category="getMovieData[0].action" />
-        <h2 class="slider-container__my-list">Documentary Movies</h2>
-        <MovieSlider :category="getMovieData[0].animation" />
-        <h2 class="slider-container__my-list">Drama Movies</h2>
-        <MovieSlider :category="getMovieData[0].drama" />
-        <h2 class="slider-container__my-list">Horror Movies</h2>
-        <MovieSlider :category="getMovieData[0].horror" />
-        <h2 class="slider-container__my-list">SciFi Movies</h2>
-        <MovieSlider :category="getMovieData[0].sciFi" />
+
+        <!-- Popular Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('popular') === undefined"
+        >
+          Popular Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('popular').length} Movies found in popular` }}
+        </h2>
+        <MovieSlider
+          :category="
+            !searchTerm ? getMovieData[0].popular : searchMovie('popular')
+          "
+        />
+
+        <!-- Comedy Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('comedy') === undefined"
+        >
+          Comedy Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('comedy').length} Movies found in Comedy` }}
+        </h2>
+        <MovieSlider
+          :category="
+            !searchTerm ? getMovieData[0].comedy : searchMovie('comedy')
+          "
+        />
+
+        <!-- Crime Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('crime') === undefined"
+        >
+          Crime Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('crime').length} Movies found in Crime` }}
+        </h2>
+        <MovieSlider
+          :category="!searchTerm ? getMovieData[0].crime : searchMovie('crime')"
+        />
+
+        <!-- Action Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('action') === undefined"
+        >
+          Action Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('action').length} Movies found in Action` }}
+        </h2>
+        <MovieSlider
+          :category="
+            !searchTerm ? getMovieData[0].action : searchMovie('action')
+          "
+        />
+
+        <!-- Animated Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('animation') === undefined"
+        >
+          Animated Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('animation').length} Movies found in Animated` }}
+        </h2>
+        <MovieSlider
+          :category="
+            !searchTerm ? getMovieData[0].animation : searchMovie('animation')
+          "
+        />
+
+        <!-- Drama Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('drama') === undefined"
+        >
+          Drama Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('drama').length} Movies found in Drama` }}
+        </h2>
+        <MovieSlider
+          :category="!searchTerm ? getMovieData[0].drama : searchMovie('drama')"
+        />
+
+        <!-- Horror Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('horror') === undefined"
+        >
+          Horror Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('horror').length} Movies found in Horror` }}
+        </h2>
+        <MovieSlider
+          :category="
+            !searchTerm ? getMovieData[0].horror : searchMovie('horror')
+          "
+        />
+
+        <!-- SciFI Movies -->
+        <h2
+          class="slider-container__my-list"
+          v-if="searchMovie('sciFi') === undefined"
+        >
+          SciFi Movies
+        </h2>
+        <h2 class="slider-container__my-list" v-else>
+          {{ `${searchMovie('sciFi').length} Movies found in SciFi` }}
+        </h2>
+        <MovieSlider
+          :category="!searchTerm ? getMovieData[0].sciFi : searchMovie('sciFi')"
+        />
       </div>
     </section>
   </div>
@@ -102,6 +210,7 @@ export default {
     return {
       isMuted: true,
       isPlaying: true,
+      searchTerm: null,
     };
   },
   components: {
@@ -110,6 +219,23 @@ export default {
     MovieSlider,
   },
   methods: {
+    searchMovie(category) {
+      let found;
+
+      if (this.searchTerm !== '' && category !== undefined) {
+        found = this.getMovieData[0][category].filter((element) =>
+          element.original_title.includes(this.searchTerm)
+        );
+      }
+      if (found === undefined) {
+        return;
+      }
+      return found;
+    },
+    setSearchTerm(value) {
+      this.searchTerm = value;
+    },
+
     muteVideo() {
       this.videoElement.muted = true;
       this.isMuted = true;
@@ -131,6 +257,7 @@ export default {
     videoElement() {
       return this.$refs.video;
     },
+
     ...mapGetters(['getMovieData', 'getUserMoviesListFromDB']),
   },
   created() {
@@ -139,7 +266,9 @@ export default {
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
     /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
-    this.setUserMoviesListFromDB();
+  },
+  updated() {
+    this.searchMovie();
   },
 };
 </script>

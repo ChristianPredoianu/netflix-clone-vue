@@ -104,7 +104,7 @@ export default {
 
   props: {
     category: {
-      type: Array,
+      type: [Array, Function],
     },
     currentUser: {
       type: Object,
