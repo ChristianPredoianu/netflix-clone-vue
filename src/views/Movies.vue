@@ -1,6 +1,6 @@
 !<template>
   <div class="body">
-    <NavBar />
+    <NavBar @search="setSearchTerm" />
 
     <section class="genres-container">
       <h1 class="genres-container__heading">Movies</h1>
@@ -18,11 +18,17 @@
     </section>
 
     <section class="movies-list">
-      <div class="card-container" v-if="genres == 'All Genres'">
-        <Movie :category="removeDuplicateMovies" />
+      <div class="card-container" v-if="genres === 'All Genres'">
+        <Movie
+          :category="!searchTerm ? removeDuplicateMovies : searchMovie(genres)"
+        />
       </div>
       <div class="card-container" v-else>
-        <Movie :category="this.getMovieData[0][genres]" />
+        <Movie
+          :category="
+            !searchTerm ? this.getMovieData[0][genres] : searchMovie(genres)
+          "
+        />
       </div>
     </section>
   </div>
@@ -46,9 +52,40 @@ export default {
       isModalOpen: false,
       allMovies: [],
       genres: 'All Genres',
+      searchTerm: '',
     };
   },
-
+  methods: {
+    setSearchTerm(value) {
+      this.searchTerm = value;
+    },
+    searchMovie(category) {
+      let found;
+      if (this.searchTerm !== '') {
+        found = this.removeDuplicateMovies.filter((element) =>
+          element.original_title.includes(
+            this.searchTerm
+              .toLowerCase()
+              .split(' ')
+              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+              .join(' ')
+          )
+        );
+        return found;
+      } else if (this.searchTerm !== '' && category === this.genres) {
+        found = this.getMovieData[0][category].filter((element) =>
+          element.original_title.includes(
+            this.searchTerm
+              .toLowerCase()
+              .split(' ')
+              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+              .join(' ')
+          )
+        );
+        return found;
+      }
+    },
+  },
   computed: {
     restructureMovieData() {
       let moviesArr = [];

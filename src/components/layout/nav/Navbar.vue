@@ -16,26 +16,29 @@
           <router-link tag="li" to="/my-list" class="nav-list__item"
             >My List</router-link
           >
-          <button @click="search">clickedProfile</button>
         </ul>
 
         <NavDropdown v-if="mobileView" />
 
         <div class="nav-right">
-          <input
-            type="text"
-            v-if="isSearchBarOpen"
-            class="nav-right__input"
-            v-model="searchTerm"
-            @input="search"
-          />
-          <button @click="removeSearchTerm">
-            X
-          </button>
+          <div class="input-container" v-if="isSearchBarOpen">
+            <input
+              type="text"
+              class="input-container__input"
+              v-model="searchTerm"
+              @input="search"
+            />
+            <font-awesome-icon
+              :icon="['fas', 'times']"
+              class="nav-right__icon"
+              @click="removeSearchTerm"
+            />
+          </div>
           <font-awesome-icon
             :icon="['fas', 'search']"
             class="nav-right__icon"
             @click="isSearchBarOpen = !isSearchBarOpen"
+            v-if="!isPopularView"
           />
           <div>
             <font-awesome-icon
@@ -113,6 +116,10 @@ export default {
   },
 
   computed: {
+    isPopularView() {
+      return this.$route.name === 'Popular';
+    },
+
     ...mapGetters(['getTheClickedProfile', 'getUserProfiles']),
   },
   created() {

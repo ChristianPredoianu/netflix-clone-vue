@@ -18,6 +18,7 @@ export default {
       },
     ],
     movieDetails: null,
+    movieTrailer: null,
   },
 
   getters: {
@@ -27,6 +28,10 @@ export default {
 
     getMovieDetails: (state) => {
       return state.movieDetails;
+    },
+
+    getMovieTrailer: (state) => {
+      return state.movieTrailer;
     },
   },
 
@@ -58,6 +63,10 @@ export default {
 
     setMovieDetails(state, payload) {
       state.movieDetails = payload;
+    },
+
+    setMovieTrailer(state, payload) {
+      state.movieTrailer = payload;
     },
   },
 
@@ -123,6 +132,17 @@ export default {
           `https://api.themoviedb.org/3/movie/${payload}?api_key=05e21f7b2ffd8f1ad234881f857643ba&language=en-US`
         )
         .then((response) => commit('setMovieDetails', response.data))
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    fetchMovieTrailer({ commit }, payload) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${payload}/videos?api_key=05e21f7b2ffd8f1ad234881f857643ba&language=en-US`
+        )
+        .then((response) => commit('setMovieTrailer', response.data))
         .catch((error) => {
           console.log(error);
         });

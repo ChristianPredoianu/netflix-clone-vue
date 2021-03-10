@@ -46,12 +46,6 @@
     width: 100%;
   }
 
-  &__input {
-    position: fixed;
-    right: 10rem;
-    z-index: 200;
-  }
-
   &__icon {
     font-size: clamp(1.5rem, 2vw, 2.5rem);
     color: $color-white;
@@ -64,6 +58,26 @@
     &--profile {
       margin-right: 0;
       margin-left: 1rem;
+    }
+  }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 11rem;
+
+  &__input {
+    margin-right: 1rem;
+    background-color: transparent;
+    border: 1px solid $color-white;
+    color: $color-white;
+    caret-color: #ffffff;
+    padding: 0.5rem;
+
+    &:focus {
+      outline: none;
     }
   }
 }

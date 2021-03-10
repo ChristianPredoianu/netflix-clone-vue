@@ -1,0 +1,59 @@
+.overlay {
+  @include flex-config($display: flex, $justify: center, $align: center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000094;
+  z-index: 999;
+  transition: opacity 0.2s ease;
+}
+
+.modal {
+  color: $color-white;
+  width: 60%;
+  height: 90%;
+  overflow: auto;
+  margin: 0 auto;
+  background-color: $color-gray-dark;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px 3px rgb(66, 66, 66);
+  transition: all 0.2s ease-in;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+}
+
+.modal-preview {
+  position: relative;
+
+  &__close {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    cursor: pointer;
+  }
+}
+
+.yt-player-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding-top: 76%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+  &__yt-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

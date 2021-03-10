@@ -1,6 +1,14 @@
 <template>
   <div>
-    <div class="overlay" @click.self="closeModal">
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
+    <div
+      class="overlay"
+      v-if="!isMovieTrailerModalOpen"
+      @click.self="closeModal"
+    >
       <div class="modal">
         <div class="modal-preview">
           <font-awesome-icon
@@ -23,16 +31,15 @@
             {{ getMovieDetails.original_title }}
           </h1>
           <div class="modal-cta">
-            <button class="modal-cta__btn">
+            <button
+              class="modal-cta__btn"
+              @click="playMovie(getMovieDetails.id)"
+            >
               <font-awesome-icon
                 :icon="['fas', 'play']"
                 class="modal-cta__play-icon"
               />Play
             </button>
-            <font-awesome-icon
-              :icon="['far', 'times-circle']"
-              class="modal-cta__remove"
-            />
           </div>
         </div>
         <div class="modal-info">
@@ -69,12 +76,30 @@
 </template>
 
 <script>
+import MovieTrailerModal from '../ui/MovieTrailerModal';
 import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 export default {
+  components: {
+    MovieTrailerModal,
+  },
+
+  data() {
+    return {
+      isMovieTrailerModalOpen: false,
+    };
+  },
+
   methods: {
+    playMovie(movieId) {
+      this.isMovieTrailerModalOpen = true;
+      this.fetchMovieTrailer(movieId);
+    },
     closeModal() {
       this.$emit('closeModal');
     },
+
+    ...mapActions(['fetchMovieTrailer']),
   },
 
   computed: {

@@ -48,7 +48,7 @@
               />
             </div>
             <div class="profile-cta">
-              <button class="profile-cta__btn" @click="updateProfile">
+              <button class="profile-cta__btn" @click="updateProfile()">
                 Save
               </button>
               <button
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 import Logo from '../components/ui/Logo';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
@@ -115,10 +116,23 @@ export default {
     },
     updateProfile() {
       this.clickedProfile.name = this.newName;
+      console.log(this.clickedProfile);
+      firebase
+        .database()
+        .ref(`users/${this.getCurrentUser.id}`)
+        .child(`profiles/${this.clickedProfile.id}`)
+        .update({
+          name: this.clickedProfile.name,
+          icon: this.clickedProfile.icon,
+        });
+      this.$router.push({ name: 'Profiles' });
     },
+
+    ...mapActions(['setUserProfilesFromDB']),
   },
-  computed: {},
-  created() {},
+  computed: {
+    ...mapGetters(['getUserProfiles', 'getCurrentUser']),
+  },
 };
 </script>
 

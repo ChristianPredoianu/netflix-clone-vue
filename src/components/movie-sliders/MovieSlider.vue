@@ -1,7 +1,10 @@
 <template>
   <div>
     <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
-
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="movie in category" :key="movie.id">
         <img
@@ -26,6 +29,7 @@
                 title="play"
                 :icon="['far', 'play-circle']"
                 class="left__icon left__icon--play"
+                @click="playMovie(movie)"
               />
 
               <font-awesome-icon
@@ -90,7 +94,8 @@
 </template>
 
 <script>
-import MovieModal from '../ui/MovieModal.vue';
+import MovieModal from '../ui/MovieModal';
+import MovieTrailerModal from '../ui/MovieTrailerModal';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
 import { mapActions } from 'vuex';
@@ -98,10 +103,8 @@ import { mapGetters } from 'vuex';
 import isMovieInUserList from '../../mixins/isMovieInUserList';
 import addMovieToUserList from '../../mixins/addMovieToUserList';
 import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
-
 export default {
   mixins: [isMovieInUserList, addMovieToUserList, deleteMovieFromUserList],
-
   props: {
     category: {
       type: [Array, Function],
@@ -115,6 +118,7 @@ export default {
   },
   components: {
     MovieModal,
+    MovieTrailerModal,
     swiper,
     swiperSlide,
   },
@@ -124,7 +128,7 @@ export default {
       isDetailsHovered: false,
       isIconClicked: false,
       isModalOpen: false,
-
+      isMovieTrailerModalOpen: false,
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 20,
@@ -154,17 +158,25 @@ export default {
     };
   },
   methods: {
+    playMovie(selectedMovie) {
+      this.isMovieTrailerModalOpen = true;
+      this.fetchMovieTrailer(selectedMovie.id);
+    },
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
-      this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
+      this.fetchMovieDetails(selectedMovie.id);
     },
+
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-
-    ...mapActions(['setUserMoviesListFromDB']),
+    ...mapActions([
+      'setUserMoviesListFromDB',
+      'fetchMovieTrailer',
+      'fetchMovieDetails',
+    ]),
   },
   computed: {
     ...mapGetters([

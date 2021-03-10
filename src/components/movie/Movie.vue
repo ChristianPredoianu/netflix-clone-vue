@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
     <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
     <div class="card" v-for="movie in category" :key="movie.id">
       <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`" />
       <div class="overlay">
@@ -14,6 +18,7 @@
               title="Play movie"
               :icon="['far', 'play-circle']"
               class="left__icon left__icon--play"
+              @click="playMovie(movie)"
             />
 
             <font-awesome-icon
@@ -52,32 +57,39 @@ import MovieModal from '../ui/MovieModal';
 import isMovieInUserList from '../../mixins/isMovieInUserList';
 import addMovieToUserList from '../../mixins/addMovieToUserList';
 import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
+import MovieTrailerModal from '../ui/MovieTrailerModal';
 
 export default {
   mixins: [isMovieInUserList, addMovieToUserList, deleteMovieFromUserList],
 
   components: {
     MovieModal,
+    MovieTrailerModal,
   },
 
   props: {
     category: {
-      type: Array,
+      type: [Array, Function],
     },
   },
 
   data() {
     return {
       isModalOpen: false,
+      isMovieTrailerModalOpen: false,
     };
   },
 
   methods: {
+    playMovie(selectedMovie) {
+      this.isMovieTrailerModalOpen = true;
+      this.fetchMovieTrailer(selectedMovie.id);
+    },
     openMovieDetailsModal(selectedMovie) {
       this.isModalOpen = true;
       this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
     },
-    ...mapActions(['setUserMoviesListFromDB']),
+    ...mapActions(['setUserMoviesListFromDB', 'fetchMovieTrailer']),
   },
 
   computed: {

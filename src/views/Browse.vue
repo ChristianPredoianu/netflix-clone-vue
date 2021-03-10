@@ -9,7 +9,6 @@
         <p class="movie-container__paragraph">
           {{ getMovieData[0].showcaseMovie.overview }}
         </p>
-
         <button class="movie-container__btn">
           <font-awesome-icon
             :icon="['fas', 'play']"
@@ -51,7 +50,7 @@
         <div class="video-controls__rec-age">13+</div>
       </div>
       <div class="video-container">
-        <video class="video" ref="video" muted @ended="isVideoPaused">
+        <video class="video" ref="video" muted autoplay @ended="isVideoPaused">
           <source
             src="../assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
             type="video/mp4"
@@ -75,7 +74,10 @@
         <!-- Popular Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('popular') === undefined"
+          v-if="
+            searchMovie('popular') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Popular Movies
         </h2>
@@ -91,7 +93,10 @@
         <!-- Comedy Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('comedy') === undefined"
+          v-if="
+            searchMovie('comedy') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Comedy Movies
         </h2>
@@ -107,7 +112,10 @@
         <!-- Crime Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('crime') === undefined"
+          v-if="
+            searchMovie('crime') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Crime Movies
         </h2>
@@ -121,7 +129,10 @@
         <!-- Action Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('action') === undefined"
+          v-if="
+            searchMovie('action') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Action Movies
         </h2>
@@ -137,7 +148,10 @@
         <!-- Animated Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('animation') === undefined"
+          v-if="
+            searchMovie('animation') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Animated Movies
         </h2>
@@ -153,7 +167,10 @@
         <!-- Drama Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('drama') === undefined"
+          v-if="
+            searchMovie('drama') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Drama Movies
         </h2>
@@ -167,7 +184,10 @@
         <!-- Horror Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('horror') === undefined"
+          v-if="
+            searchMovie('horror') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           Horror Movies
         </h2>
@@ -183,7 +203,10 @@
         <!-- SciFI Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="searchMovie('sciFi') === undefined"
+          v-if="
+            searchMovie('sciFi') === undefined ||
+              searchMovie('popular').length === 0
+          "
         >
           SciFi Movies
         </h2>
@@ -210,7 +233,7 @@ export default {
     return {
       isMuted: true,
       isPlaying: true,
-      searchTerm: null,
+      searchTerm: '',
     };
   },
   components: {
@@ -221,21 +244,23 @@ export default {
   methods: {
     searchMovie(category) {
       let found;
-
       if (this.searchTerm !== '' && category !== undefined) {
         found = this.getMovieData[0][category].filter((element) =>
-          element.original_title.includes(this.searchTerm)
+          element.original_title.includes(
+            this.searchTerm
+              .toLowerCase()
+              .split(' ')
+              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+              .join(' ')
+          )
         );
       }
-      if (found === undefined) {
-        return;
-      }
+
       return found;
     },
     setSearchTerm(value) {
       this.searchTerm = value;
     },
-
     muteVideo() {
       this.videoElement.muted = true;
       this.isMuted = true;
@@ -257,18 +282,16 @@ export default {
     videoElement() {
       return this.$refs.video;
     },
-
     ...mapGetters(['getMovieData', 'getUserMoviesListFromDB']),
   },
+
   created() {
     //Since Promise.all waits for all promises to resolve in our action
     //we can just check to see if one of the array is not empty for lazy loading
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
     /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
-  },
-  updated() {
-    this.searchMovie();
+    this.setUserMoviesListFromDB();
   },
 };
 </script>
