@@ -57,6 +57,11 @@
 
     <transition name="fade">
       <div class="modal" v-if="isOpen" @mouseleave="isOpen = false">
+        <font-awesome-icon
+          :icon="['fas', 'times']"
+          class="modal__close-modal"
+          @click="isOpen = false"
+        />
         <div class="modal-container">
           <div
             class="user-profiles"
@@ -66,6 +71,7 @@
             <font-awesome-icon
               :icon="[userProfile.icon[0], userProfile.icon[1]]"
               class="user-profiles__icon"
+              @click="goToBrowseWithSelectedProfile(userProfile)"
             />
             <p class="user-profiles__paragraph">{{ userProfile.name }}</p>
           </div>
@@ -76,7 +82,6 @@
             Manage profiles
           </p>
         </div>
-        <p class="close-modal" @click="isOpen = false">X</p>
       </div>
     </transition>
   </div>
@@ -85,6 +90,7 @@
 <script>
 import Logo from '../../ui/Logo';
 import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import NavDropdown from '../../layout/nav/NavDropdown';
 
 export default {
@@ -93,7 +99,6 @@ export default {
       isSearchBarOpen: false,
       isOpen: false,
       mobileView: true,
-
       searchTerm: '',
     };
   },
@@ -102,17 +107,23 @@ export default {
     NavDropdown,
   },
   methods: {
+    goToBrowseWithSelectedProfile(userProfile) {
+      this.setClickedProfile(userProfile);
+      this.$router.push({ path: '/loading-profile' });
+    },
     search() {
       this.$emit('search', this.searchTerm);
     },
     removeSearchTerm() {
       this.searchTerm = '';
       this.search();
+      this.isSearchBarOpen = false;
     },
     handleView() {
       this.mobileView = window.innerWidth <= 900;
       console.log(window.innerWidth);
     },
+    ...mapActions(['setClickedProfile']),
   },
 
   computed: {

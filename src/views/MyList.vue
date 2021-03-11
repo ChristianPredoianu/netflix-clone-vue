@@ -1,7 +1,11 @@
 !<template>
   <div class="my-list">
     <NavBar />
-
+    <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
     <section class="movies-list">
       <h1 class="movies-list__heading">My List</h1>
 
@@ -23,6 +27,7 @@
                   title="Play movie"
                   :icon="['far', 'play-circle']"
                   class="left__icon left__icon--play"
+                  @click="playMovie(movie.id)"
                 />
 
                 <font-awesome-icon
@@ -37,6 +42,7 @@
                   title="Movie Details"
                   :icon="['fas', 'arrow-circle-down']"
                   class="right__icon right__icon--arrow"
+                  @click="openMovieDetailsModal(movie)"
                 />
               </div>
             </div>
@@ -50,15 +56,30 @@
 <script>
 import firebase from 'firebase';
 import NavBar from '../components/layout/nav/Navbar';
+import MovieModal from '../components/ui/MovieModal';
+import MovieTrailerModal from '../components/ui/MovieTrailerModal';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
 export default {
   components: {
     NavBar,
+    MovieModal,
+    MovieTrailerModal,
+  },
+
+  data() {
+    return {
+      isModalOpen: false,
+      isMovieTrailerModalOpen: false,
+    };
   },
 
   methods: {
+    playMovie(movieId) {
+      this.isMovieTrailerModalOpen = true;
+      this.fetchMovieTrailer(movieId);
+    },
     removeFromMyList(movie) {
       const databaseRef = `users/${this.getCurrentUser.id}`;
       const child = `profiles/${this.getTheClickedProfile.id}/moviesList`;
@@ -73,7 +94,16 @@ export default {
         });
       this.setUserMoviesListFromDB();
     },
-    ...mapActions(['setUserMoviesListFromDB']),
+    openMovieDetailsModal(selectedMovie) {
+      console.log(selectedMovie.id);
+      this.isModalOpen = true;
+      this.fetchMovieDetails(selectedMovie.id);
+    },
+    ...mapActions([
+      'setUserMoviesListFromDB',
+      'fetchMovieDetails',
+      'fetchMovieTrailer',
+    ]),
   },
   computed: {
     ...mapGetters(['getUserMoviesListFromDB']),

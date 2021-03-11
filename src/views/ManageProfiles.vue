@@ -80,7 +80,7 @@
 import firebase from 'firebase';
 import Logo from '../components/ui/Logo';
 import { mapGetters } from 'vuex';
-import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -127,8 +127,6 @@ export default {
         });
       this.$router.push({ name: 'Profiles' });
     },
-
-    ...mapActions(['setUserProfilesFromDB']),
   },
   computed: {
     ...mapGetters(['getUserProfiles', 'getCurrentUser']),

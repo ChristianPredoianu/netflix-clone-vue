@@ -75,6 +75,14 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/loading-profile',
+    name: 'Loading-profile',
+    component: () => import('../views/LoadingProfile.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

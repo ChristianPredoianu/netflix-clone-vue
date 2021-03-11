@@ -50,7 +50,7 @@
         <div class="video-controls__rec-age">13+</div>
       </div>
       <div class="video-container">
-        <video class="video" ref="video" muted autoplay @ended="isVideoPaused">
+        <video class="video" ref="video" muted @ended="isVideoPaused">
           <source
             src="../assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
             type="video/mp4"

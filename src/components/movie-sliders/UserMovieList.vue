@@ -1,6 +1,10 @@
 <template>
   <div>
     <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
 
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="movie in userMovieList" :key="movie.id">
@@ -21,8 +25,10 @@
                 >
               </div>
               <font-awesome-icon
-                :icon="['far', 'check-circle']"
+                title="Play Movie"
+                :icon="['far', 'play-circle']"
                 class="left__icon left__icon--play"
+                @click="playMovie(movie.id)"
               />
 
               <font-awesome-icon
@@ -84,6 +90,7 @@ import 'swiper/dist/css/swiper.css';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
+import MovieTrailerModal from '../ui/MovieTrailerModal';
 
 export default {
   mixins: [deleteMovieFromUserList],
@@ -96,6 +103,7 @@ export default {
 
   components: {
     MovieModal,
+    MovieTrailerModal,
     swiper,
     swiperSlide,
   },
@@ -106,6 +114,7 @@ export default {
       isDetailsHovered: false,
       isIconClicked: false,
       isModalOpen: false,
+      isMovieTrailerModalOpen: false,
       items: [],
 
       swiperOption: {
@@ -143,11 +152,15 @@ export default {
       this.isModalOpen = true;
       this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
     },
+    playMovie(movieId) {
+      this.isMovieTrailerModalOpen = true;
+      this.fetchMovieTrailer(movieId);
+    },
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-    ...mapActions(['setUserMoviesListFromDB']),
+    ...mapActions(['setUserMoviesListFromDB', 'fetchMovieTrailer']),
   },
   computed: {
     ...mapGetters([

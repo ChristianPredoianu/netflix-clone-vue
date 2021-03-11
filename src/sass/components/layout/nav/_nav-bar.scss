@@ -1,14 +1,15 @@
 .header {
   @include flex-config($display: flex, $align: center);
-  position: relative;
+  position: fixed;
   width: 100%;
   min-height: 6.8rem;
   padding: 3rem 0;
   background-color: transparent;
+  z-index: 500;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.7) 10%,
-    rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0.5)
   );
 }
 
@@ -40,6 +41,7 @@
 .nav-right {
   @include flex-config($display: flex, $align: center);
   margin-right: 3rem;
+  color: $color-white;
 
   @include respond(tab-port) {
     @include flex-config($display: flex, $justify: flex-end);
@@ -48,7 +50,7 @@
 
   &__icon {
     font-size: clamp(1.5rem, 2vw, 2.5rem);
-    color: $color-white;
+
     cursor: pointer;
 
     @include respond(tab-port) {
@@ -83,21 +85,25 @@
 }
 
 .modal {
-  position: absolute;
-  top: 3%;
-  right: 2%;
+  position: fixed;
+  top: 0;
+  right: 0;
   width: 30rem;
+  z-index: 500;
   font-size: 0.8rem;
   background-color: rgb(39, 39, 39);
   color: $color-white;
   padding: 1rem 2rem 5rem 0;
-}
 
-.close-modal {
-  font-size: 2rem;
-  margin: 3rem 2rem 0 0;
-  text-align: right;
-  cursor: pointer;
+  &__close-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    margin: 3rem 2rem 0 0;
+    text-align: right;
+    cursor: pointer;
+  }
 }
 
 .user-profiles {
