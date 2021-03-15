@@ -1,19 +1,18 @@
 <template>
   <div>
-    <img
-      src="../../assets/images/netflix-logo.png"
-      alt="Netflix logo"
-      class="logo"
-      @click="goToHome"
-    />
+    <router-link :to="getUser ? '/browse' : '/'">
+      <img
+        src="../../assets/images/netclone.png"
+        alt="Netflix logo"
+        class="logo"
+    /></router-link>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
-  methods: {
-    goToHome() {
-      this.$router.push({ name: 'Home' }).catch(() => {});
-    },
+  computed: {
+    ...mapGetters(['getUser']),
   },
 };
 </script>

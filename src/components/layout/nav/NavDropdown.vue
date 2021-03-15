@@ -5,6 +5,7 @@
       :right="right"
       :hover="hover"
       :interactive="interactive"
+      :closeOnClickOutside="closeOnClickOutside"
     >
       <button class="btn btn-primary dropdown-toggle">
         Browse
@@ -15,11 +16,10 @@
       </button>
       <div slot="dropdown" class="dropdown__container">
         <div class="dropdown__topbar"></div>
-        <a class="dropdown__item" href="#">Home</a>
-        <a class="dropdown__item" href="#">Series</a>
-        <a class="dropdown__item" href="#">Movies</a>
-        <a class="dropdown__item" href="#">Popular</a>
-        <a class="dropdown__item" href="#">My List</a>
+        <router-link to="/browse" class="dropdown__item">Home</router-link>
+        <router-link to="/movies" class="dropdown__item">Movies</router-link>
+        <router-link to="/popular" class="dropdown__item">Popular</router-link>
+        <router-link to="/my-list" class="dropdown__item">My list</router-link>
       </div>
     </dropdown-menu>
   </div>
@@ -34,6 +34,7 @@ export default {
       right: false,
       hover: true,
       interactive: false,
+      closeOnClickOutside: true,
     };
   },
   components: {

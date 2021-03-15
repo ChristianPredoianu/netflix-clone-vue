@@ -48,7 +48,7 @@
               />
             </div>
             <div class="profile-cta">
-              <button class="profile-cta__btn" @click="updateProfile()">
+              <button class="profile-cta__btn" @click="updateProfile">
                 Save
               </button>
               <button

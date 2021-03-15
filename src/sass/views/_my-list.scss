@@ -4,11 +4,13 @@
 }
 
 .movies-list {
+  @include flex-config($display: flex, $direction: column);
   margin-left: 3rem;
   color: $color-white;
 
   &__heading {
     font-size: 4rem;
+    margin-top: 10rem;
   }
 }
 

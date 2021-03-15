@@ -6,7 +6,6 @@ export default {
         (mov) => mov.id === movie.id
       );
 
-      console.log(movieToDeleteFromList);
       if (movieToDeleteFromList !== undefined) {
         const databaseRef = `users/${this.getCurrentUser.id}`;
         const child = `profiles/${this.getTheClickedProfile.id}/moviesList`;

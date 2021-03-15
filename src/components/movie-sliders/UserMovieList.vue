@@ -150,7 +150,7 @@ export default {
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
-      this.$store.dispatch('fetchMovieDetails', selectedMovie.id);
+      this.fetchMovieDetails(selectedMovie.id);
     },
     playMovie(movieId) {
       this.isMovieTrailerModalOpen = true;
@@ -160,7 +160,11 @@ export default {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
-    ...mapActions(['setUserMoviesListFromDB', 'fetchMovieTrailer']),
+    ...mapActions([
+      'setUserMoviesListFromDB',
+      'fetchMovieDetails',
+      'fetchMovieTrailer',
+    ]),
   },
   computed: {
     ...mapGetters([

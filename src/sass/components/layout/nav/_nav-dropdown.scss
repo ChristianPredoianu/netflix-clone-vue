@@ -1,8 +1,18 @@
 .dropdown {
   position: absolute;
   top: 3.7rem;
-  left: 15rem;
+  left: 7rem;
   z-index: 5;
+
+  @include respond(tab-port) {
+    left: 15rem;
+    top: 4.3rem;
+  }
+
+  @include respond(phone) {
+    left: 9rem;
+    top: 3.8rem;
+  }
 
   .btn {
     background-color: transparent;
@@ -26,9 +36,9 @@
       $justify: center,
       $align: center
     );
-    min-height: 20vh;
+
     background-color: rgba(0, 0, 0, 0.9);
-    margin: 3rem 0 0 -13rem;
+    margin: 4rem 0 0 -9rem;
     padding: 2rem 10rem 2rem 10rem;
     border: solid rgba(255, 255, 255, 0.15);
     border-width: 0.5rem 0.1rem 0.1rem 0.1rem;

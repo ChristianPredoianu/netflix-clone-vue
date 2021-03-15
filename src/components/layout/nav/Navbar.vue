@@ -38,7 +38,7 @@
             :icon="['fas', 'search']"
             class="nav-right__icon"
             @click="isSearchBarOpen = !isSearchBarOpen"
-            v-if="!isPopularView"
+            v-if="!hideSearchBarOnRoutes"
           />
           <div>
             <font-awesome-icon
@@ -73,13 +73,24 @@
               class="user-profiles__icon"
               @click="goToBrowseWithSelectedProfile(userProfile)"
             />
-            <p class="user-profiles__paragraph">{{ userProfile.name }}</p>
+            <p
+              class="user-profiles__paragraph"
+              @click="goToBrowseWithSelectedProfile(userProfile)"
+            >
+              {{ userProfile.name }}
+            </p>
           </div>
           <p
             class="user-profiles__paragraph user-profiles__paragraph--manage"
             @click="$router.push({ name: 'ManageProfiles' })"
           >
             Manage profiles
+          </p>
+          <p
+            class="user-profiles__paragraph user-profiles__paragraph--signout"
+            @click="signOut"
+          >
+            Signout
           </p>
         </div>
       </div>
@@ -92,6 +103,7 @@ import Logo from '../../ui/Logo';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 import NavDropdown from '../../layout/nav/NavDropdown';
+import firebase from 'firebase';
 
 export default {
   data() {
@@ -99,6 +111,7 @@ export default {
       isSearchBarOpen: false,
       isOpen: false,
       mobileView: true,
+      isChangeProfile: false,
       searchTerm: '',
     };
   },
@@ -119,16 +132,32 @@ export default {
       this.search();
       this.isSearchBarOpen = false;
     },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ path: '/signin' });
+          this.setUser(null);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    },
     handleView() {
       this.mobileView = window.innerWidth <= 900;
       console.log(window.innerWidth);
     },
-    ...mapActions(['setClickedProfile']),
+    ...mapActions(['setClickedProfile', 'setUser']),
   },
 
   computed: {
-    isPopularView() {
-      return this.$route.name === 'Popular';
+    hideSearchBarOnRoutes() {
+      const popularView = this.$route.name === 'Popular';
+      const myListView = this.$route.name === 'My-list';
+      if (popularView || myListView) {
+        return [popularView, myListView];
+      }
     },
 
     ...mapGetters(['getTheClickedProfile', 'getUserProfiles']),

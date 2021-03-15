@@ -4,14 +4,16 @@
 }
 
 .popular-movies {
+  @include flex-config($display: flex, $direction: column);
   margin-left: 3rem;
 
   &__heading {
     font-size: 4rem;
     color: $color-white;
+    margin: 10rem 0 0 0;
   }
+}
 
-  &__slider {
-    margin-top: 4rem;
-  }
+.movie-sliders {
+  padding: 3rem 3rem 0 3rem;
 }

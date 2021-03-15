@@ -49,4 +49,9 @@
     display: inline-block;
     color: $color-white;
   }
+
+  &__error {
+    color: rgb(255, 0, 0);
+    margin-top: 2rem;
+  }
 }

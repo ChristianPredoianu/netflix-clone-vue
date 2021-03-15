@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="step-2-form" @submit.prevent="signup">
+    <form class="step-2-form" @submit.prevent="signUp">
       <input
         type="email"
         placeholder="E-mail"
@@ -20,10 +20,13 @@
       />
       <input type="submit" value="Continue" class="step-2-form__btn" />
     </form>
+    <h1>{{ getError }}</h1>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -32,14 +35,22 @@ export default {
     };
   },
   methods: {
-    signup() {
-      this.$store.dispatch('signUserUp', {
+    signUp() {
+      this.signUserUp({
         email: this.email,
         password: this.password,
+      }).then(() => {
+        if (!this.getError) {
+          this.$router.push({ name: 'SignIn' });
+        }
       });
     },
+
+    ...mapActions(['signUserUp']),
   },
-  computed: {},
+  computed: {
+    ...mapGetters(['getError']),
+  },
 };
 </script>
 

@@ -36,6 +36,9 @@ export default {
   computed: {
     ...mapGetters(['getMovieTrailer']),
   },
+  created() {
+    console.log(this.$store.state.theMovieDB.movieTrailer);
+  },
 };
 </script>
 

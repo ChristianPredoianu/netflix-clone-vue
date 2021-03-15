@@ -2,8 +2,10 @@
   <div class="home">
     <section class="hero">
       <nav class="nav">
-        <Logo class="nav__logo"></Logo>
-        <p class="nav__login-btn">Sign in</p>
+        <Logo class="nav__logo" />
+        <router-link tag="p" :to="{ path: 'signIn' }"
+          ><p class="nav__login-btn">Sign in</p></router-link
+        >
       </nav>
       <div class="hero-container">
         <h1 class="heading-primary ">
@@ -53,7 +55,6 @@
           alt="phone"
           class="phone-container__img"
         />
-
         <img
           src="../assets/images/netflix-phone.jpg"
           alt="netflix phone"

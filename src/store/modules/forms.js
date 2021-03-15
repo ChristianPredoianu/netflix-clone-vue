@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import router from '../../router';
 
 export default {
   state: {
@@ -40,9 +39,9 @@ export default {
   },
 
   actions: {
-    signUserUp({ commit, state }, payload) {
+    async signUserUp({ commit }, payload) {
       commit('resetError', null);
-      firebase
+      await firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then((user) => {
@@ -51,14 +50,6 @@ export default {
           };
           console.log(newUser);
           commit('setUser', newUser);
-          if (user) {
-            const message = 'Your account was created, you can now sign in.';
-            commit('setCreatedMessage', message);
-            setTimeout(() => {
-              router.push({ name: 'SignIn' });
-              state.accountCreatedMessage = null;
-            }, 3000);
-          }
         })
         .catch((error) => {
           if (error) {
@@ -66,9 +57,9 @@ export default {
           }
         });
     },
-    signUserIn({ commit }, payload) {
+    async signUserIn({ commit }, payload) {
       commit('resetError', null);
-      firebase
+      await firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
         .then((user) => {
@@ -76,11 +67,13 @@ export default {
             email: user.user.email,
           };
           commit('setUser', newUser);
-          router.replace({ path: '/profiles' });
         })
         .catch((error) => {
-          commit('setError', error);
+          commit('setError', error.message);
         });
+    },
+    setUser({ commit }, payload) {
+      commit('setUser', payload);
     },
   },
 };

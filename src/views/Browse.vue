@@ -1,25 +1,35 @@
 <template>
   <div>
+    <MovieTrailerModal
+      v-if="isMovieTrailerModalOpen"
+      @closeModal="isMovieTrailerModalOpen = false"
+    />
+    <MovieModal
+      v-if="isMovieModalOpen"
+      @closeModal="isMovieModalOpen = false"
+    />
     <section class="showcase">
       <NavBar class="nav" @search="setSearchTerm" />
       <div class="movie-container">
         <h1 class="movie-container__heading">
-          {{ getMovieData[0].showcaseMovie.name }}
+          {{ getMovieData[0].horror[0].original_title }}
         </h1>
         <p class="movie-container__paragraph">
-          {{ getMovieData[0].showcaseMovie.overview }}
+          {{ getMovieData[0].horror[0].overview }}
         </p>
-        <button class="movie-container__btn">
+        <button class="movie-container__btn movie-container__btn--play">
           <font-awesome-icon
             :icon="['fas', 'play']"
-            class="video-controls__icon video-controls__icon--play"
+            class="movie-container__icon movie-container__icon--play"
+            @click="playShowcaseMovie"
           />
           Play
         </button>
         <button class="movie-container__btn movie-container__btn--info ">
           <font-awesome-icon
             :icon="['fas', 'info-circle']"
-            class="video-controls__icon video-controls__icon--info"
+            class="movie-container__icon movie-container__icon--info"
+            @click="openMovieDetailsModal"
           />
           More info
         </button>
@@ -50,13 +60,12 @@
         <div class="video-controls__rec-age">13+</div>
       </div>
       <div class="video-container">
-        <video class="video" ref="video" muted @ended="isVideoPaused">
+        <video class="video" ref="video" muted autoplay @ended="isVideoPaused">
           <source
             src="../assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
             type="video/mp4"
           />
         </video>
-        <div class="overlay"></div>
       </div>
     </section>
 
@@ -223,6 +232,8 @@
 
 <script>
 import NavBar from '../components/layout/nav/Navbar';
+import MovieTrailerModal from '../components/ui/MovieTrailerModal';
+import MovieModal from '../components/ui/MovieModal';
 import UserMovieList from '../components/movie-sliders/UserMovieList';
 import MovieSlider from '../components/movie-sliders/MovieSlider';
 import { mapGetters } from 'vuex';
@@ -233,11 +244,15 @@ export default {
     return {
       isMuted: true,
       isPlaying: true,
+      isMovieTrailerModalOpen: false,
+      isMovieModalOpen: false,
       searchTerm: '',
     };
   },
   components: {
     NavBar,
+    MovieTrailerModal,
+    MovieModal,
     UserMovieList,
     MovieSlider,
   },
@@ -276,7 +291,22 @@ export default {
       this.isPlaying = true;
       this.videoElement.play();
     },
-    ...mapActions(['fetchMovieData', 'setUserMoviesListFromDB']),
+    playShowcaseMovie() {
+      const movieId = this.getMovieData[0].horror[0].id;
+      this.fetchMovieTrailer(movieId);
+      this.isMovieTrailerModalOpen = true;
+    },
+    openMovieDetailsModal() {
+      const movieId = this.getMovieData[0].horror[0].id;
+      this.isMovieModalOpen = true;
+      this.fetchMovieDetails(movieId);
+    },
+    ...mapActions([
+      'fetchMovieData',
+      'setUserMoviesListFromDB',
+      'fetchMovieDetails',
+      'fetchMovieTrailer',
+    ]),
   },
   computed: {
     videoElement() {
@@ -292,6 +322,7 @@ export default {
     //and all other results are ignored.
     /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
     this.setUserMoviesListFromDB();
+    console.log(this.getMovieData);
   },
 };
 </script>

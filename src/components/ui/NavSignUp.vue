@@ -2,7 +2,9 @@
   <div>
     <nav class="nav-signup">
       <Logo />
-      <p class="nav-signup__sign-in">Sign In</p>
+      <router-link tag="p" :to="{ path: '/signIn' }"
+        ><p class="nav-signup__sign-in">Sign In</p></router-link
+      >
     </nav>
   </div>
 </template>

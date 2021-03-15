@@ -11,6 +11,8 @@
 }
 
 .modal {
+  position: relative;
+  z-index: 200;
   color: $color-white;
   width: 60%;
   height: 90%;
@@ -23,6 +25,10 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include respond(phone) {
+    width: 97%;
+  }
 
   &::-webkit-scrollbar {
     width: 0 !important;
@@ -40,6 +46,7 @@
     position: absolute;
     top: 3rem;
     right: 3rem;
+    font-size: 2rem;
     cursor: pointer;
   }
 
@@ -48,6 +55,10 @@
     bottom: 15rem;
     left: 4rem;
     font-size: clamp(1.5rem, 2vw, 3rem);
+
+    @include respond(phone) {
+      bottom: 11rem;
+    }
   }
 }
 
@@ -63,6 +74,10 @@
     border-radius: 0.3rem;
     border: none;
     cursor: pointer;
+
+    @include respond(phone) {
+      padding: 1rem 2rem;
+    }
 
     &:focus {
       outline: none;

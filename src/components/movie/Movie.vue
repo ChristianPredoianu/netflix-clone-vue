@@ -5,8 +5,16 @@
       v-if="isMovieTrailerModalOpen"
       @closeModal="isMovieTrailerModalOpen = false"
     />
-    <div class="card" v-for="movie in category" :key="movie.id">
-      <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`" />
+    <div
+      class="card"
+      v-for="movie in category"
+      :key="movie.id"
+      @click="openMovieDetailsModal(movie)"
+    >
+      <img
+        :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+        class="card__img"
+      />
       <div class="overlay">
         <img
           :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"

@@ -2,7 +2,7 @@
   width: 10rem;
   cursor: pointer;
 
-  @include respond(fold) {
-    width: 5rem;
+  @include respond(phone) {
+    width: 7rem;
   }
 }

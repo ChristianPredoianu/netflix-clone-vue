@@ -16,6 +16,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 
+//For our firebase authentication to stay alive,
+//we can use the build-in firebase function ‘onAuthStateChanged’.
 let app;
 firebase.auth().onAuthStateChanged((user) => {
   if (!app) {

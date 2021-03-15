@@ -1,7 +1,6 @@
 .hero {
+  @include flex-config($display: flex, $justify: center);
   position: relative;
-  display: flex;
-  justify-content: center;
   min-height: 80vh;
   background-image: url('require@/../../assets/images/netflix-background.jpg');
   background-size: cover;
@@ -14,7 +13,7 @@
 .nav {
   @include flex-config($display: flex, $justify: space-between, $align: center);
   position: absolute;
-  top: 3%;
+  top: 0;
   width: 100%;
 
   &__logo {
@@ -116,7 +115,7 @@
     height: 88%;
     object-fit: cover;
     top: 2%;
-    left: 5%;
+    left: 0%;
     z-index: -1;
   }
 }
@@ -231,7 +230,7 @@
     height: 60%;
     object-fit: cover;
     top: 5%;
-    left: 10%;
+    left: 5%;
     z-index: -1;
   }
 }
@@ -245,6 +244,7 @@
   );
   @include landing-section-config;
   @include netflix-border;
+  text-align: center;
 }
 
 .form-faq {

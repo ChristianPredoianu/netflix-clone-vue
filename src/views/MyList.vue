@@ -6,6 +6,7 @@
       v-if="isMovieTrailerModalOpen"
       @closeModal="isMovieTrailerModalOpen = false"
     />
+
     <section class="movies-list">
       <h1 class="movies-list__heading">My List</h1>
 
@@ -29,12 +30,11 @@
                   class="left__icon left__icon--play"
                   @click="playMovie(movie.id)"
                 />
-
                 <font-awesome-icon
                   title="Remove Movie"
                   :icon="['far', 'times-circle']"
                   class="left__icon left__icon--check"
-                  @click="removeFromMyList(movie)"
+                  @click="deleteMovie(movie)"
                 />
               </div>
               <div class="right">
@@ -54,14 +54,15 @@
 </template>
 
 <script>
-import firebase from 'firebase';
 import NavBar from '../components/layout/nav/Navbar';
 import MovieModal from '../components/ui/MovieModal';
 import MovieTrailerModal from '../components/ui/MovieTrailerModal';
+import deleteMovieFromUserList from '../mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
 export default {
+  mixins: [deleteMovieFromUserList],
   components: {
     NavBar,
     MovieModal,
@@ -80,20 +81,7 @@ export default {
       this.isMovieTrailerModalOpen = true;
       this.fetchMovieTrailer(movieId);
     },
-    removeFromMyList(movie) {
-      const databaseRef = `users/${this.getCurrentUser.id}`;
-      const child = `profiles/${this.getTheClickedProfile.id}/moviesList`;
-      firebase
-        .database()
-        .ref(databaseRef)
-        .child(child)
-        .orderByChild('id')
-        .equalTo(movie.id)
-        .once('child_added', (snapshot) => {
-          snapshot.ref.remove();
-        });
-      this.setUserMoviesListFromDB();
-    },
+
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
       this.isModalOpen = true;
@@ -106,7 +94,11 @@ export default {
     ]),
   },
   computed: {
-    ...mapGetters(['getUserMoviesListFromDB']),
+    ...mapGetters([
+      'getUserMoviesListFromDB',
+      'getCurrentUser',
+      'getTheClickedProfile',
+    ]),
   },
   created() {
     this.setUserMoviesListFromDB();

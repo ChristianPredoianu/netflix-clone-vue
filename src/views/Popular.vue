@@ -1,14 +1,17 @@
 !<template>
   <div class="body">
     <NavBar />
-
-    <section class="popular-movies">
-      <h1 class="popular-movies__heading">Popular Movies</h1>
-      <MovieSlider
-        :category="getMovieData[0].popular"
-        class="popular-movies__slider"
-      />
-    </section>
+    <div>
+      <section class="popular-movies">
+        <h1 class="popular-movies__heading">Popular Movies</h1>
+      </section>
+      <section class="movie-sliders">
+        <MovieSlider
+          :category="getMovieData[0].popular"
+          class="popular-movies__slider"
+        />
+      </section>
+    </div>
   </div>
 </template>
 

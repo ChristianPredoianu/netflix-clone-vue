@@ -30,7 +30,12 @@
           Netflix is personalised for you. Create a password to watch Netflix on
           any device at any time.
         </h2>
-        <button class="step-1-info__btn" @click="goToStep2">Continue</button>
+        <button
+          class="step-1-info__btn"
+          @click="$router.push({ path: '/signup/Step2' })"
+        >
+          Continue
+        </button>
       </div>
     </section>
   </div>
@@ -42,12 +47,6 @@ import NavSignUp from '../../components/ui/NavSignUp';
 export default {
   components: {
     NavSignUp,
-  },
-
-  methods: {
-    goToStep2() {
-      this.$router.push({ name: 'SignupStep2' });
-    },
   },
 };
 </script>

@@ -27,15 +27,15 @@
             ><span class="sign-up-now__span"> Sign up now.</span></router-link
           >
         </p>
+        <h1 class="sign-up-now__error">{{ getError }}</h1>
       </div>
     </form>
-    <h1>{{ getError }}</h1>
-    <h1>{{ getCreatedMessage }}</h1>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -46,11 +46,18 @@ export default {
   },
   methods: {
     signIn() {
-      this.$store.dispatch('signUserIn', {
-        email: this.email,
-        password: this.password,
-      });
+      this.$store
+        .dispatch('signUserIn', {
+          email: this.email,
+          password: this.password,
+        })
+        .then(() => {
+          if (!this.getError) {
+            this.$router.push({ name: 'Profiles' });
+          }
+        });
     },
+    ...mapActions(['signUserIn']),
   },
   computed: {
     ...mapGetters(['getError', 'getCreatedMessage']),

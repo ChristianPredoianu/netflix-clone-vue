@@ -1,24 +1,22 @@
 .body {
-  min-height: 100vh;
   background-color: $color-black;
 }
 
 .genres-container {
-  position: relative;
-  display: flex;
-  align-items: center;
+  @include flex-config($display: flex, $align: center);
   margin-left: 3rem;
 
   &__heading {
     font-size: 4rem;
     color: $color-white;
+    margin: 10rem 0 0 0;
   }
 }
 
 .select {
   background-color: transparent;
   color: $color-white;
-  margin-left: 3rem;
+  margin: 10rem 0 0 3rem;
   font-size: 2rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -26,7 +24,6 @@
 
   &__option {
     background-color: $color-black;
-    text-transform: capitalize;
   }
 }
 

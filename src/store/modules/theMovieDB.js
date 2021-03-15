@@ -6,7 +6,6 @@ export default {
     //the application.
     movieData: [
       {
-        showcaseMovie: null,
         popular: null,
         action: null,
         comedy: null,
@@ -38,19 +37,8 @@ export default {
   mutations: {
     setMovies(
       state,
-      {
-        showcase,
-        popular,
-        action,
-        comedy,
-        crime,
-        animation,
-        drama,
-        horror,
-        sciFi,
-      }
+      { popular, action, comedy, crime, animation, drama, horror, sciFi }
     ) {
-      state.movieData[0].showcaseMovie = showcase;
       state.movieData[0].popular = popular;
       state.movieData[0].action = action;
       state.movieData[0].comedy = comedy;
@@ -79,11 +67,6 @@ export default {
 
       Promise.all([
         axios
-          .get(
-            `${apiUrl}find/tt4667888?api_key=${apiKey}&language=en-US&external_source=imdb_id`
-          )
-          .then((response) => response.data.tv_results[0]),
-        axios
           .get(`${apiUrl}trending/movie/week?api_key=${apiKey}`)
           .then((response) => response.data.results),
 
@@ -98,7 +81,6 @@ export default {
 
         .then(
           ([
-            showcase,
             popular,
             action,
             comedy,
@@ -109,7 +91,6 @@ export default {
             sciFi,
           ]) => {
             commit('setMovies', {
-              showcase,
               popular,
               action,
               comedy,
