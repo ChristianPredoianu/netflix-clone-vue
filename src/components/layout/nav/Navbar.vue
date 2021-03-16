@@ -99,13 +99,19 @@
 </template>
 
 <script>
-import Logo from '../../ui/Logo';
+import Logo from '@/components/ui/Logo';
+import NavDropdown from '@/components/layout/nav/NavDropdown';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
-import NavDropdown from '../../layout/nav/NavDropdown';
-import firebase from 'firebase';
 
 export default {
+  components: {
+    Logo,
+    NavDropdown,
+  },
+
   data() {
     return {
       isSearchBarOpen: false,
@@ -115,10 +121,7 @@ export default {
       searchTerm: '',
     };
   },
-  components: {
-    Logo,
-    NavDropdown,
-  },
+
   methods: {
     goToBrowseWithSelectedProfile(userProfile) {
       this.setClickedProfile(userProfile);
@@ -148,6 +151,7 @@ export default {
       this.mobileView = window.innerWidth <= 900;
       console.log(window.innerWidth);
     },
+
     ...mapActions(['setClickedProfile', 'setUser']),
   },
 
@@ -162,6 +166,7 @@ export default {
 
     ...mapGetters(['getTheClickedProfile', 'getUserProfiles']),
   },
+
   created() {
     this.handleView();
     window.addEventListener('resize', this.handleView);

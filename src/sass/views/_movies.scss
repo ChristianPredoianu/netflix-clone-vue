@@ -38,13 +38,26 @@
 }
 
 .wrapper {
-  @include flex-config($display: flex, $wrap: wrap, $align: center);
+  @include flex-config(
+    $display: inline-flex,
+    $wrap: wrap,
+    $justify: center,
+    $align: center
+  );
   margin-top: 2rem;
 }
 
 .card {
   position: relative;
-  margin: 1rem 0 0 3rem;
+  margin: 0.6rem;
+
+  &__img {
+    min-height: 100%;
+
+    @include respond(phone) {
+      width: 10rem;
+    }
+  }
 }
 
 .overlay {
@@ -52,11 +65,11 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 99%;
   background-color: rgb(53, 53, 53, 0.9);
+  color: $color-white;
   opacity: 0;
   transition: 0.5s ease;
-  color: $color-white;
 
   &__img {
     width: 50%;
@@ -74,6 +87,10 @@
   width: 100%;
   margin-top: 6rem;
   font-size: 3rem;
+
+  @include respond(phone) {
+    margin-top: 1rem;
+  }
 }
 
 .left {
@@ -83,6 +100,10 @@
 
   &__icon {
     cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 1rem;
+    }
 
     &:not(:first-of-type) {
       margin-left: 1rem;
@@ -96,5 +117,9 @@
 
   &__icon {
     cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 1rem;
+    }
   }
 }

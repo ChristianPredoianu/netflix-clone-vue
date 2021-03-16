@@ -16,23 +16,28 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   methods: {
     goToSignup() {
       this.$router.push({ name: 'SignupStep1' });
     },
+
+    ...mapActions(['updateEmail']),
   },
+
   computed: {
-    ...mapGetters(['getEmail']),
     email: {
       get() {
         return this.$store.state.email;
       },
       set(email) {
-        this.$store.commit('updateEmail', email);
+        this.updateEmail(email);
       },
     },
+
+    ...mapGetters(['getEmail']),
   },
 };
 </script>

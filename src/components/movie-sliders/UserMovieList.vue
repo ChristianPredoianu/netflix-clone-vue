@@ -84,17 +84,17 @@
 </template>
 
 <script>
-import MovieModal from '../ui/MovieModal.vue';
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
-import 'swiper/dist/css/swiper.css';
+import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
-import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
-import MovieTrailerModal from '../ui/MovieTrailerModal';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import 'swiper/dist/css/swiper.css';
+import MovieModal from '@/components/ui/MovieModal.vue';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
 
 export default {
   mixins: [deleteMovieFromUserList],
-  name: 'userMovieList',
+
   props: {
     userMovieList: {
       type: Array,
@@ -102,10 +102,10 @@ export default {
   },
 
   components: {
-    MovieModal,
-    MovieTrailerModal,
     swiper,
     swiperSlide,
+    MovieModal,
+    MovieTrailerModal,
   },
 
   data() {

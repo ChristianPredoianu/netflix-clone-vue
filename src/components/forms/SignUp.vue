@@ -27,6 +27,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -34,6 +35,7 @@ export default {
       password: '',
     };
   },
+
   methods: {
     signUp() {
       this.signUserUp({
@@ -48,6 +50,7 @@ export default {
 
     ...mapActions(['signUserUp']),
   },
+
   computed: {
     ...mapGetters(['getError']),
   },

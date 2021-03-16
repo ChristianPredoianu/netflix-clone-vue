@@ -31,13 +31,13 @@
 
   &__btn {
     font-size: clamp(1.5rem, 2.5vw, 2rem);
-    padding: 2.3rem 2rem;
     background-color: $color-red;
-    text-transform: uppercase;
-    cursor: pointer;
     color: $color-white;
+    padding: 2.3rem 2rem;
+    text-transform: uppercase;
     outline: none;
     border: none;
+    cursor: pointer;
 
     @include respond(tab-port) {
       margin-top: 3rem;
@@ -47,11 +47,4 @@
       padding: 1rem;
     }
   }
-}
-
-.error {
-  color: rgb(255, 145, 0);
-  font-size: 2rem;
-  text-align: start;
-  margin-top: 1rem;
 }

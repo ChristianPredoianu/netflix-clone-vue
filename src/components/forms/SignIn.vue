@@ -22,7 +22,7 @@
       <input type="submit" value="Sign In" class="signin-form__btn" />
       <div class="sign-up-now">
         <p class="sign-up-now__paragraph">
-          New to Netflix?
+          New to Netclone?
           <router-link to="/"
             ><span class="sign-up-now__span"> Sign up now.</span></router-link
           >
@@ -44,6 +44,7 @@ export default {
       password: '',
     };
   },
+
   methods: {
     signIn() {
       this.$store
@@ -57,8 +58,10 @@ export default {
           }
         });
     },
+
     ...mapActions(['signUserIn']),
   },
+
   computed: {
     ...mapGetters(['getError', 'getCreatedMessage']),
   },

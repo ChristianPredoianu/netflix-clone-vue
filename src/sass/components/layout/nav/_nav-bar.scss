@@ -79,7 +79,11 @@
   right: 11rem;
 
   @include respond(phone) {
-    right: -1rem;
+    right: -4rem;
+  }
+
+  @include respond(fold) {
+    right: -7.5rem;
   }
 
   &__input {
@@ -91,7 +95,11 @@
     padding: 0.5rem;
 
     @include respond(phone) {
-      width: 50%;
+      width: 40%;
+    }
+
+    @include respond(fold) {
+      width: 26%;
     }
 
     &:focus {
@@ -103,13 +111,29 @@
 .modal {
   position: fixed;
   top: 10rem;
-  right: 1rem;
+  right: 0;
   width: 30rem;
   z-index: 500;
   font-size: 0.8rem;
   background-color: rgba(0, 0, 0, 0.9);
   color: $color-white;
   padding: 1rem 2rem 5rem 0;
+  overflow: visible;
+
+  @include respond(tab-port) {
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+
+  @include respond(phone) {
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+
+  @include respond(fold) {
+    width: 25rem;
+    right: 1.5rem;
+  }
 
   &__close-modal {
     position: absolute;

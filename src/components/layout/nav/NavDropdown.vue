@@ -27,7 +27,12 @@
 
 <script>
 import DropdownMenu from '@innologica/vue-dropdown-menu';
+
 export default {
+  components: {
+    DropdownMenu,
+  },
+
   data() {
     return {
       show: false,
@@ -36,9 +41,6 @@ export default {
       interactive: false,
       closeOnClickOutside: true,
     };
-  },
-  components: {
-    DropdownMenu,
   },
 };
 </script>

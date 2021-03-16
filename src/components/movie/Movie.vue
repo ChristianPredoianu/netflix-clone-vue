@@ -5,12 +5,7 @@
       v-if="isMovieTrailerModalOpen"
       @closeModal="isMovieTrailerModalOpen = false"
     />
-    <div
-      class="card"
-      v-for="movie in category"
-      :key="movie.id"
-      @click="openMovieDetailsModal(movie)"
-    >
+    <div class="card" v-for="movie in category" :key="movie.id">
       <img
         :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
         class="card__img"
@@ -59,13 +54,13 @@
 </template>
 
 <script>
+import MovieModal from '@/components/ui/MovieModal';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import isMovieInUserList from '@/mixins/isMovieInUserList';
+import addMovieToUserList from '@/mixins/addMovieToUserList';
+import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
-import MovieModal from '../ui/MovieModal';
-import isMovieInUserList from '../../mixins/isMovieInUserList';
-import addMovieToUserList from '../../mixins/addMovieToUserList';
-import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
-import MovieTrailerModal from '../ui/MovieTrailerModal';
 
 export default {
   mixins: [isMovieInUserList, addMovieToUserList, deleteMovieFromUserList],

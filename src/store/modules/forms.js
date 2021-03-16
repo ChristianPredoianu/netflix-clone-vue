@@ -39,6 +39,9 @@ export default {
   },
 
   actions: {
+    updateEmail({ commit }, payload) {
+      commit('updateEmail', payload);
+    },
     async signUserUp({ commit }, payload) {
       commit('resetError', null);
       await firebase

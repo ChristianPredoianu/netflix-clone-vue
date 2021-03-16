@@ -19,58 +19,34 @@
           />
           <div class="icon-container">
             <div class="left">
-              <div class="tooltip-remove">
-                <span class="tooltip-remove__text" v-if="isRemoveHovered"
-                  >Add to list</span
-                >
-              </div>
-
               <font-awesome-icon
-                title="play"
+                title="Play Movie"
                 :icon="['far', 'play-circle']"
                 class="left__icon left__icon--play"
                 @click="playMovie(movie)"
               />
 
               <font-awesome-icon
+                title="Add To List"
                 :icon="['far', 'check-circle']"
                 class="left__icon left__icon--check"
-                @mouseover="isRemoveHovered = true"
-                @mouseleave="isRemoveHovered = false"
                 @click="addToMovieList(movie)"
                 v-if="!isMovieInUserList(movie)"
               />
 
               <font-awesome-icon
-                title="Delete Movie"
+                title="Delete From List"
                 :icon="['far', 'times-circle']"
                 class="left__icon left__icon--check"
                 @click="deleteMovie(movie)"
                 v-else
               />
-
-              <font-awesome-icon
-                :icon="['far', 'thumbs-up']"
-                class="left__icon left__icon__up"
-                :class="{ 'icon-like': movie.active }"
-                @click="toggleActive(movie)"
-              />
-              <font-awesome-icon
-                :icon="['far', 'thumbs-down']"
-                class="left__icon left__down"
-              />
             </div>
             <div class="right">
-              <div class="tooltip-details">
-                <span class="tooltip-details__text" v-if="isDetailsHovered"
-                  >More info
-                </span>
-              </div>
               <font-awesome-icon
+                title="Movie Details"
                 :icon="['fas', 'arrow-circle-down']"
                 class="right__icon right__icon--arrow"
-                @mouseover="isDetailsHovered = true"
-                @mouseleave="isDetailsHovered = false"
                 @click="openMovieDetailsModal(movie)"
               />
             </div>
@@ -94,17 +70,19 @@
 </template>
 
 <script>
-import MovieModal from '../ui/MovieModal';
-import MovieTrailerModal from '../ui/MovieTrailerModal';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
+import MovieModal from '@/components/ui/MovieModal';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import isMovieInUserList from '@/mixins/isMovieInUserList';
+import addMovieToUserList from '@/mixins/addMovieToUserList';
+import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
-import isMovieInUserList from '../../mixins/isMovieInUserList';
-import addMovieToUserList from '../../mixins/addMovieToUserList';
-import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
+
 export default {
   mixins: [isMovieInUserList, addMovieToUserList, deleteMovieFromUserList],
+
   props: {
     category: {
       type: [Array, Function],
@@ -116,19 +94,19 @@ export default {
       type: Object,
     },
   },
+
   components: {
-    MovieModal,
-    MovieTrailerModal,
     swiper,
     swiperSlide,
+    MovieModal,
+    MovieTrailerModal,
   },
+
   data() {
     return {
-      isRemoveHovered: false,
-      isDetailsHovered: false,
-      isIconClicked: false,
       isModalOpen: false,
       isMovieTrailerModalOpen: false,
+
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 20,
@@ -136,6 +114,7 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+
         breakpoints: {
           1851: {
             slidesPerView: 5,
@@ -157,27 +136,28 @@ export default {
       },
     };
   },
+
   methods: {
     playMovie(selectedMovie) {
       this.isMovieTrailerModalOpen = true;
       this.fetchMovieTrailer(selectedMovie.id);
     },
     openMovieDetailsModal(selectedMovie) {
-      console.log(selectedMovie.id);
       this.isModalOpen = true;
       this.fetchMovieDetails(selectedMovie.id);
     },
-
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
+
     ...mapActions([
       'setUserMoviesListFromDB',
       'fetchMovieTrailer',
       'fetchMovieDetails',
     ]),
   },
+
   computed: {
     ...mapGetters([
       'getUserMoviesListFromDB',
