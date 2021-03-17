@@ -134,5 +134,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_movies.scss';
+@import '@/sass/views/_movies.scss';
 </style>

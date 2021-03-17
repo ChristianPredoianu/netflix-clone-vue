@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Logo from './Logo';
+import Logo from '@/components/layout/nav/Logo';
 
 export default {
   components: {
@@ -20,5 +20,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/ui/_nav-sign-up.scss';
+@import '@/sass/components/layout/nav/_nav-sign-up';
 </style>

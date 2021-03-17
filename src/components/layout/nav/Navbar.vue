@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import Logo from '@/components/ui/Logo';
+import Logo from '@/components/layout/nav/Logo';
 import NavDropdown from '@/components/layout/nav/NavDropdown';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -142,9 +142,6 @@ export default {
         .then(() => {
           this.$router.push({ path: '/signin' });
           this.setUser(null);
-        })
-        .catch((error) => {
-          console.log(error.message);
         });
     },
     handleView() {
@@ -174,5 +171,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../sass/components/layout/nav/_nav-bar.scss';
+@import '@/sass/components/layout/nav/_nav-bar';
 </style>

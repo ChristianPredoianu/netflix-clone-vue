@@ -46,5 +46,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../sass/components/layout/nav/_nav-dropdown.scss';
+@import '@/sass/components/layout/nav/_nav-dropdown.scss';
 </style>

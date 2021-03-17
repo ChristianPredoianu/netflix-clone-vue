@@ -66,7 +66,7 @@
       <div class="video-container">
         <video class="video" ref="video" muted autoplay @ended="isVideoPaused">
           <source
-            src="../assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
+            src="@/assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
             type="video/mp4"
           />
         </video>
@@ -211,11 +211,11 @@
 </template>
 
 <script>
-import NavBar from '../components/layout/nav/Navbar';
+import NavBar from '@/components/layout/nav/Navbar';
 import UserMovieList from '@/components/movie-sliders/UserMovieList';
 import MovieSlider from '@/components/movie-sliders/MovieSlider';
-import MovieModal from '@/components/ui/MovieModal';
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieModal from '@/components/movie-modals/MovieModal';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
@@ -253,7 +253,6 @@ export default {
           )
         );
       }
-
       return found;
     },
     setSearchTerm(value) {
@@ -310,5 +309,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_browse.scss';
+@import '@/sass/views/_browse.scss';
 </style>

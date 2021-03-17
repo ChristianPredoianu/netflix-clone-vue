@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
@@ -118,5 +118,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/ui/_movie-modal.scss';
+@import '@/sass/components/movie-modals/_movie-modal';
 </style>

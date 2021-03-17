@@ -40,5 +40,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/ui/_movie-trailer-modal.scss';
+@import '@/sass/components/movie-modals/_movie-trailer-modal.scss';
 </style>

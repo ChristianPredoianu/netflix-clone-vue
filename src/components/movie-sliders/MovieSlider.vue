@@ -68,8 +68,8 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
-import MovieModal from '@/components/ui/MovieModal';
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieModal from '@/components/movie-modals/MovieModal';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import isMovieInUserList from '@/mixins/isMovieInUserList';
 import addMovieToUserList from '@/mixins/addMovieToUserList';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';

@@ -1,10 +1,7 @@
 <template>
   <div>
     <router-link :to="getUser ? '/browse' : '/'">
-      <img
-        src="../../assets/images/netclone.png"
-        alt="Netflix logo"
-        class="logo"
+      <img src="@/assets/images/netclone.png" alt="Netflix logo" class="logo"
     /></router-link>
   </div>
 </template>
@@ -20,5 +17,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/ui/_logo.scss';
+@import '@/sass/components/layout/nav/_logo';
 </style>

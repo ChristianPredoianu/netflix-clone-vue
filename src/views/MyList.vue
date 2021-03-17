@@ -58,8 +58,8 @@
 
 <script>
 import NavBar from '@/components/layout/nav/Navbar';
-import MovieModal from '@/components/ui/MovieModal';
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieModal from '@/components/movie-modals/MovieModal';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
@@ -110,5 +110,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_my-list.scss';
+@import '@/sass/views/_my-list.scss';
 </style>

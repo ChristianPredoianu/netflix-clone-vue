@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import MovieModal from '@/components/ui/MovieModal';
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieModal from '@/components/movie-modals/MovieModal';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import isMovieInUserList from '@/mixins/isMovieInUserList';
 import addMovieToUserList from '@/mixins/addMovieToUserList';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
@@ -76,6 +76,7 @@ export default {
   props: {
     movie: {
       type: [Object],
+      required: true,
     },
   },
 
@@ -109,6 +110,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/movie/_movie.scss';
-@import '../../sass/components/_overlay.scss';
+@import '@/sass/components/movie/_movie.scss';
+@import '@/sass/components/_overlay.scss';
 </style>

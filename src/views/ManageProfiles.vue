@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import Logo from '@/components/ui/Logo';
+import Logo from '@/components/layout/nav/Logo';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import { mapGetters } from 'vuex';
@@ -136,5 +136,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_profiles.scss';
+@import '@/sass/views/_profiles.scss';
 </style>

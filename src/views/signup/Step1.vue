@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import NavSignUp from '../../components/ui/NavSignUp';
+import NavSignUp from '@/components/layout/nav/NavSignUp';
 
 export default {
   components: {
@@ -52,5 +52,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/signup/step1';
+@import '@/sass/views/signup/_step1';
 </style>

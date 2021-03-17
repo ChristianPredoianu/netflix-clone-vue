@@ -59,8 +59,8 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
-import MovieModal from '@/components/ui/MovieModal.vue';
-import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import MovieModal from '@/components/movie-modals/MovieModal.vue';
+import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';

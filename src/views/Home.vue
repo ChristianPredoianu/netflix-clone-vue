@@ -32,14 +32,14 @@
 
       <div class="img-container">
         <img
-          src="../assets/images/tv2.png"
+          src="@/assets/images/tv2.png"
           alt="tv"
           class="img-container__img"
         />
         <div class="img-container__video-container">
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
-            src="../assets/videos/video1.mp4"
+            src="@/assets/videos/video1.mp4"
             playsinline
             muted
             loop
@@ -51,18 +51,18 @@
     <section class="section-download">
       <div class="phone-container">
         <img
-          src="../assets/images/phone.png"
+          src="@/assets/images/phone.png"
           alt="phone"
           class="phone-container__img"
         />
         <img
-          src="../assets/images/netflix-phone.jpg"
+          src="@/assets/images/netflix-phone.jpg"
           alt="netflix phone"
           class="phone-container__inner-img"
         />
         <div class="phone-overlay">
           <img
-            src="../assets/images/stranger-things.jpg"
+            src="@/assets/images/stranger-things.jpg"
             alt="stranger things"
             class="phone-overlay__img"
           />
@@ -91,19 +91,19 @@
       </div>
       <div class="img-wrapper">
         <img
-          src="../assets/images/imac.png"
+          src="@/assets/images/imac.png"
           alt="tv"
           class="img-wrapper__img-imac"
         />
         <img
-          src="../assets/images/iphone-netflix.png"
+          src="@/assets/images/iphone-netflix.png"
           alt="tv"
           class="img-wrapper__img-iphone"
         />
         <div class="img-wrapper__video-container">
           <!-- https://www.freepnglogos.com/pics/tv -->
           <video
-            src="../assets/videos/video2.mp4"
+            src="@/assets/videos/video2.mp4"
             playsinline
             muted
             loop
@@ -125,9 +125,9 @@
 </template>
 
 <script>
-import Logo from '../components/ui/Logo';
-import GetStarted from '../components/forms/GetStarted';
-import Accordion from '../components/ui/Accordion';
+import Logo from '@/components/layout/nav/Logo';
+import GetStarted from '@/components/forms/GetStarted';
+import Accordion from '@/components/ui/Accordion';
 
 export default {
   components: {
@@ -139,5 +139,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/home';
+@import '@/sass/views/_home';
 </style>

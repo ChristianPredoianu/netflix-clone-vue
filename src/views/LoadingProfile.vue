@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Logo from '../components/ui/Logo';
+import Logo from '@/components/layout/nav/Logo';
 
 export default {
   components: {
@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../sass/views/_loading-profile.scss';
+@import '@/sass/views/_loading-profile.scss';
 </style>

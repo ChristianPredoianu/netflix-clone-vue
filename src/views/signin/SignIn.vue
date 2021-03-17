@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Logo from '../../components/ui/Logo';
-import SignIn from '../../components/forms/SignIn';
+import Logo from '@/components/layout/nav/Logo';
+import SignIn from '@/components/forms/SignIn';
 
 export default {
   components: {

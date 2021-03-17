@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import NavSignUp from '../../components/ui/NavSignUp';
-import SignUp from '../../components/forms/SignUp';
+import NavSignUp from '@/components/layout/nav/NavSignUp';
+import SignUp from '@/components/forms/SignUp';
 import { mapGetters } from 'vuex';
 export default {
   components: {
@@ -49,5 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/signup/step2';
+@import '@/sass/views/signup/_step2';
 </style>

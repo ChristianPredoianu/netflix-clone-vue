@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/components/forms/_get-started.scss';
+@import '@/sass/components/forms/_get-started';
 </style>
