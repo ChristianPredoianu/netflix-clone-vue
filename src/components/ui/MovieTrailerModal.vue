@@ -2,14 +2,12 @@
   <div>
     <div class="overlay" @click.self="closeModal">
       <div class="modal">
-        <div class="modal-preview">
+        <div class="yt-player-container">
           <font-awesome-icon
             :icon="['fas', 'times']"
-            class="modal-preview__close"
+            class="yt-player-container__close"
             @click="closeModal"
           />
-        </div>
-        <div class="yt-player-container">
           <iframe
             class="yt-player-container__yt-player"
             type="text/html"
@@ -27,17 +25,16 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
   methods: {
     closeModal() {
       this.$emit('closeModal');
     },
   },
+
   computed: {
     ...mapGetters(['getMovieTrailer']),
-  },
-  created() {
-    console.log(this.$store.state.theMovieDB.movieTrailer);
   },
 };
 </script>

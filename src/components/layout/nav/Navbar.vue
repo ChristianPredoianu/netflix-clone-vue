@@ -149,7 +149,6 @@ export default {
     },
     handleView() {
       this.mobileView = window.innerWidth <= 900;
-      console.log(window.innerWidth);
     },
 
     ...mapActions(['setClickedProfile', 'setUser']),

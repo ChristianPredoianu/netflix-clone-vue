@@ -1,4 +1,5 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 export default {
   state: {
@@ -51,7 +52,6 @@ export default {
           const newUser = {
             email: user.user.email,
           };
-          console.log(newUser);
           commit('setUser', newUser);
         })
         .catch((error) => {

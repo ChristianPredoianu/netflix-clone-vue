@@ -77,8 +77,9 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import Logo from '../components/ui/Logo';
+import Logo from '@/components/ui/Logo';
+import firebase from 'firebase/app';
+import 'firebase/database';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -101,6 +102,7 @@ export default {
   components: {
     Logo,
   },
+
   methods: {
     updateIcon(icon) {
       this.isEditImg = false;
@@ -112,11 +114,9 @@ export default {
       this.isEditProfile = true;
       this.clickedProfile = selectedProfile;
       this.newName = selectedProfile.name;
-      console.log(this.clickedProfile);
     },
     updateProfile() {
       this.clickedProfile.name = this.newName;
-      console.log(this.clickedProfile);
       firebase
         .database()
         .ref(`users/${this.getCurrentUser.id}`)
@@ -128,6 +128,7 @@ export default {
       this.$router.push({ name: 'Profiles' });
     },
   },
+
   computed: {
     ...mapGetters(['getUserProfiles', 'getCurrentUser']),
   },

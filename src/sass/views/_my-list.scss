@@ -15,13 +15,30 @@
 }
 
 .card-container {
-  @include flex-config($display: flex, $wrap: wrap, $align: center);
+  @include flex-config(
+    $display: inline-flex,
+    $wrap: wrap,
+    $align: center,
+    $justify: center
+  );
   margin-top: 2rem;
 }
 
 .card {
   position: relative;
-  margin-top: 1rem;
+  margin: 0.6rem;
+
+  &__img {
+    min-height: 100%;
+
+    @include respond(tab-land) {
+      width: 20rem;
+    }
+
+    @include respond(phone) {
+      width: 10rem;
+    }
+  }
 
   &:not(:first-of-type) {
     margin-left: 2rem;

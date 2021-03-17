@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
+
 export default {
   methods: {
     addToMovieList(movie) {
@@ -12,9 +14,7 @@ export default {
         .orderByChild('id')
         .equalTo(movie.id)
         .once('value', (snapshot) => {
-          if (snapshot.exists()) {
-            console.log('exists');
-          } else {
+          if (!snapshot.exists()) {
             firebase
               .database()
               .ref(databaseRef)

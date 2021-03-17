@@ -130,7 +130,6 @@ import GetStarted from '../components/forms/GetStarted';
 import Accordion from '../components/ui/Accordion';
 
 export default {
-  name: 'Home',
   components: {
     Logo,
     GetStarted,

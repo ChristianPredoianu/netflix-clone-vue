@@ -19,11 +19,6 @@
           />
           <div class="icon-container">
             <div class="left">
-              <div class="tooltip-remove">
-                <span class="tooltip-remove__text" v-if="isRemoveHovered"
-                  >Add to list</span
-                >
-              </div>
               <font-awesome-icon
                 title="Play Movie"
                 :icon="['far', 'play-circle']"
@@ -32,35 +27,17 @@
               />
 
               <font-awesome-icon
+                title="Delete Movie"
                 :icon="['far', 'times-circle']"
                 class="left__icon left__icon--check"
-                @mouseover="isRemoveHovered = true"
-                @mouseleave="isRemoveHovered = false"
                 @click="deleteMovie(movie)"
-              />
-
-              <font-awesome-icon
-                :icon="['far', 'thumbs-up']"
-                class="left__icon left__icon__up"
-                :class="{ 'icon-like': movie.active }"
-                @click="toggleActive(movie)"
-              />
-              <font-awesome-icon
-                :icon="['far', 'thumbs-down']"
-                class="left__icon left__down"
               />
             </div>
             <div class="right">
-              <div class="tooltip-details">
-                <span class="tooltip-details__text" v-if="isDetailsHovered"
-                  >More info
-                </span>
-              </div>
               <font-awesome-icon
+                title="Movie Details"
                 :icon="['fas', 'arrow-circle-down']"
                 class="right__icon right__icon--arrow"
-                @mouseover="isDetailsHovered = true"
-                @mouseleave="isDetailsHovered = false"
                 @click="openMovieDetailsModal(movie)"
               />
             </div>
@@ -84,13 +61,13 @@
 </template>
 
 <script>
-import deleteMovieFromUserList from '../../mixins/deleteMovieFromUserList';
-import { mapGetters } from 'vuex';
-import { mapActions } from 'vuex';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
 import MovieModal from '@/components/ui/MovieModal.vue';
 import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   mixins: [deleteMovieFromUserList],
@@ -110,12 +87,8 @@ export default {
 
   data() {
     return {
-      isRemoveHovered: false,
-      isDetailsHovered: false,
-      isIconClicked: false,
       isModalOpen: false,
       isMovieTrailerModalOpen: false,
-      items: [],
 
       swiperOption: {
         slidesPerView: 6,
@@ -125,6 +98,7 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+
         breakpoints: {
           1851: {
             slidesPerView: 5,
@@ -146,6 +120,7 @@ export default {
       },
     };
   },
+
   methods: {
     openMovieDetailsModal(selectedMovie) {
       console.log(selectedMovie.id);
@@ -160,12 +135,14 @@ export default {
       popularMovie.active = !popularMovie.active;
       console.log(popularMovie);
     },
+
     ...mapActions([
       'setUserMoviesListFromDB',
       'fetchMovieDetails',
       'fetchMovieTrailer',
     ]),
   },
+
   computed: {
     ...mapGetters([
       'getUserMoviesListFromDB',
@@ -178,4 +155,22 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/components/movie-slider/_movie-slider.scss';
+.swiper-button-next {
+  @include respond(phone) {
+    top: 5rem;
+  }
+
+  @include respond(fold) {
+    top: 3rem;
+  }
+}
+.swiper-button-prev {
+  @include respond(phone) {
+    top: 5rem;
+  }
+
+  @include respond(fold) {
+    top: 3rem;
+  }
+}
 </style>

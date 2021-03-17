@@ -170,4 +170,22 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/components/movie-slider/_movie-slider.scss';
+.swiper-button-next {
+  @include respond(phone) {
+    top: 5rem;
+  }
+
+  @include respond(fold) {
+    top: 3rem;
+  }
+}
+.swiper-button-prev {
+  @include respond(phone) {
+    top: 5rem;
+  }
+
+  @include respond(fold) {
+    top: 3rem;
+  }
+}
 </style>

@@ -7,7 +7,7 @@
 }
 
 .movie-container {
-  margin: 20rem 0 0 4rem;
+  margin: 28rem 0 0 4rem;
   width: 50%;
   z-index: 20;
   color: $color-white;
@@ -121,7 +121,7 @@
 .sliders-section {
   position: relative;
   background-color: rgb(43, 42, 42);
-  padding: 0 4rem;
+  padding: 0 4rem 10rem 4rem;
 }
 
 .slider-container {
@@ -137,6 +137,10 @@
   &__my-list {
     margin-bottom: 2rem;
     color: $color-white;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__category {

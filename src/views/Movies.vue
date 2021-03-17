@@ -38,10 +38,9 @@
 </template>
 
 <script>
-import NavBar from '../components/layout/nav/Navbar';
+import NavBar from '@/components/layout/nav/Navbar';
 import DropdownMenu from '@innologica/vue-dropdown-menu';
-import Movie from '../components/movie/Movie';
-
+import Movie from '@/components/movie/Movie';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -50,6 +49,7 @@ export default {
     DropdownMenu,
     Movie,
   },
+
   data() {
     return {
       isModalOpen: false,
@@ -58,10 +58,12 @@ export default {
       searchTerm: '',
     };
   },
+
   methods: {
     setSearchTerm(value) {
       this.searchTerm = value;
     },
+    //Search for movie - allow lowercase letters
     searchMovie(category) {
       let found;
       if (this.searchTerm !== '') {
@@ -89,7 +91,9 @@ export default {
       }
     },
   },
+
   computed: {
+    //Restructure movie data to be able to show all movies
     restructureMovieData() {
       let moviesArr = [];
       const arr = Object.values(this.getMovieData[0]);

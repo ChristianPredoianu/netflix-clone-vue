@@ -9,10 +9,12 @@
 
 <script>
 import Logo from '../components/ui/Logo';
+
 export default {
   components: {
     Logo,
   },
+
   created() {
     setTimeout(() => {
       this.$router.push({ path: '/browse' });

@@ -16,9 +16,10 @@
 </template>
 
 <script>
-import NavBar from '../components/layout/nav/Navbar';
-import MovieSlider from '../components/movie-sliders/MovieSlider';
+import NavBar from '@/components/layout/nav/Navbar';
+import MovieSlider from '@/components/movie-sliders/MovieSlider';
 import { mapGetters } from 'vuex';
+
 export default {
   components: {
     NavBar,

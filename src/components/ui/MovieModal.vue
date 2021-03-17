@@ -27,10 +27,11 @@
             alt="movie preview poster"
             class="modal-preview__img"
           />
-          <h1 class="modal-preview__movie-title">
-            {{ getMovieDetails.original_title }}
-          </h1>
+
           <div class="modal-cta">
+            <h1 class="modal-cta__movie-title">
+              {{ getMovieDetails.original_title }}
+            </h1>
             <button
               class="modal-cta__btn"
               @click="playMovie(getMovieDetails.id)"
@@ -76,9 +77,10 @@
 </template>
 
 <script>
-import MovieTrailerModal from '../ui/MovieTrailerModal';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
+
 export default {
   components: {
     MovieTrailerModal,
@@ -103,6 +105,7 @@ export default {
   },
 
   computed: {
+    //Convert date to full year
     releaseDateToFullYear() {
       const dateObj = new Date(this.getMovieDetails.release_date);
       const year = dateObj.getUTCFullYear();

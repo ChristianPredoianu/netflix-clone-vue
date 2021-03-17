@@ -232,14 +232,14 @@
 
 <script>
 import NavBar from '../components/layout/nav/Navbar';
-import MovieTrailerModal from '../components/ui/MovieTrailerModal';
-import MovieModal from '../components/ui/MovieModal';
-import UserMovieList from '../components/movie-sliders/UserMovieList';
-import MovieSlider from '../components/movie-sliders/MovieSlider';
+import UserMovieList from '@/components/movie-sliders/UserMovieList';
+import MovieSlider from '@/components/movie-sliders/MovieSlider';
+import MovieModal from '@/components/ui/MovieModal';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
+
 export default {
-  name: 'Browse',
   data() {
     return {
       isMuted: true,
@@ -249,14 +249,17 @@ export default {
       searchTerm: '',
     };
   },
+
   components: {
     NavBar,
-    MovieTrailerModal,
-    MovieModal,
     UserMovieList,
     MovieSlider,
+    MovieModal,
+    MovieTrailerModal,
   },
+
   methods: {
+    //Search movie with search term - allow to search with lowercase letters
     searchMovie(category) {
       let found;
       if (this.searchTerm !== '' && category !== undefined) {
@@ -320,9 +323,8 @@ export default {
     //we can just check to see if one of the array is not empty for lazy loading
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
-    /*  if (this.getMovieData[0].showcaseMovie.length === 0) */ this.fetchMovieData();
+    if (this.getMovieData[0].action === 0) this.fetchMovieData();
     this.setUserMoviesListFromDB();
-    console.log(this.getMovieData);
   },
 };
 </script>

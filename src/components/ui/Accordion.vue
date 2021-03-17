@@ -32,32 +32,32 @@ export default {
     return {
       faqs: [
         {
-          heading: 'What is Netflix',
-          content: `Netflix is a streaming service that offers a wide variety of award-winning TV programmes, films, anime, documentaries 
+          heading: 'What is Netclone',
+          content: `Netclone is a streaming service that offers a wide variety of award-winning TV programmes, films, anime, documentaries 
           and more – on thousands of internet-connected devices.You can watch as much as you want, whenever you want, without a single advert
            – all for one low monthly price. There's always something new to discover, and new TV programmes and films are added every week! `,
         },
         {
-          heading: 'How much does Netflix cost',
-          content: `Watch Netflix on your smartphone, tablet, smart TV, laptop or streaming device, all for one fixed monthly fee.
-          Plans range from 89 kr to 159 kr a month. No extra costs, no contracts.`,
+          heading: 'How much does Netclone cost',
+          content: `Watch Netclone on your smartphone, tablet, smart TV, laptop or streaming device, all for one fixed monthly fee.
+          Plans range from 9$ to 159$ a month. No extra costs, no contracts.`,
         },
         {
           heading: 'Where can I watch?',
-          content: `Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netflix account to watch instantly on the
-          web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app,
+          content: `Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netclone account to watch instantly on the
+          web at netclone.dd.app from your personal computer or on any internet-connected device that offers the Netclone app,
           including smart TVs, smartphones, tablets, streaming media players and game consoles.
           You can also download your favourite programmes with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on
-          the go and without an internet connection. Take Netflix with you anywhere.`,
+          the go and without an internet connection. Take Netclone with you anywhere.`,
         },
         {
           heading: 'How do I cancel?',
-          content: `Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks.
+          content: `Netclone is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks.
           There are no cancellation fees – start or stop your account at any time.`,
         },
         {
-          heading: 'What can I watch on Netflix?',
-          content: `Netflix has an extensive library of feature films, documentaries, TV programmes, anime, award-winning Netflix originals, and more.
+          heading: 'What can I watch on Netclone?',
+          content: `Netclone has an extensive library of feature films, documentaries, anime, award-winning Netclone originals, and more.
           Watch as much as you want, any time you want.`,
         },
       ],

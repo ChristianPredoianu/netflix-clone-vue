@@ -54,6 +54,10 @@
   &__img {
     min-height: 100%;
 
+    @include respond(tab-land) {
+      width: 20rem;
+    }
+
     @include respond(phone) {
       width: 10rem;
     }

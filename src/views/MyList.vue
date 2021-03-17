@@ -16,7 +16,10 @@
           v-for="movie in getUserMoviesListFromDB"
           :key="movie.id"
         >
-          <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`" />
+          <img
+            class="card__img"
+            :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+          />
           <div class="overlay">
             <img
               :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
@@ -54,10 +57,10 @@
 </template>
 
 <script>
-import NavBar from '../components/layout/nav/Navbar';
-import MovieModal from '../components/ui/MovieModal';
-import MovieTrailerModal from '../components/ui/MovieTrailerModal';
-import deleteMovieFromUserList from '../mixins/deleteMovieFromUserList';
+import NavBar from '@/components/layout/nav/Navbar';
+import MovieModal from '@/components/ui/MovieModal';
+import MovieTrailerModal from '@/components/ui/MovieTrailerModal';
+import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 

@@ -1,3 +1,6 @@
+//Flexbox - Config
+//-------------------------------------------------------------------
+
 @mixin flex-config(
   $display: false,
   $wrap: false,
@@ -26,6 +29,11 @@
   }
 }
 
+//-------------------------------------------------------------------//
+
+// _home.scss
+//-------------------------------------------------------------------
+
 @mixin netflix-border {
   border-bottom: 1rem solid $color-gray-dark;
 }
@@ -40,6 +48,10 @@
   border-bottom: 1rem solid $color-gray-dark;
 }
 
+//-------------------------------------------------------------------//
+
+// Forms mixins signup - signin
+//-------------------------------------------------------------------
 @mixin signup-info {
   &__span {
     font-weight: 600;
@@ -72,12 +84,18 @@
     outline: none;
   }
 }
+//-------------------------------------------------------------------//
+
+//Card - Overlay mixins
+//-------------------------------------------------------------------
+
+//-------------------------------------------------------------------//
 
 // MEDIA QUERY MANAGER
 /*
 0-300px       Fold
-0-650px:      Phone
-650-900px:    Tablet: Portrait
+0-600px:      Phone
+600-900px:    Tablet: Portrait
 900-1200px:   Tablet Landscape
 [1200-1800px] Is where the normal styles apply
 1800px + :    Big Desktop
@@ -88,7 +106,7 @@ $breakpoint argument choices
 - tab-land
 - big-desktop
 1 em = 16 px;
-650px/16px = 40.625em;
+600px/16px = 37.5em;
 */
 
 @mixin respond($breakpoint) {
@@ -100,7 +118,7 @@ $breakpoint argument choices
   }
 
   @if $breakpoint == phone {
-    @media (max-width: 40.625em) {
+    @media (max-width: 37.5em) {
       //650px
       @content;
     }

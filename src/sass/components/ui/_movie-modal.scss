@@ -11,11 +11,10 @@
 }
 
 .modal {
-  position: relative;
-  z-index: 200;
+  z-index: 998;
   color: $color-white;
   width: 60%;
-  height: 90%;
+  height: 75%;
   overflow: auto;
   margin: 0 auto;
   background-color: $color-gray-dark;
@@ -26,8 +25,17 @@
   -ms-overflow-style: none;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
+  @include respond(tab-land) {
+    margin-top: 6rem;
+  }
+
+  @include respond(tab-port) {
+    margin-top: 14rem;
+  }
+
   @include respond(phone) {
-    width: 97%;
+    width: 95%;
+    margin-top: 8rem;
   }
 
   &::-webkit-scrollbar {
@@ -37,7 +45,6 @@
 
 .modal-preview {
   position: relative;
-
   &__img {
     width: 100%;
   }
@@ -49,24 +56,18 @@
     font-size: 2rem;
     cursor: pointer;
   }
-
-  &__movie-title {
-    position: absolute;
-    bottom: 15rem;
-    left: 4rem;
-    font-size: clamp(1.5rem, 2vw, 3rem);
-
-    @include respond(phone) {
-      bottom: 11rem;
-    }
-  }
 }
 
 .modal-cta {
-  @include flex-config($display: flex, $align: center);
+  @include flex-config($display: flex, $direction: column);
   position: absolute;
-  bottom: 6rem;
+  bottom: 10%;
   left: 4rem;
+
+  &__movie-title {
+    font-size: clamp(1.5rem, 2vw, 3rem);
+    margin-bottom: 1rem;
+  }
 
   &__btn {
     font-size: clamp(1.5rem, 2vw, 2.5rem);
@@ -87,11 +88,6 @@
   &__play-icon {
     margin-right: 2rem;
   }
-
-  &__remove {
-    font-size: 5rem;
-    margin-left: 2rem;
-  }
 }
 
 .modal-info {
@@ -103,28 +99,39 @@
   width: 40%;
   margin-left: 4rem;
 
+  @include respond(phone) {
+    margin-left: 2rem;
+  }
+
   &__release-year {
     font-size: 3rem;
     padding: 1rem 0;
   }
 
   &__overview {
-    padding: 1rem 0;
     font-size: 1.5rem;
+    color: #cccccc;
+    padding: 1rem 0;
   }
 }
 
 .info-col-right {
   margin-right: 6rem;
 
+  @include respond(phone) {
+    margin-right: 2rem;
+  }
+
   &__desc {
-    padding: 0.5rem 0;
-    font-weight: 700;
-    color: #c7c7c7;
     font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 1rem;
+    padding: 0.5rem 0;
   }
 
   &__paragraph {
     font-size: 1.3rem;
+    color: #cccccc;
   }
 }
