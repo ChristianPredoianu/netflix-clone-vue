@@ -1,14 +1,20 @@
 .body {
   min-height: 100vh;
   background-color: $color-black;
+  padding-bottom: 5rem;
 }
 
 .popular-movies {
-  @include flex-config($display: flex, $direction: column);
-  margin-left: 3rem;
+  @include flex-config($display: flex, $align: center);
+  margin-left: 3.5rem;
+
+  @include respond(tab-land) {
+    justify-content: center;
+    margin: 0;
+  }
 
   &__heading {
-    font-size: 4rem;
+    font-size: clamp(2rem, 2vw, 4rem);
     color: $color-white;
     margin: 10rem 0 0 0;
   }

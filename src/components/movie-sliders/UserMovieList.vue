@@ -13,10 +13,6 @@
           class="swiper-slide__img"
         />
         <div class="overlay">
-          <img
-            :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-            class="overlay__img"
-          />
           <div class="icon-container">
             <div class="left">
               <font-awesome-icon
@@ -155,6 +151,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/components/movie-slider/_movie-slider.scss';
+@import '../../sass/components/_overlay.scss';
 .swiper-button-next {
   @include respond(phone) {
     top: 5rem;

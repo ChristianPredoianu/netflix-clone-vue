@@ -18,18 +18,30 @@
       </section>
 
       <section class="movies-list">
-        <div class="card-container" v-if="genres === 'All Genres'">
+        <div
+          class="card-container"
+          v-if="!searchTerm && genres === 'All Genres'"
+        >
           <Movie
-            :category="
-              !searchTerm ? removeDuplicateMovies : searchMovie(genres)
-            "
+            v-for="movie in removeDuplicateMovies"
+            :key="movie.id"
+            :movie="movie"
           />
         </div>
+
+        <div class="card-container" v-if="!searchTerm">
+          <Movie
+            v-for="movie in this.getMovieData[0][genres]"
+            :key="movie.id"
+            :movie="movie"
+          />
+        </div>
+
         <div class="card-container" v-else>
           <Movie
-            :category="
-              !searchTerm ? this.getMovieData[0][genres] : searchMovie(genres)
-            "
+            v-for="movie in this.searchMovie(genres)"
+            :key="movie.id"
+            :movie="movie"
           />
         </div>
       </section>
@@ -63,32 +75,28 @@ export default {
     setSearchTerm(value) {
       this.searchTerm = value;
     },
-    //Search for movie - allow lowercase letters
+
+    //Search for movie
     searchMovie(category) {
-      let found;
-      if (this.searchTerm !== '') {
-        found = this.removeDuplicateMovies.filter((element) =>
-          element.original_title.includes(
-            this.searchTerm
-              .toLowerCase()
-              .split(' ')
-              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-              .join(' ')
-          )
-        );
-        return found;
+      if (this.searchTerm !== '' && category === 'All Genres') {
+        return this.findMovie(this.removeDuplicateMovies);
       } else if (this.searchTerm !== '' && category === this.genres) {
-        found = this.getMovieData[0][category].filter((element) =>
-          element.original_title.includes(
-            this.searchTerm
-              .toLowerCase()
-              .split(' ')
-              .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-              .join(' ')
-          )
-        );
-        return found;
+        return this.findMovie(this.getMovieData[0][category]);
       }
+    },
+
+    //Find movie - allow lowercase letters
+    findMovie(moviesObj) {
+      let found = moviesObj.filter((element) =>
+        element.original_title.includes(
+          this.searchTerm
+            .toLowerCase()
+            .split(' ')
+            .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(' ')
+        )
+      );
+      return found;
     },
   },
 
@@ -121,7 +129,6 @@ export default {
 
   created() {
     this.restructureMovieData;
-    this.filterGenres;
   },
 };
 </script>

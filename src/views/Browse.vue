@@ -17,19 +17,23 @@
         <p class="movie-container__paragraph">
           {{ getMovieData[0].horror[0].overview }}
         </p>
-        <button class="movie-container__btn movie-container__btn--play">
+        <button
+          class="movie-container__btn movie-container__btn--play"
+          @click="playShowcaseMovie"
+        >
           <font-awesome-icon
             :icon="['fas', 'play']"
             class="movie-container__icon movie-container__icon--play"
-            @click="playShowcaseMovie"
           />
           Play
         </button>
-        <button class="movie-container__btn movie-container__btn--info ">
+        <button
+          class="movie-container__btn movie-container__btn--info "
+          @click="openMovieDetailsModal"
+        >
           <font-awesome-icon
             :icon="['fas', 'info-circle']"
             class="movie-container__icon movie-container__icon--info"
-            @click="openMovieDetailsModal"
           />
           More info
         </button>
@@ -83,10 +87,7 @@
         <!-- Popular Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('popular') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('popular') === undefined"
         >
           Popular Movies
         </h2>
@@ -102,10 +103,7 @@
         <!-- Comedy Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('comedy') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('comedy') === undefined"
         >
           Comedy Movies
         </h2>
@@ -121,10 +119,7 @@
         <!-- Crime Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('crime') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('crime') === undefined"
         >
           Crime Movies
         </h2>
@@ -138,10 +133,7 @@
         <!-- Action Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('action') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('action') === undefined"
         >
           Action Movies
         </h2>
@@ -157,10 +149,7 @@
         <!-- Animated Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('animation') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('animation') === undefined"
         >
           Animated Movies
         </h2>
@@ -176,10 +165,7 @@
         <!-- Drama Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('drama') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('drama') === undefined"
         >
           Drama Movies
         </h2>
@@ -193,10 +179,7 @@
         <!-- Horror Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('horror') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('horror') === undefined"
         >
           Horror Movies
         </h2>
@@ -212,10 +195,7 @@
         <!-- SciFI Movies -->
         <h2
           class="slider-container__my-list"
-          v-if="
-            searchMovie('sciFi') === undefined ||
-              searchMovie('popular').length === 0
-          "
+          v-if="searchMovie('sciFi') === undefined"
         >
           SciFi Movies
         </h2>

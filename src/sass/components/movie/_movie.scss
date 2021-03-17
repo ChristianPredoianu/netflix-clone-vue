@@ -1,0 +1,19 @@
+.wrapper {
+  @include flex-config($display: inline-flex);
+  margin-top: 2rem;
+}
+
+.card {
+  position: relative;
+  margin: 0.6rem;
+
+  &__img {
+    @include respond(tab-land) {
+      width: 20rem;
+    }
+
+    @include respond(phone) {
+      width: 10rem;
+    }
+  }
+}

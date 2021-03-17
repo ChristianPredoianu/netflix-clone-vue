@@ -8,8 +8,13 @@
   margin-left: 3rem;
   color: $color-white;
 
+  @include respond(tab-land) {
+    align-items: center;
+    margin: 0;
+  }
+
   &__heading {
-    font-size: 4rem;
+    font-size: clamp(2rem, 2vw, 4rem);
     margin-top: 10rem;
   }
 }

@@ -13,10 +13,6 @@
         />
 
         <div class="overlay">
-          <img
-            :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-            class="overlay__img"
-          />
           <div class="icon-container">
             <div class="left">
               <font-awesome-icon
@@ -28,7 +24,7 @@
 
               <font-awesome-icon
                 title="Add To List"
-                :icon="['far', 'check-circle']"
+                :icon="['fas', 'plus-circle']"
                 class="left__icon left__icon--check"
                 @click="addToMovieList(movie)"
                 v-if="!isMovieInUserList(movie)"
@@ -45,7 +41,7 @@
             <div class="right">
               <font-awesome-icon
                 title="Movie Details"
-                :icon="['fas', 'arrow-circle-down']"
+                :icon="['fas', 'info-circle']"
                 class="right__icon right__icon--arrow"
                 @click="openMovieDetailsModal(movie)"
               />
@@ -170,22 +166,23 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/components/movie-slider/_movie-slider.scss';
+@import '../../sass/components/_overlay.scss';
 .swiper-button-next {
   @include respond(phone) {
-    top: 5rem;
+    top: 7rem;
   }
 
   @include respond(fold) {
-    top: 3rem;
+    top: 5rem;
   }
 }
 .swiper-button-prev {
   @include respond(phone) {
-    top: 5rem;
+    top: 7rem;
   }
 
   @include respond(fold) {
-    top: 3rem;
+    top: 5rem;
   }
 }
 </style>

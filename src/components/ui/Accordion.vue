@@ -2,10 +2,21 @@
   <div>
     <vsa-list>
       <vsa-item v-for="faq in faqs" :key="faq.heading">
-        <vsa-heading class="heading">
+        <vsa-heading>
           {{ faq.heading }}
         </vsa-heading>
-
+        <vsa-icon>
+          <span class="open">
+            <font-awesome-icon
+              :icon="['fas', 'info-circle']"
+              class="movie-container__icon movie-container__icon--play"
+          /></span>
+          <span class="close">
+            <font-awesome-icon
+              :icon="['fas', 'times-circle']"
+              class="movie-container__icon movie-container__icon--play"
+          /></span>
+        </vsa-icon>
         <vsa-content>
           {{ faq.content }}
         </vsa-content>
@@ -74,8 +85,9 @@ export default {
   --vsa-min-width: 1000px;
   --vsa-content-padding: 3rem 5rem;
   --vsa-highlight-color: #c8c8c8;
+  font-size: 1.5rem;
   text-align: start;
-  font-size: 3rem;
+
   cursor: pointer;
 
   @include respond(tab-land) {
@@ -88,6 +100,29 @@ export default {
 
   @include respond(phone) {
     --vsa-min-width: 250px;
+  }
+}
+
+.vsa-item {
+  &--is-active {
+    .vsa-item__trigger__icon {
+      .open {
+        display: none;
+      }
+
+      .close {
+        display: block;
+      }
+    }
+  }
+  &__trigger__icon {
+    .open {
+      display: block;
+    }
+
+    .close {
+      display: none;
+    }
   }
 }
 </style>

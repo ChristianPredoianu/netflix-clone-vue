@@ -1,0 +1,81 @@
+.overlay {
+  @include flex-config($display: flex, $direction: column, $align: center);
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 99%;
+  background-color: rgb(53, 53, 53, 0.5);
+  color: $color-white;
+}
+
+.icon-container {
+  @include flex-config(
+    $display: flex,
+    $justify: space-around,
+    $align: flex-end
+  );
+  position: absolute;
+  width: 100%;
+  font-size: 3rem;
+  bottom: 5%;
+  text-align: center;
+}
+
+.left {
+  position: relative;
+  width: 60%;
+
+  &__icon {
+    cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+
+    @include respond(fold) {
+      font-size: 1.5rem;
+    }
+
+    &:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.info-container {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  padding: 0 2rem;
+  text-align: center;
+
+  @include respond(phone) {
+    font-size: 0.6rem;
+    padding: 0 1rem;
+  }
+
+  @include respond(fold) {
+    padding: 0;
+  }
+
+  &__movie-title {
+    font-weight: 700;
+  }
+}
+
+.right {
+  position: relative;
+  width: 40%;
+
+  &__icon {
+    cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+
+    @include respond(fold) {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -5,16 +5,12 @@
       v-if="isMovieTrailerModalOpen"
       @closeModal="isMovieTrailerModalOpen = false"
     />
-    <div class="card" v-for="movie in category" :key="movie.id">
+    <div class="card">
       <img
         :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
         class="card__img"
       />
       <div class="overlay">
-        <img
-          :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-          class="overlay__img"
-        />
         <div class="icon-container">
           <div class="left">
             <font-awesome-icon
@@ -25,7 +21,7 @@
             />
 
             <font-awesome-icon
-              :icon="['far', 'check-circle']"
+              :icon="['fas', 'plus-circle']"
               class="left__icon left__icon--check"
               @click="addToMovieList(movie)"
               v-if="!isMovieInUserList(movie)"
@@ -33,7 +29,7 @@
 
             <font-awesome-icon
               title="Remove Movie"
-              :icon="['far', 'times-circle']"
+              :icon="['fas', 'times-circle']"
               class="left__icon left__icon--check"
               @click="deleteMovie(movie)"
               v-else
@@ -42,11 +38,18 @@
           <div class="right">
             <font-awesome-icon
               title="Movie Details"
-              :icon="['fas', 'arrow-circle-down']"
+              :icon="['fas', 'info-circle']"
               class="right__icon right__icon--arrow"
               @click="openMovieDetailsModal(movie)"
             />
           </div>
+        </div>
+        <div class="info-container">
+          <p class="info-container__movie-title">{{ movie.title }}</p>
+          <p>
+            Release:
+            {{ movie.release_date ? movie.release_date : movie.first_air_date }}
+          </p>
         </div>
       </div>
     </div>
@@ -71,8 +74,8 @@ export default {
   },
 
   props: {
-    category: {
-      type: [Array, Function],
+    movie: {
+      type: [Object],
     },
   },
 
@@ -106,5 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/views/_movies.scss';
+@import '../../sass/components/movie/_movie.scss';
+@import '../../sass/components/_overlay.scss';
 </style>
