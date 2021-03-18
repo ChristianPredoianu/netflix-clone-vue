@@ -1,6 +1,7 @@
 .body {
+  position: relative;
   min-height: 100vh;
-  background-color: $color-black;
+  background-color: $color-gray-darker;
   padding-bottom: 5rem;
 }
 
@@ -16,10 +17,24 @@
   &__heading {
     font-size: clamp(2rem, 2vw, 4rem);
     color: $color-white;
-    margin: 10rem 0 0 0;
+    margin-top: 13rem;
   }
 }
 
 .movie-sliders {
   padding: 3rem 3rem 0 3rem;
+}
+
+.netflix-border {
+  position: absolute;
+  bottom: 17rem;
+  width: 100%;
+  @include netflix-border;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }

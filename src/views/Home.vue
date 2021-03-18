@@ -121,6 +121,15 @@
       </p>
       <GetStarted class="form-faq" />
     </section>
+    <footer class="footer">
+      <p class="footer__paragraph">Png:s on this site are from</p>
+      <a
+        href="https://www.freepnglogos.com/pics/tv"
+        class="footer__attribution"
+        target="_blank"
+        >Freepnglogos</a
+      >
+    </footer>
   </div>
 </template>
 

@@ -119,8 +119,9 @@
 
 .sliders-section {
   position: relative;
-  background-color: rgb(43, 42, 42);
+  background-color: $color-gray-darker;
   padding: 0 4rem 10rem 4rem;
+  @include netflix-border;
 }
 
 .slider-container {

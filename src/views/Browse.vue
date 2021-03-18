@@ -207,6 +207,7 @@
         />
       </div>
     </section>
+    <Footer />
   </div>
 </template>
 
@@ -216,6 +217,7 @@ import UserMovieList from '@/components/movie-sliders/UserMovieList';
 import MovieSlider from '@/components/movie-sliders/MovieSlider';
 import MovieModal from '@/components/movie-modals/MovieModal';
 import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
+import Footer from '@/components/layout/Footer';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
@@ -236,6 +238,7 @@ export default {
     MovieSlider,
     MovieModal,
     MovieTrailerModal,
+    Footer,
   },
 
   methods: {

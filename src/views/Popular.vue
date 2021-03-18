@@ -12,18 +12,22 @@
         />
       </section>
     </div>
+    <div class="netflix-border"></div>
+    <Footer class="footer" />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/layout/nav/Navbar';
 import MovieSlider from '@/components/movie-sliders/MovieSlider';
+import Footer from '@/components/layout/Footer';
 import { mapGetters } from 'vuex';
 
 export default {
   components: {
     NavBar,
     MovieSlider,
+    Footer,
   },
 
   computed: {

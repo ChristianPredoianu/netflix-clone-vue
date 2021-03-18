@@ -1,5 +1,5 @@
 .my-list {
-  background-color: $color-black;
+  background-color: $color-gray-darker;
   min-height: 100vh;
 }
 
@@ -15,7 +15,7 @@
 
   &__heading {
     font-size: clamp(2rem, 2vw, 4rem);
-    margin-top: 10rem;
+    margin-top: 13rem;
   }
 }
 
@@ -100,4 +100,18 @@
   &__icon {
     cursor: pointer;
   }
+}
+
+.netflix-border {
+  position: absolute;
+  bottom: 17rem;
+  width: 100%;
+  @include netflix-border;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }

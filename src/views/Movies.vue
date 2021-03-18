@@ -45,6 +45,7 @@
           />
         </div>
       </section>
+      <Footer />
     </div>
   </div>
 </template>
@@ -53,6 +54,7 @@
 import NavBar from '@/components/layout/nav/Navbar';
 import DropdownMenu from '@innologica/vue-dropdown-menu';
 import Movie from '@/components/movie/Movie';
+import Footer from '@/components/layout/Footer';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -60,6 +62,7 @@ export default {
     NavBar,
     DropdownMenu,
     Movie,
+    Footer,
   },
 
   data() {

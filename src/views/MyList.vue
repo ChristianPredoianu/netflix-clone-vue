@@ -53,6 +53,8 @@
         </div>
       </div>
     </section>
+    <div class="netflix-border"></div>
+    <Footer class="footer" />
   </div>
 </template>
 
@@ -61,6 +63,7 @@ import NavBar from '@/components/layout/nav/Navbar';
 import MovieModal from '@/components/movie-modals/MovieModal';
 import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
+import Footer from '@/components/layout/Footer';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
@@ -70,6 +73,7 @@ export default {
     NavBar,
     MovieModal,
     MovieTrailerModal,
+    Footer,
   },
 
   data() {
