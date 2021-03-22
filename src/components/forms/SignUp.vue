@@ -42,9 +42,7 @@ export default {
         email: this.email,
         password: this.password,
       }).then(() => {
-        if (!this.getError) {
-          this.$router.push({ name: 'SignIn' });
-        }
+        if (!this.getError) this.$router.push({ name: 'SignIn' });
       });
     },
 

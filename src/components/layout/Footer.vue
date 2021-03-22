@@ -1,6 +1,7 @@
 <template>
   <div>
     <footer class="footer">
+      <div class="netflix-border"></div>
       <div class="container">
         <p class="footer__paragraph">This site is powered by:</p>
         <a href="https://www.themoviedb.org/" target="_blank"

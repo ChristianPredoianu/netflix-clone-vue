@@ -155,9 +155,7 @@ export default {
     hideSearchBarOnRoutes() {
       const popularView = this.$route.name === 'Popular';
       const myListView = this.$route.name === 'My-list';
-      if (popularView || myListView) {
-        return [popularView, myListView];
-      }
+      if (popularView || myListView) return [popularView, myListView];
     },
 
     ...mapGetters(['getTheClickedProfile', 'getUserProfiles']),

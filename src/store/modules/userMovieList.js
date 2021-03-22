@@ -8,9 +8,7 @@ export default {
   },
 
   getters: {
-    getUserMoviesListFromDB: (state) => {
-      return state.userMoviesList;
-    },
+    getUserMoviesListFromDB: (state) => state.userMoviesList,
   },
 
   mutations: {
@@ -18,6 +16,7 @@ export default {
       state.userMoviesList = payload;
     },
   },
+
   actions: {
     setUserMoviesListFromDB({ commit, getters }) {
       const moviesListArray = [];

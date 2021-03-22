@@ -115,6 +115,7 @@ export default {
       this.clickedProfile = selectedProfile;
       this.newName = selectedProfile.name;
     },
+    //Update profile in database
     updateProfile() {
       this.clickedProfile.name = this.newName;
       firebase

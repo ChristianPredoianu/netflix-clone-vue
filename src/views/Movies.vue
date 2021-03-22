@@ -38,6 +38,12 @@
         </div>
 
         <div class="card-container" v-else>
+          <h1
+            class="card-container__heading"
+            v-if="searchMovie(genres).length === 0"
+          >
+            No Movies found in {{ genres }}
+          </h1>
           <Movie
             v-for="movie in this.searchMovie(genres)"
             :key="movie.id"
@@ -45,6 +51,7 @@
           />
         </div>
       </section>
+
       <Footer />
     </div>
   </div>

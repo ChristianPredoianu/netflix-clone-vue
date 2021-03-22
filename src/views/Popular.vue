@@ -1,19 +1,20 @@
 !<template>
-  <div class="body">
-    <NavBar />
-    <div>
-      <section class="popular-movies">
-        <h1 class="popular-movies__heading">Popular Movies</h1>
-      </section>
-      <section class="movie-sliders">
-        <MovieSlider
-          :category="getMovieData[0].popular"
-          class="popular-movies__slider"
-        />
-      </section>
+  <div>
+    <div class="body">
+      <NavBar />
+      <div>
+        <section class="popular-movies">
+          <h1 class="popular-movies__heading">Popular Movies</h1>
+        </section>
+        <section class="movie-sliders">
+          <MovieSlider
+            :category="getMovieData[0].popular"
+            class="popular-movies__slider"
+          />
+        </section>
+      </div>
     </div>
-    <div class="netflix-border"></div>
-    <Footer class="footer" />
+    <Footer />
   </div>
 </template>
 

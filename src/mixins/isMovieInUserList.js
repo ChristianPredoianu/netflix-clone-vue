@@ -4,9 +4,7 @@ export default {
       const isMovieInList = this.getUserMoviesListFromDB.find(
         (mov) => mov.id === movie.id
       );
-      if (isMovieInList) {
-        return true;
-      }
+      if (isMovieInList) return true;
     },
   },
 };

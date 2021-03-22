@@ -20,11 +20,14 @@
 }
 
 .card-container {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 5rem;
 
-  &:not(:first-child) {
-    @include netflix-border;
+  &__heading {
+    margin-top: 10rem;
   }
 }
 

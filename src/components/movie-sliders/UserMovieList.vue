@@ -59,14 +59,15 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
-import MovieModal from '@/components/movie-modals/MovieModal.vue';
+import MovieModal from '@/components/movie-modals/MovieModal';
 import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
+import sliderConfig from '@/mixins/sliderConfig';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 
 export default {
-  mixins: [deleteMovieFromUserList],
+  mixins: [sliderConfig, deleteMovieFromUserList],
 
   props: {
     userMovieList: {
@@ -85,35 +86,6 @@ export default {
     return {
       isModalOpen: false,
       isMovieTrailerModalOpen: false,
-
-      swiperOption: {
-        slidesPerView: 6,
-        spaceBetween: 20,
-
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-
-        breakpoints: {
-          1851: {
-            slidesPerView: 5,
-            spaceBetween: 40,
-          },
-          1522: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-          1185: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          900: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-        },
-      },
     };
   },
 
@@ -129,7 +101,6 @@ export default {
     },
     toggleActive(popularMovie) {
       popularMovie.active = !popularMovie.active;
-      console.log(popularMovie);
     },
 
     ...mapActions([

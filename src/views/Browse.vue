@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$store.state.movieData !== null">
     <MovieTrailerModal
       v-if="isMovieTrailerModalOpen"
       @closeModal="isMovieTrailerModalOpen = false"
@@ -11,10 +11,10 @@
     <section class="showcase">
       <NavBar class="nav" @search="setSearchTerm" />
       <div class="movie-container">
-        <h1 class="movie-container__heading">
+        <h1 class="movie-container__heading" v-if="getMovieData[0].horror[0]">
           {{ getMovieData[0].horror[0].original_title }}
         </h1>
-        <p class="movie-container__paragraph">
+        <p class="movie-container__paragraph" v-if="getMovieData[0].horror[0]">
           {{ getMovieData[0].horror[0].overview }}
         </p>
         <button
@@ -65,16 +65,13 @@
       </div>
       <div class="video-container">
         <video class="video" ref="video" muted autoplay @ended="isVideoPaused">
-          <source
-            src="@/assets/videos/pexels-vlado-pitbullgrif-6650121.mp4"
-            type="video/mp4"
-          />
+          <source src="@/assets/videos/showcase.mp4" type="video/mp4" />
         </video>
       </div>
     </section>
 
     <section class="sliders-section">
-      <div class="slider-container">
+      <div class="slider-container" v-if="getUserMoviesListFromDB">
         <!-- User List -->
         <h2
           class="slider-container__my-list"
@@ -224,6 +221,7 @@ import { mapActions } from 'vuex';
 export default {
   data() {
     return {
+      dataReady: false,
       isMuted: true,
       isPlaying: true,
       isMovieTrailerModalOpen: false,
@@ -286,6 +284,7 @@ export default {
       this.isMovieModalOpen = true;
       this.fetchMovieDetails(movieId);
     },
+
     ...mapActions([
       'fetchMovieData',
       'setUserMoviesListFromDB',
@@ -293,6 +292,7 @@ export default {
       'fetchMovieTrailer',
     ]),
   },
+
   computed: {
     videoElement() {
       return this.$refs.video;
@@ -300,13 +300,14 @@ export default {
     ...mapGetters(['getMovieData', 'getUserMoviesListFromDB']),
   },
 
-  created() {
+  mounted() {
     //Since Promise.all waits for all promises to resolve in our action
     //we can just check to see if one of the array is not empty for lazy loading
     //If any of the given promises rejects, it still becomes the error of Promise.all,
     //and all other results are ignored.
-    if (this.getMovieData[0].action === 0) this.fetchMovieData();
+    if (this.getMovieData[0].action.length === 0) this.fetchMovieData();
     this.setUserMoviesListFromDB();
+    this.getMovieData;
   },
 };
 </script>

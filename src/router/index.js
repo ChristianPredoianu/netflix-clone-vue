@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '@/views/Home.vue';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -15,22 +15,22 @@ const routes = [
   {
     path: '/signup/Step1',
     name: 'SignupStep1',
-    component: () => import('../views/signup/Step1.vue'),
+    component: () => import('@/views/signup/Step1.vue'),
   },
   {
     path: '/signup/Step2',
     name: 'SignupStep2',
-    component: () => import('../views/signup/Step2.vue'),
+    component: () => import('@/views/signup/Step2.vue'),
   },
   {
     path: '/signin',
     name: 'SignIn',
-    component: () => import('../views/signin/SignIn.vue'),
+    component: () => import('@/views/signin/SignIn.vue'),
   },
   {
     path: '/profiles',
     name: 'Profiles',
-    component: () => import('../views/Profiles.vue'),
+    component: () => import('@/views/Profiles.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -38,7 +38,7 @@ const routes = [
   {
     path: '/ManageProfiles',
     name: 'ManageProfiles',
-    component: () => import('../views/ManageProfiles.vue'),
+    component: () => import('@/views/ManageProfiles.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -46,7 +46,7 @@ const routes = [
   {
     path: '/browse',
     name: 'Browse',
-    component: () => import('../views/Browse.vue'),
+    component: () => import('@/views/Browse.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -54,7 +54,7 @@ const routes = [
   {
     path: '/movies',
     name: 'Movies',
-    component: () => import('../views/Movies.vue'),
+    component: () => import('@/views/Movies.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -62,7 +62,7 @@ const routes = [
   {
     path: '/popular',
     name: 'Popular',
-    component: () => import('../views/Popular.vue'),
+    component: () => import('@/views/Popular.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -70,7 +70,7 @@ const routes = [
   {
     path: '/my-list',
     name: 'My-list',
-    component: () => import('../views/MyList.vue'),
+    component: () => import('@/views/MyList.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -78,7 +78,7 @@ const routes = [
   {
     path: '/loading-profile',
     name: 'Loading-profile',
-    component: () => import('../views/LoadingProfile.vue'),
+    component: () => import('@/views/LoadingProfile.vue'),
     meta: {
       requiresAuth: true,
     },

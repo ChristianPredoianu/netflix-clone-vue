@@ -8,11 +8,11 @@ export default {
       id: null,
     },
   },
+
   getters: {
-    getCurrentUser: (state) => {
-      return state.currentUser;
-    },
+    getCurrentUser: (state) => state.currentUser,
   },
+
   mutations: {
     setCurrentUser(state) {
       const currUser = firebase.auth().currentUser;
@@ -20,6 +20,7 @@ export default {
       state.currentUser.id = currUser.uid;
     },
   },
+
   actions: {
     setCurrentUser({ commit }) {
       commit('setCurrentUser');

@@ -6,32 +6,24 @@ export default {
     //the application.
     movieData: [
       {
-        popular: null,
-        action: null,
-        comedy: null,
-        crime: null,
-        animation: null,
-        drama: null,
-        horror: null,
-        sciFi: null,
+        popular: [],
+        action: [],
+        comedy: [],
+        crime: [],
+        animation: [],
+        drama: [],
+        horror: [],
+        sciFi: [],
       },
     ],
-    movieDetails: null,
-    movieTrailer: null,
+    movieDetails: [],
+    movieTrailer: [],
   },
 
   getters: {
-    getMovieData: (state) => {
-      return state.movieData;
-    },
-
-    getMovieDetails: (state) => {
-      return state.movieDetails;
-    },
-
-    getMovieTrailer: (state) => {
-      return state.movieTrailer;
-    },
+    getMovieData: (state) => state.movieData,
+    getMovieDetails: (state) => state.movieDetails,
+    getMovieTrailer: (state) => state.movieTrailer,
   },
 
   mutations: {
@@ -52,7 +44,6 @@ export default {
     setMovieDetails(state, payload) {
       state.movieDetails = payload;
     },
-
     setMovieTrailer(state, payload) {
       state.movieTrailer = payload;
     },
@@ -61,7 +52,7 @@ export default {
   actions: {
     fetchMovieData({ commit }) {
       const apiUrl = 'https://api.themoviedb.org/3/';
-      const apiKey = '05e21f7b2ffd8f1ad234881f857643ba';
+      const apiKey = process.env.VUE_APP_API_KEY;
       const genresUrl =
         'https://api.themoviedb.org/3/discover/movie?api_key=05e21f7b2ffd8f1ad234881f857643ba&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=';
 

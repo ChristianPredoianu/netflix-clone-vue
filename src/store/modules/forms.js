@@ -10,15 +10,9 @@ export default {
   },
 
   getters: {
-    getUser: (state) => {
-      return state.user;
-    },
-    getError: (state) => {
-      return state.error;
-    },
-    getCreatedMessage: (state) => {
-      return state.accountCreatedMessage;
-    },
+    getUser: (state) => state.user,
+    getError: (state) => state.error,
+    getCreatedMessage: (state) => state.accountCreatedMessage,
   },
 
   mutations: {

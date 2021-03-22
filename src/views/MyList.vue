@@ -1,65 +1,31 @@
 !<template>
-  <div class="my-list">
-    <NavBar />
-    <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
-    <MovieTrailerModal
-      v-if="isMovieTrailerModalOpen"
-      @closeModal="isMovieTrailerModalOpen = false"
-    />
+  <div>
+    <div class="my-list">
+      <NavBar />
+      <MovieModal v-if="isModalOpen" @closeModal="isModalOpen = false" />
+      <MovieTrailerModal
+        v-if="isMovieTrailerModalOpen"
+        @closeModal="isMovieTrailerModalOpen = false"
+      />
 
-    <section class="movies-list">
-      <h1 class="movies-list__heading">My List</h1>
-
-      <div class="card-container">
-        <div
-          class="card"
-          v-for="movie in getUserMoviesListFromDB"
-          :key="movie.id"
-        >
-          <img
-            class="card__img"
-            :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+      <section class="movies-list">
+        <h1 class="movies-list__heading">My List</h1>
+        <div class="card-container">
+          <Movie
+            v-for="movie in getUserMoviesListFromDB"
+            :key="movie.id"
+            :movie="movie"
           />
-          <div class="overlay">
-            <img
-              :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-              class="overlay__img"
-            />
-            <div class="icon-container">
-              <div class="left">
-                <font-awesome-icon
-                  title="Play movie"
-                  :icon="['far', 'play-circle']"
-                  class="left__icon left__icon--play"
-                  @click="playMovie(movie.id)"
-                />
-                <font-awesome-icon
-                  title="Remove Movie"
-                  :icon="['far', 'times-circle']"
-                  class="left__icon left__icon--check"
-                  @click="deleteMovie(movie)"
-                />
-              </div>
-              <div class="right">
-                <font-awesome-icon
-                  title="Movie Details"
-                  :icon="['fas', 'arrow-circle-down']"
-                  class="right__icon right__icon--arrow"
-                  @click="openMovieDetailsModal(movie)"
-                />
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-    <div class="netflix-border"></div>
-    <Footer class="footer" />
+      </section>
+    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/layout/nav/Navbar';
+import Movie from '@/components/movie/Movie';
 import MovieModal from '@/components/movie-modals/MovieModal';
 import MovieTrailerModal from '@/components/movie-modals/MovieTrailerModal';
 import deleteMovieFromUserList from '@/mixins/deleteMovieFromUserList';
@@ -71,6 +37,7 @@ export default {
   mixins: [deleteMovieFromUserList],
   components: {
     NavBar,
+    Movie,
     MovieModal,
     MovieTrailerModal,
     Footer,

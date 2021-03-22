@@ -6,7 +6,7 @@
 }
 
 .popular-movies {
-  @include flex-config($display: flex, $align: center);
+  @include flex-config($display: flex);
   margin-left: 3.5rem;
 
   @include respond(tab-land) {
@@ -23,18 +23,4 @@
 
 .movie-sliders {
   padding: 3rem 3rem 0 3rem;
-}
-
-.netflix-border {
-  position: absolute;
-  bottom: 17rem;
-  width: 100%;
-  @include netflix-border;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translate(-50%, 0%);
 }

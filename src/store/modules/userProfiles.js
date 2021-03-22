@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/database';
 import { checkIfElementIsInArray } from './shared-functions/sharedFunctions';
 
@@ -10,12 +10,8 @@ export default {
   },
 
   getters: {
-    getUserProfiles: (state) => {
-      return state.userProfiles;
-    },
-    getTheClickedProfile: (state) => {
-      return state.clickedProfile;
-    },
+    getUserProfiles: (state) => state.userProfiles,
+    getTheClickedProfile: (state) => state.clickedProfile,
   },
 
   mutations: {

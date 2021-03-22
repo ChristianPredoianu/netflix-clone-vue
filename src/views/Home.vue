@@ -41,6 +41,7 @@
           <video
             src="@/assets/videos/video1.mp4"
             playsinline
+            autoplay
             muted
             loop
             class="img-container__video"
@@ -105,6 +106,7 @@
           <video
             src="@/assets/videos/video2.mp4"
             playsinline
+            autoplay
             muted
             loop
             class="img-wrapper__video"
@@ -127,6 +129,7 @@
         href="https://www.freepnglogos.com/pics/tv"
         class="footer__attribution"
         target="_blank"
+        rel="noopener"
         >Freepnglogos</a
       >
     </footer>
