@@ -59,18 +59,13 @@
 
 This project is made to mimic netflix functionality as much as possible.
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
 ### Built With
 
 * [Vue.js](https://vuejs.org/)
-* [Firebase]()
-* [SaSs]()
-* [Css]()
-* [HTML]()
+* [Firebase](https://firebase.google.com/)
+* [SaSs](https://sass-lang.com/)
+* [Css](https://www.w3.org/Style/CSS/Overview.en.html)
+* [HTML](https://developer.mozilla.org/sv-SE/docs/Web/HTML)
 
 
 
@@ -91,7 +86,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/ChristianPredoianu/netflix-clone-vue.git
    ```
 2. Install NPM packages
    ```sh
@@ -103,29 +98,16 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. To start using Netclone you have two options:
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1.2 Sign in to Netclone with an existing account for demo purposes https://netclonevue.netlify.app/signIn:
+    Username: test@test.com  
+    Password: testingnetclone
+    => choose an existing profile
+   
+1.3 Signup to Netclone with a dummy email made up by you. E.g (john@whatever.com) It doesn't need to be a valid email. And choose a password. 
+    => Add a profile and continue with the selected profile.
 
 
 
@@ -135,13 +117,12 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Christian Predoianu - [@linkedin_handle](https://se.linkedin.com/in/christian-predoianu-369218157) - christianpredoianu@yahoo.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/ChristianPredoianu/netflix-clone-vue](https://github.com/ChristianPredoianu/netflix-clone-vue)
 
 
 
