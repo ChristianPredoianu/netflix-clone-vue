@@ -8,7 +8,7 @@
     <img src="src/assets/images/netclone.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Netflix clone vue</h3>
+  <h3 align="center">Netflix Clone Vue</h3>
 
   <p align="center">
    A Netflix clone to mimic Netflix functionality. Made with Vue.js 
