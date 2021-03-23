@@ -8,16 +8,18 @@
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="movie in category" :key="movie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-          class="swiper-slide__img"
+          :data-src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+          class="swiper-slide__img swiper-lazy"
+          alt="movie poster"
         />
+        <div class="swiper-lazy-preloader"></div>
 
         <div class="overlay">
           <div class="icon-container">
             <div class="left">
               <font-awesome-icon
                 title="Play Movie"
-                :icon="['far', 'play-circle']"
+                :icon="['fas', 'play-circle']"
                 class="left__icon left__icon--play"
                 @click="playMovie(movie)"
               />
@@ -32,7 +34,7 @@
 
               <font-awesome-icon
                 title="Delete From List"
-                :icon="['far', 'times-circle']"
+                :icon="['fas', 'times-circle']"
                 class="left__icon left__icon--check"
                 @click="deleteMovie(movie)"
                 v-else
@@ -48,7 +50,9 @@
             </div>
           </div>
           <div class="info-container">
-            <p class="info-container__movie-title">{{ movie.title }}</p>
+            <p class="info-container__movie-title swiper-lazy">
+              {{ movie.title }}
+            </p>
             <p>
               Release:
               {{

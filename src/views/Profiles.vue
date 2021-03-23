@@ -19,7 +19,7 @@
               </div>
               <div class="card" @click="goToAddProfile">
                 <font-awesome-icon
-                  :icon="['far', 'plus-square']"
+                  :icon="['fas', 'plus-square']"
                   class="card__icon"
                 />
                 <p class="card__name">Add a profile</p>

@@ -6,6 +6,53 @@ import '@/plugins/firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faLaptop,
+  faTv,
+  faMobileAlt,
+  faPlusSquare,
+  faSmile,
+  faFlushed,
+  faGrinTongueWink,
+  faGrinTears,
+  faEdit,
+  faPlay,
+  faInfoCircle,
+  faVolumeMute,
+  faVolumeUp,
+  faHistory,
+  faPlayCircle,
+  faPlusCircle,
+  faTimesCircle,
+  faSearch,
+  faAngleDown,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(
+  faLaptop,
+  faTv,
+  faMobileAlt,
+  faPlusSquare,
+  faSmile,
+  faFlushed,
+  faGrinTongueWink,
+  faGrinTears,
+  faEdit,
+  faPlay,
+  faInfoCircle,
+  faVolumeMute,
+  faVolumeUp,
+  faHistory,
+  faPlayCircle,
+  faPlusCircle,
+  faTimesCircle,
+  faSearch,
+  faAngleDown
+);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+/* import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -13,7 +60,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(fab, fas, far);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-icon', FontAwesomeIcon); */
 
 Vue.config.productionTip = false;
 

@@ -1,7 +1,10 @@
 <template>
   <div>
     <router-link :to="getUser ? '/browse' : '/'">
-      <img src="@/assets/images/netclone.png" alt="Netflix logo" class="logo"
+      <img
+        src="@/assets/images/netclone.png"
+        alt="Netflix logo"
+        class="logo-img"
     /></router-link>
   </div>
 </template>

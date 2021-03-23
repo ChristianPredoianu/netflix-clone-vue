@@ -9,13 +9,14 @@
       <img
         :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
         class="card__img"
+        alt="movie poster"
       />
       <div class="overlay">
         <div class="icon-container">
           <div class="left">
             <font-awesome-icon
               title="Play movie"
-              :icon="['far', 'play-circle']"
+              :icon="['fas', 'play-circle']"
               class="left__icon left__icon--play"
               @click="playMovie(movie)"
             />

@@ -27,7 +27,6 @@
   @include flex-config($display: flex, $justify: space-around);
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: $color-white;
-  margin-left: 2rem;
   list-style: none;
 
   @include respond(tab-port) {

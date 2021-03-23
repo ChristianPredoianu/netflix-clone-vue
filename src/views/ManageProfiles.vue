@@ -31,7 +31,7 @@
 
             <div class="add-profile">
               <font-awesome-icon
-                :icon="['far', 'edit']"
+                :icon="['fas', 'edit']"
                 class="add-profile__edit"
                 @click="(isEditImg = true), (isEditProfile = false)"
               />

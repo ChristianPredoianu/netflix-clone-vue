@@ -4,7 +4,7 @@
       <div class="netflix-border"></div>
       <div class="container">
         <p class="footer__paragraph">This site is powered by:</p>
-        <a href="https://www.themoviedb.org/" target="_blank"
+        <a href="https://www.themoviedb.org/" target="_blank" rel="noopener"
           ><img
             src="@/assets/images/themoviedblogo.svg"
             alt="the movie database logo"

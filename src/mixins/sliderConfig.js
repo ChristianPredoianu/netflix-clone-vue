@@ -4,6 +4,8 @@ export default {
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 20,
+        preloadImages: true,
+        lazy: true,
 
         navigation: {
           nextEl: '.swiper-button-next',

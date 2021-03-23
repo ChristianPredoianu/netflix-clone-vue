@@ -9,22 +9,25 @@
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="movie in userMovieList" :key="movie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-          class="swiper-slide__img"
+          :data-src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+          class="swiper-slide__img swiper-lazy"
+          alt="movie poster"
         />
+        <div class="swiper-lazy-preloader"></div>
+
         <div class="overlay">
           <div class="icon-container">
             <div class="left">
               <font-awesome-icon
                 title="Play Movie"
-                :icon="['far', 'play-circle']"
+                :icon="['fas', 'play-circle']"
                 class="left__icon left__icon--play"
                 @click="playMovie(movie.id)"
               />
 
               <font-awesome-icon
                 title="Delete Movie"
-                :icon="['far', 'times-circle']"
+                :icon="['fas', 'times-circle']"
                 class="left__icon left__icon--check"
                 @click="deleteMovie(movie)"
               />
@@ -32,7 +35,7 @@
             <div class="right">
               <font-awesome-icon
                 title="Movie Details"
-                :icon="['fas', 'arrow-circle-down']"
+                :icon="['fas', 'info-circle']"
                 class="right__icon right__icon--arrow"
                 @click="openMovieDetailsModal(movie)"
               />
