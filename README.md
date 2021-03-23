@@ -11,7 +11,7 @@
   <h3 align="center">Netflix clone vue</h3>
 
   <p align="center">
-   A netflix clone to mimic netflix functionality made in Vue.js 
+   A Netflix clone to mimic Netflix functionality. Made with Vue.js 
     <br />
     <a href="https://github.com/ChristianPredoianu/netflix-clone-vue"><strong>Explore the docs »</strong></a>
     <br />
