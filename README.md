@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is made to mimic netflix functionality as much as possible.
+This project is made to mimic some of netflix functionality.
 
 ### Built With
 
