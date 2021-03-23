@@ -44,8 +44,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -98,8 +96,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-
-1. To start using Netclone you have two options:
+1.0 To start using Netclone you have two options:
 
 1.2 Sign in to Netclone with an existing account for demo purposes https://netclonevue.netlify.app/signIn:
     Username: test@test.com  
@@ -120,7 +117,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Christian Predoianu - [@linkedin_handle](https://se.linkedin.com/in/christian-predoianu-369218157) - christianpredoianu@yahoo.com
+Christian Predoianu - [@linkedin](https://se.linkedin.com/in/christian-predoianu-369218157) - christianpredoianu@yahoo.com
 
 Project Link: [https://github.com/ChristianPredoianu/netflix-clone-vue](https://github.com/ChristianPredoianu/netflix-clone-vue)
 
@@ -129,9 +126,10 @@ Project Link: [https://github.com/ChristianPredoianu/netflix-clone-vue](https://
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [Vue Awesome Swiper](https://github.com/surmon-china/vue-awesome-swiper)
+* [Vue Simple Accordion](https://github.com/tkhquang/vue-simple-accordion)
+* [Vuex Persisted State](https://github.com/robinvdvleuten/vuex-persistedstate)
+* [Font-Awesome](https://fontawesome.com/)
 
 
 
