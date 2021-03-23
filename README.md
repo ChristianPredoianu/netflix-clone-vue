@@ -57,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+This project is made to mimic netflix functionality as much as possible.
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -66,9 +66,11 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Vue.js](https://vuejs.org/)
+* [Firebase]()
+* [SaSs]()
+* [Css]()
+* [HTML]()
 
 
 
