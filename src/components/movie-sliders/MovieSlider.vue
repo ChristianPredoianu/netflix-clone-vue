@@ -8,11 +8,10 @@
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="movie in category" :key="movie.id">
         <img
-          :data-src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
-          class="swiper-slide__img swiper-lazy"
+          :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+          class="swiper-slide__img "
           alt="movie poster"
         />
-        <div class="swiper-lazy-preloader"></div>
 
         <div class="overlay">
           <div class="icon-container">
