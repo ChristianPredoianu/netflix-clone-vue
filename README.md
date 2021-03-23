@@ -61,7 +61,7 @@ This project is made to mimic netflix functionality as much as possible.
 
 * [Vue.js](https://vuejs.org/)
 * [Firebase](https://firebase.google.com/)
-* [SaSs](https://sass-lang.com/)
+* [Sass](https://sass-lang.com/)
 * [Css](https://www.w3.org/Style/CSS/Overview.en.html)
 * [HTML](https://developer.mozilla.org/sv-SE/docs/Web/HTML)
 
