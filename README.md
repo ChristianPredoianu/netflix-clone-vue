@@ -104,7 +104,7 @@ To get a local copy up and running follow these simple steps.
 To start using Netclone you have two options:
 
 1.1 Sign in to Netclone with an existing account for demo purposes https://netclonevue.netlify.app/signIn:
-    Username: test@test.com  
+    <b>Username</b>: test@test.com  
     Password: testingnetclone
     => choose an existing profile
    
