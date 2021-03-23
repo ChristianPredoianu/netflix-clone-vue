@@ -8,19 +8,19 @@
     <img src="src/assets/images/netclone.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Netflix clone vue</h3>
 
   <p align="center">
-    project_description
+   A netflix clone to mimic netflix functionality made in Vue.js 
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ChristianPredoianu/netflix-clone-vue"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://netclonevue.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/ChristianPredoianu/netflix-clone-vue/issues/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+   
   </p>
 </p>
 
