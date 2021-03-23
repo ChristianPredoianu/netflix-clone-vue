@@ -105,10 +105,10 @@ To start using Netclone you have two options:
 
 1.1 Sign in to Netclone with an existing account for demo purposes https://netclonevue.netlify.app/signIn:
     <b>Username</b>: test@test.com  
-    Password: testingnetclone
+    <b>Password:</b> testingnetclone
     => choose an existing profile
    
-1.2 Signup to Netclone with a dummy email made up by you. E.g (john@whatever.com) It doesn't need to be a valid email. And choose a password. 
+1.2 Signup to Netclone with a <b>dummy email</b> made up by you. E.g (john@whatever.com) It doesn't need to be a valid email. And choose a <b>password.</b> 
     => Add a profile and continue with the selected profile.
 
 
