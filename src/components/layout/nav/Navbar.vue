@@ -142,13 +142,14 @@ export default {
         .then(() => {
           this.$router.push({ path: '/signin' });
           this.setUser(null);
+          this.resetCurrentUser(null);
         });
     },
     handleView() {
       this.mobileView = window.innerWidth <= 900;
     },
 
-    ...mapActions(['setClickedProfile', 'setUser']),
+    ...mapActions(['setClickedProfile', 'setUser', 'resetCurrentUser']),
   },
 
   computed: {

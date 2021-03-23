@@ -19,11 +19,18 @@ export default {
       state.currentUser.email = currUser.email;
       state.currentUser.id = currUser.uid;
     },
+    resetCurrentUser(state, payload) {
+      state.currentUser.email = payload;
+      state.currentUser.id = payload;
+    },
   },
 
   actions: {
     setCurrentUser({ commit }) {
       commit('setCurrentUser');
+    },
+    resetCurrentUser({ commit }, payload) {
+      commit('resetCurrentUser', payload);
     },
   },
 };

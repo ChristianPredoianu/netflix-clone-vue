@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="getUser ? '/browse' : '/'">
+    <router-link :to="getCurrentUser.email !== null ? '/browse' : '/'">
       <img
         src="@/assets/images/netclone.png"
         alt="Netflix logo"
@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['getUser']),
+    ...mapGetters(['getCurrentUser']),
   },
 };
 </script>

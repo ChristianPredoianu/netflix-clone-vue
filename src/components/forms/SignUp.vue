@@ -20,7 +20,6 @@
       />
       <input type="submit" value="Continue" class="step-2-form__btn" />
     </form>
-    <h1>{{ getError }}</h1>
   </div>
 </template>
 
@@ -42,11 +41,19 @@ export default {
         email: this.email,
         password: this.password,
       }).then(() => {
-        if (!this.getError) this.$router.push({ name: 'SignIn' });
+        if (!this.getError) {
+          this.setCreatedMessage(
+            'Your account was created, you are redirected to the sign in section. '
+          );
+          setTimeout(() => {
+            this.$router.push({ name: 'SignIn' });
+            this.setCreatedMessage(null);
+          }, 3000);
+        }
       });
     },
 
-    ...mapActions(['signUserUp']),
+    ...mapActions(['signUserUp', 'setCreatedMessage']),
   },
 
   computed: {

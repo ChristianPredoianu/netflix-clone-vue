@@ -1,59 +1,60 @@
 !<template>
-  <div class="body">
-    <NavBar @search="setSearchTerm" />
-    <div>
-      <section class="genres-container">
-        <h1 class="genres-container__heading">Movies</h1>
-        <select name="genres" class="select decorated" v-model="genres">
-          <option disabled value="" class="select__option">Genres</option>
-          <option selected class="select__option">All Genres</option>
-          <option class="select__option">action</option>
-          <option class="select__option">comedy</option>
-          <option class="select__option">crime</option>
-          <option class="select__option">animation</option>
-          <option class="select__option">drama</option>
-          <option class="select__option">horror</option>
-          <option class="select__option">sciFi</option>
-        </select>
-      </section>
+  <div>
+    <div class="body">
+      <NavBar @search="setSearchTerm" />
+      <div>
+        <section class="genres-container">
+          <h1 class="genres-container__heading">Movies</h1>
+          <select name="genres" class="select decorated" v-model="genres">
+            <option disabled value="" class="select__option">Genres</option>
+            <option selected class="select__option">All Genres</option>
+            <option class="select__option">action</option>
+            <option class="select__option">comedy</option>
+            <option class="select__option">crime</option>
+            <option class="select__option">animation</option>
+            <option class="select__option">drama</option>
+            <option class="select__option">horror</option>
+            <option class="select__option">sciFi</option>
+          </select>
+        </section>
 
-      <section class="movies-list">
-        <div
-          class="card-container"
-          v-if="!searchTerm && genres === 'All Genres'"
-        >
-          <Movie
-            v-for="movie in removeDuplicateMovies"
-            :key="movie.id"
-            :movie="movie"
-          />
-        </div>
-
-        <div class="card-container" v-if="!searchTerm">
-          <Movie
-            v-for="movie in this.getMovieData[0][genres]"
-            :key="movie.id"
-            :movie="movie"
-          />
-        </div>
-
-        <div class="card-container" v-else>
-          <h1
-            class="card-container__heading"
-            v-if="searchMovie(genres).length === 0"
+        <section class="movies-list">
+          <div
+            class="card-container"
+            v-if="!searchTerm && genres === 'All Genres'"
           >
-            No Movies found in {{ genres }}
-          </h1>
-          <Movie
-            v-for="movie in this.searchMovie(genres)"
-            :key="movie.id"
-            :movie="movie"
-          />
-        </div>
-      </section>
+            <Movie
+              v-for="movie in removeDuplicateMovies"
+              :key="movie.id"
+              :movie="movie"
+            />
+          </div>
 
-      <Footer />
+          <div class="card-container" v-if="!searchTerm">
+            <Movie
+              v-for="movie in this.getMovieData[0][genres]"
+              :key="movie.id"
+              :movie="movie"
+            />
+          </div>
+
+          <div class="card-container" v-else>
+            <h1
+              class="card-container__heading"
+              v-if="searchMovie(genres).length === 0"
+            >
+              No Movies found in {{ genres }}
+            </h1>
+            <Movie
+              v-for="movie in this.searchMovie(genres)"
+              :key="movie.id"
+              :movie="movie"
+            />
+          </div>
+        </section>
+      </div>
     </div>
+    <Footer />
   </div>
 </template>
 

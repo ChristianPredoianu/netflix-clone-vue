@@ -39,6 +39,7 @@ export default {
     },
     async signUserUp({ commit }, payload) {
       commit('resetError', null);
+
       await firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
@@ -71,6 +72,9 @@ export default {
     },
     setUser({ commit }, payload) {
       commit('setUser', payload);
+    },
+    setCreatedMessage({ commit }, payload) {
+      commit('setCreatedMessage', payload);
     },
   },
 };

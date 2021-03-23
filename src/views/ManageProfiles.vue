@@ -14,7 +14,7 @@
                 @click="getClickedProfile(userProfile)"
               >
                 <font-awesome-icon :icon="userProfile.icon" class="card__img" />
-                <font-awesome-icon :icon="['far', 'edit']" class="card__edit" />
+                <font-awesome-icon :icon="['fas', 'edit']" class="card__edit" />
                 <p class="card__name">{{ userProfile.name }}</p>
               </div>
             </div>
