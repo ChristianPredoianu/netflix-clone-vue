@@ -2,7 +2,10 @@
   <div>
     <div class="overlay" @click.self="closeModal">
       <div class="modal">
-        <div class="yt-player-container">
+        <div
+          class="yt-player-container"
+          v-if="this.getMovieTrailer.length !== 0"
+        >
           <font-awesome-icon
             :icon="['fas', 'times']"
             class="yt-player-container__close"
