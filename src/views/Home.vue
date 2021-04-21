@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <section class="hero">
+    <section class="section-hero">
       <nav class="nav">
         <Logo class="nav__logo" />
         <router-link tag="p" :to="{ path: 'signIn' }"
           ><p class="nav__login-btn">Sign in</p></router-link
         >
       </nav>
-      <div class="hero-container">
+      <div class="hero">
         <h1 class="heading-primary ">
           Unlimited access to movies, series and other.
         </h1>
         <h2 class="heading-secondary u-margin-t-b-small ">
           Watch where you want. Unsubscribe when you want.
         </h2>
-        <p class="hero-container__paragraph ">
+        <p class="hero__paragraph ">
           Ready to start watching? Fill in your e-mail to create an account.
         </p>
         <GetStarted />
@@ -82,7 +82,7 @@
         </p>
       </div>
     </section>
-    <section class="watch-anywhere">
+    <section class="section-watch-anywhere">
       <div class="watch-anywhere-description">
         <h2 class="heading-primary u-text-align-start">Watch anywhere.</h2>
         <p class="heading-secondary u-margin-t-small u-text-align-start">

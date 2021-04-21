@@ -59,11 +59,15 @@ export default {
         });
     },
 
-    ...mapActions(['signUserIn']),
+    ...mapActions(['signUserIn', 'resetError']),
   },
 
   computed: {
     ...mapGetters(['getError', 'getCreatedMessage']),
+  },
+
+  created() {
+    this.resetError();
   },
 };
 </script>

@@ -76,5 +76,8 @@ export default {
     setCreatedMessage({ commit }, payload) {
       commit('setCreatedMessage', payload);
     },
+    resetError({ commit }) {
+      commit('resetError');
+    },
   },
 };

@@ -10,30 +10,27 @@
     />
     <section class="showcase">
       <NavBar class="nav" @search="setSearchTerm" />
-      <div class="movie-container">
-        <h1 class="movie-container__heading" v-if="getMovieData[0].horror[0]">
+      <div class="movie">
+        <h1 class="movie__heading" v-if="getMovieData[0].horror[0]">
           {{ getMovieData[0].horror[0].original_title }}
         </h1>
-        <p class="movie-container__paragraph" v-if="getMovieData[0].horror[0]">
+        <p class="movie__paragraph" v-if="getMovieData[0].horror[0]">
           {{ getMovieData[0].horror[0].overview }}
         </p>
-        <button
-          class="movie-container__btn movie-container__btn--play"
-          @click="playShowcaseMovie"
-        >
+        <button class="movie__btn movie__btn--play" @click="playShowcaseMovie">
           <font-awesome-icon
             :icon="['fas', 'play']"
-            class="movie-container__icon movie-container__icon--play"
+            class="movie__icon movie__icon--play"
           />
           Play
         </button>
         <button
-          class="movie-container__btn movie-container__btn--info "
+          class="movie__btn movie__btn--info "
           @click="openMovieDetailsModal"
         >
           <font-awesome-icon
             :icon="['fas', 'info-circle']"
-            class="movie-container__icon movie-container__icon--info"
+            class="movie__icon movie__icon--info"
           />
           More info
         </button>
@@ -70,25 +67,19 @@
       </div>
     </section>
 
-    <section class="sliders-section">
-      <div class="slider-container" v-if="getUserMoviesListFromDB">
+    <section class="section-sliders">
+      <div class="slider" v-if="getUserMoviesListFromDB">
         <!-- User List -->
-        <h2
-          class="slider-container__my-list"
-          v-if="getUserMoviesListFromDB.length !== 0"
-        >
+        <h2 class="slider__my-list" v-if="getUserMoviesListFromDB.length !== 0">
           My list
         </h2>
         <UserMovieList :userMovieList="getUserMoviesListFromDB" />
 
         <!-- Popular Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('popular') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('popular') === undefined">
           Popular Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('popular').length} Movies found in popular` }}
         </h2>
         <MovieSlider
@@ -98,13 +89,10 @@
         />
 
         <!-- Comedy Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('comedy') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('comedy') === undefined">
           Comedy Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('comedy').length} Movies found in Comedy` }}
         </h2>
         <MovieSlider
@@ -114,13 +102,10 @@
         />
 
         <!-- Crime Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('crime') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('crime') === undefined">
           Crime Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('crime').length} Movies found in Crime` }}
         </h2>
         <MovieSlider
@@ -128,13 +113,10 @@
         />
 
         <!-- Action Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('action') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('action') === undefined">
           Action Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('action').length} Movies found in Action` }}
         </h2>
         <MovieSlider
@@ -145,12 +127,12 @@
 
         <!-- Animated Movies -->
         <h2
-          class="slider-container__my-list"
+          class="slider__my-list"
           v-if="searchMovie('animation') === undefined"
         >
           Animated Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('animation').length} Movies found in Animated` }}
         </h2>
         <MovieSlider
@@ -160,13 +142,10 @@
         />
 
         <!-- Drama Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('drama') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('drama') === undefined">
           Drama Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('drama').length} Movies found in Drama` }}
         </h2>
         <MovieSlider
@@ -174,13 +153,10 @@
         />
 
         <!-- Horror Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('horror') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('horror') === undefined">
           Horror Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('horror').length} Movies found in Horror` }}
         </h2>
         <MovieSlider
@@ -190,13 +166,10 @@
         />
 
         <!-- SciFI Movies -->
-        <h2
-          class="slider-container__my-list"
-          v-if="searchMovie('sciFi') === undefined"
-        >
+        <h2 class="slider__my-list" v-if="searchMovie('sciFi') === undefined">
           SciFi Movies
         </h2>
-        <h2 class="slider-container__my-list" v-else>
+        <h2 class="slider__my-list" v-else>
           {{ `${searchMovie('sciFi').length} Movies found in SciFi` }}
         </h2>
         <MovieSlider

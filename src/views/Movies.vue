@@ -3,8 +3,8 @@
     <div class="body">
       <NavBar @search="setSearchTerm" />
       <div>
-        <section class="genres-container">
-          <h1 class="genres-container__heading">Movies</h1>
+        <section class="genres">
+          <h1 class="genres__heading">Movies</h1>
           <select name="genres" class="select decorated" v-model="genres">
             <option disabled value="" class="select__option">Genres</option>
             <option selected class="select__option">All Genres</option>

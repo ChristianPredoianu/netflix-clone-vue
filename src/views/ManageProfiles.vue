@@ -1,11 +1,11 @@
 <template>
   <div class="profiles-body">
     <nav class="nav"><Logo class="logo" /></nav>
-    <div class="wrapper">
+    <div class="container">
       <section class="section-main">
         <transition name="fade">
-          <div class="profiles-container" v-if="isManageProfiles" key="manage">
-            <h1 class="profiles-container__heading">Manage Profiles</h1>
+          <div class="profiles" v-if="isManageProfiles" key="manage">
+            <h1 class="profiles__heading">Manage Profiles</h1>
             <div class="cta-container">
               <div
                 class="card"
@@ -19,15 +19,15 @@
               </div>
             </div>
             <button
-              class="profiles-container__btn"
+              class="profiles__btn"
               @click="$router.push({ name: 'Profiles' })"
             >
               Done
             </button>
           </div>
 
-          <div class="profiles-container" v-if="isEditProfile" key="edit">
-            <h1 class="profiles-container__heading">Edit Profile</h1>
+          <div class="profiles" v-if="isEditProfile" key="edit">
+            <h1 class="profiles__heading">Edit Profile</h1>
 
             <div class="add-profile">
               <font-awesome-icon
@@ -60,11 +60,11 @@
             </div>
           </div>
 
-          <div class="profiles-container" v-if="isEditImg" key="edit-img">
-            <h1 class="profiles-container__heading">Choose an avatar</h1>
+          <div class="profiles" v-if="isEditImg" key="edit-img">
+            <h1 class="profiles__heading">Choose an avatar</h1>
             <font-awesome-icon
               :icon="[icon[0], icon[1]]"
-              class="profiles-container__img"
+              class="profiles__img"
               v-for="icon in icons"
               :key="icon.id"
               @click="updateIcon(icon)"

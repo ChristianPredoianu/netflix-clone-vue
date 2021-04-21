@@ -1,4 +1,4 @@
-.hero {
+.section-hero {
   @include flex-config($display: flex, $justify: center);
   position: relative;
   min-height: 80vh;
@@ -6,6 +6,7 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  padding-bottom: 10rem;
 
   @include netflix-border;
 }
@@ -51,7 +52,7 @@
   }
 }
 
-.hero-container {
+.hero {
   width: 51%;
   margin-top: 40rem;
   color: $color-white;
@@ -185,7 +186,7 @@
   }
 }
 
-.watch-anywhere {
+.section-watch-anywhere {
   @include landing-section-config;
 
   @include respond(phone) {

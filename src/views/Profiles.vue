@@ -1,12 +1,12 @@
 <template>
   <div class="profiles-body">
     <nav class="nav"><Logo class="logo" /></nav>
-    <div class="wrapper">
+    <div class="container">
       <section class="section-main">
         <!--Initial state-->
         <transition name="fade">
-          <div class="profiles-container" v-if="!isAddProfile" key="initial">
-            <h1 class="profiles-container__heading">Who is watching?</h1>
+          <div class="profiles" v-if="!isAddProfile" key="initial">
+            <h1 class="profiles__heading">Who is watching?</h1>
             <div class="cta-container">
               <div
                 class="card"
@@ -27,7 +27,7 @@
             </div>
 
             <button
-              class="profiles-container__btn"
+              class="profiles__btn"
               @click="$router.push({ name: 'ManageProfiles' })"
             >
               Manage profiles

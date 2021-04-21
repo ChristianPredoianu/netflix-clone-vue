@@ -3,20 +3,11 @@
     <header>
       <NavSignUp />
     </header>
-    <section class="step-1-section">
-      <div class="icons-container">
-        <font-awesome-icon
-          :icon="['fas', 'laptop']"
-          class="icons-container__icon"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'tv']"
-          class="icons-container__icon"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'mobile-alt']"
-          class="icons-container__icon"
-        />
+    <section class="section-step-1">
+      <div class="icons">
+        <font-awesome-icon :icon="['fas', 'laptop']" class="icons__icon" />
+        <font-awesome-icon :icon="['fas', 'tv']" class="icons__icon" />
+        <font-awesome-icon :icon="['fas', 'mobile-alt']" class="icons__icon" />
       </div>
       <div class="step-1-info">
         <p class="step-1-info__paragraph">

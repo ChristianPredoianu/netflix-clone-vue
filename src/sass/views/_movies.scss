@@ -3,7 +3,7 @@
   background-color: $color-gray-darker;
 }
 
-.genres-container {
+.genres {
   @include flex-config($display: flex, $align: center);
   margin-left: 3.5rem;
 

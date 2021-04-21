@@ -1,4 +1,4 @@
-.step-1-section {
+.section-step-1 {
   @include flex-config($display: flex, $direction: column, $align: center);
 
   @include respond(tab-port) {
@@ -6,7 +6,7 @@
   }
 }
 
-.icons-container {
+.icons {
   @include flex-config($display: flex, $justify: space-around);
   margin-top: 15rem;
   width: 500px;

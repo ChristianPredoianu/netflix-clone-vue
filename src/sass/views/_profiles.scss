@@ -8,7 +8,7 @@
   margin-left: 4rem;
 }
 
-.wrapper {
+.container {
   @include flex-config($display: flex, $justify: center, $align: center);
 }
 
@@ -21,7 +21,7 @@
   }
 }
 
-.profiles-container {
+.profiles {
   @include flex-config($display: flex, $direction: column, $align: center);
 
   &__heading {

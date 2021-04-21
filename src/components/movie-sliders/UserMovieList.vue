@@ -93,7 +93,6 @@ export default {
 
   methods: {
     openMovieDetailsModal(selectedMovie) {
-      console.log(selectedMovie.id);
       this.isModalOpen = true;
       this.fetchMovieDetails(selectedMovie.id);
     },

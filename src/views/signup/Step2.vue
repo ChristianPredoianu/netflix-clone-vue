@@ -5,7 +5,7 @@
     </header>
 
     <section class="section-step-2-main">
-      <div class="section-container">
+      <div class="container">
         <div class="step-2-info">
           <p class="step-2-info__paragraph">
             Step <span class="step-2-info__span">2</span> of
